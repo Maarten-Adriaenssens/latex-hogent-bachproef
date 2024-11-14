@@ -15,37 +15,59 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+In de zorgindustrie wordt er steeds meer gesproken over 'Alarm moeheid.' Dit is een stijgend probleem. Bij alarm moeheid wordt het gezondheidszorgpersoneel overspoeld met een constante vloed van alarmsignalen. Deze moeheid is grotendeels te wijten aan het huidige systeem dat in ziekenhuizen wordt gebruikt. Dit systeem is ook wel gekend als het DECT-systeem. Dit systeem is een audio-systeem, hier zijn de meeste nadelen aan verbonden. Zoals eerder vermeld zullen de overvloed aan alarmsignalen, onder andere gegenereerd door het DECT-systeem, alarm moeheid veroorzaken. Deze moeheid wordt ook versterkt door het belet-systeem, het systeem dat de alarmknop bij de patient plaatst. De moeheid is echter niet het enige probleem. Verder is er een groter probleem en dat is de menselijke factor aan het systeem. Dit wordt duidelijk met een situatie-schets van het gebruik van het DECT-systeem:
 
 \begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
+  \item Patient bedient alarm knop
+  \item Verplegend personeel wordt verwittigd via BELET-systeem
+  \item Verplegend personeel reageert op alarm en bezoekt patient
+  \item Patient heeft een situatie die verslechtert en verplegend personeel wil dokter inschakelen
+  \item Verplegend personeel legt mondeling het probleem uit aan de dokter
+  \item Dokter maakt oordeel
 \end{itemize}
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+Het is de voorlaatste stap waar een probleem optreedt. De dokter steunt volledig op de beschrijving van het verplegend personeel. Dit betekent dus ook dat eenmaal de conversatie beeindigd is, is er geen naslagwerk om terug op te vallen.
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
-
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
-
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+Deze bachelorproef thesis zal zich focussen op een alternatief voor het DECT-systeem, aan de hand van 5G en is gericht aan IT-personeel in gezondheidszorginstituten. Het primaire doel is om te onderzoeken of het 5G-netwerk een oplossing kan bieden voor de vervanging/modernisering van het DECT-Systeem. Naast het onderzoek zal er een proof of Concept worden opgesteld.
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+De huidige stand van zaken kan worden opgesplitst in 4 delen. Het eerste deel een situatie schets van de huidige complete set-up, met al hun voordelen en gebreken. Hierna volgt een uiteenzetting van 5G-frameworks, hier gaat het niet alleen over algemene frameworks en bemerkingen over 5G maar ook al meer specifiek gezondheidszorg frameworks van 5G. Nadien wordt er dieper gekeken naar de connectie tussen gezondhseidszorg en 5G, maar ook hun interconnecties. Deze interconnecties bevatten onder andere monitoring integratie. Tenslotte is er een korte toelichting van de cybersecurity verplichtingen in kader van deze bachelorproef.
+\\\\
+Het DECT-systeem staat voor Digital Enhanced Cordless Telecommunications, dit is een standaard in EU sinds 1993. De meest gebruikte situatie is waar er meerdere gebruikers zijn voor een draadloze communicatie in werkomgevingen. De voornaamste reden voor gebruik van het DECT draadloos systeem is dat het een grote dichtheid van veel gebruikers aankan. Terwijl het in vergelijking met andere mobile communicatie systemen niet werkt buiten de werkomgeving.\autocite{Welinder1997} Na onderzoek van \textcite{Welinder1997} bleek dat de interferentie van het DECT-systeem op medisch gereedschap  was 11 percent. Maar de interferentie valt volledig weg bij een afstand van 0.5m tussen het gereedschap en het DECT toestel.
+\\\\
+5G is een stap in de evolutie van het mobiele netwerk, opvolger van 4G. Nu het 5G netwerk waar het om draait in deze bachelorproef is het private 5G netwerk. Volgens \textcite{wen2021private} zijn er eigenschappen van private 5G die nauw aansluiten met die van DECT-systemen. De eerste is de hoge device dichtheid, maar bij 5G gaat deze ook nog eens gepaart met hoge throughput. Dit zorgt ervoor dat integratie van externe devices soals sensoren, camera's, etc. Verdergaant op de gelijkenissen in eigenschappen heeft 5G ook voordelen ten opzichte van DECT-systemen volgens \textcite{wen2021private}. Zo Is er een hoge betrouwbaarheid met een lage latency.\\ Verder heeft een privaat netwerk nog het extra voordeel van een aanpasbare voorspelbare Quality of Service (QoS). Daarnaast zijn er verschillende architecturen die men kan implementeren om een privaat 5G netwerk op te zetten. De eerste is een stand-alone deployment, hierbij wordt privaat netwerk opgezet waarbij alle netwerk functies van het netwerk zijn gelimiteerd binnen een logische perimeter bestaande van vooraf gedefinieerde regios. De andere manier is een public netwerk geintegreerd deployment. Deze architectuur kan worden opgesplitst in 3 types, afhankelijk van de gradatie van integratie. Deze 4 types zijn de volgende:
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+\begin{itemize}
+  \item O-RAN (Open Radio Access Network)
+  \item Gedeelde RAN (Radio Access Network)
+  \item Gedeelde RAN en controle vlak
+  \item Hosted bij het Publieke Netwerk
+\end{itemize}
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+\textcite{wen2021private} vermeldt ook dat er naast architectuur ook een keuze moet gemaakt worden voor het spectrum. Hier zijn ook opnieuw 3 keuzes: een Dedicated pirvaat spectrum, een erkend spectrum en een niet-erkend spectrum. 
+5G heeft een aantal noodzakelijke technologiën nodig in het netwerk. Een van deze technologiën is network slicing. Hierbij wordt er 'een netwerk in een netwerk' gemaakt door het fysieke netwerk op te splitsen in meerdere logische netwerken. Om aan network slicing te kunnen doen is er een nood aan netwerk virtualisatie. Het silcing zelf kan worden opgedeeld in 3 lagen: Infrastructuur laag, Network slice laag en Onderhouds laag. De levensloop van het slicen van een netwerk verloopt volgens volgende 4 fases \autocite{wen2021private}:
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+\begin{enumerate}
+  \item Voorbereiding
+  \item In dienst stellen
+  \item Gebruik
+  \item Ontmanteling
+\end{enumerate}.
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+\\\\
+Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G en gezondheidszorg, en hoe deze worden bereikt aan de hand van bestaande frameworks.
+\\
+In samenspraak met de co-promotor is er geopteerd om cybersecurity niet actief te onderzoeken in deze bachelorproef thesis. Echter het is wel noodzakelijk om te weten dat er verschillende verplichtingen zijn in België en de Europese Unie. Hieronder een kleine verduidelijking als context.
+\\
+Sinds 27 april 2016 is de verordening 2016/679 van toepassing. Deze start de GDPR (General Data Protection Regulation) in de Europese unie. De verordening 2016/679 vermeldt dat "regels worden vastgelegd betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en het vrije verkeer van persoonsgegevens. En het beschermt het ook de grondrechten en de fundamentele vrijheden van natuurlijke personen met name hun recht op bescherming van persoonsgegeven."\\ \autocite{gdpr2016} 
+\\
+Vervolgens is er ook het NIS2, dit is een Belgische wet die bedrijven verplichtingen oplegt op vlak van cybersecurity. "De wet van 26 april 2024 tot vaststelling van een kader voor de cyberbeveiliging van netwerk- en informatiesystemen van algemeen belang voor de openbare veiligheid (de "NIS2-wet") zet de EU-richtlijn 2022/2555 van het Europees Parlement en de Raad van 14 december 2022 (de "NIS2-richtlijn") om." \autocite{Belgium2024}
+\\
+Tenslotte is er een nieuwer initiatief genaamd EHDS (European Healthcare Data Space). Dit initiatief heeft als algemene doelstelling: "De algemene doelstelling is te waarborgen dat natuurlijke personen in de EU in de praktijk meer zeggenschap over hun elektronische gezondheidsgegevens hebben." \autocite{EHDS2022}
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -54,12 +76,13 @@ Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle no
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
-
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
+Alvorens de methodologie volledig wordt besproken is er een belangrijke disclaimer noodzakelijk te vermelden.
+In samenspraak met de co-promotoris er geopteerd om cybersecurity niet actief te onderzoeken in deze bachelorproef thesis. Echter het is wel noodzakelijkom te weten dat er verschillende verplichtingen zijn in Belgie en de Europese Unie. In de literatuur studie is er wel een kort naslagwerk van de verplichtingen ten opzichte van cybersecurity.
+\\\\
 Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
 
 Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
