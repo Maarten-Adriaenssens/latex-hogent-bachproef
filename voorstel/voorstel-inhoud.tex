@@ -15,13 +15,13 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-In de zorgindustrie wordt er steeds meer gesproken over 'Alarm moeheid.' Dit is een stijgend probleem. Bij alarm moeheid wordt het gezondheidszorgpersoneel overspoeld met een constante vloed van alarmsignalen. Deze moeheid is grotendeels te wijten aan het huidige systeem dat in ziekenhuizen wordt gebruikt. Dit systeem is ook wel gekend als het DECT-systeem. Dit systeem is een audio-systeem, hier zijn de meeste nadelen aan verbonden. Zoals eerder vermeld zullen de overvloed aan alarmsignalen, onder andere gegenereerd door het DECT-systeem, alarm moeheid veroorzaken. Deze moeheid wordt ook versterkt door het belet-systeem, het systeem dat de alarmknop bij de patient plaatst. De moeheid is echter niet het enige probleem. Verder is er een groter probleem en dat is de menselijke factor aan het systeem. Dit wordt duidelijk met een situatie-schets van het gebruik van het DECT-systeem:
+In de zorgindustrie wordt er steeds meer gesproken over 'alarmmoeheid.' Dit is een stijgend probleem. Bij alarmmoeheid wordt het gezondheidszorgpersoneel overspoeld met een constante vloed van alarmsignalen. Deze moeheid is grotendeels te wijten aan het huidige systeem dat in ziekenhuizen wordt gebruikt. Dit systeem is ook wel gekend als het DECT-systeem. Dit systeem is een audio-systeem, hier zijn de meeste nadelen aan verbonden. Zoals eerder vermeld zullen de overvloed aan alarmsignalen, onder andere gegenereerd door het DECT-systeem, alarmmoeheid veroorzaken. Deze moeheid wordt ook versterkt door het belet-systeem, het systeem dat de alarmknop bij de patiënt plaatst. De moeheid is echter niet het enige probleem. Zo is er ook de menselijke factor in het systeem. Dit wordt duidelijk met een situatie-schets van het gebruik van het DECT-systeem:
 
 \begin{itemize}
-  \item Patient bedient alarm knop
+  \item patiënt bedient alarm knop
   \item Verplegend personeel wordt verwittigd via BELET-systeem
-  \item Verplegend personeel reageert op alarm en bezoekt patient
-  \item Patient heeft een situatie die verslechtert en verplegend personeel wil dokter inschakelen
+  \item Verplegend personeel reageert op alarm en bezoekt patiënt
+  \item patiënt heeft een situatie die verslechtert en verplegend personeel wil dokter inschakelen
   \item Verplegend personeel legt mondeling het probleem uit aan de dokter
   \item Dokter maakt oordeel
 \end{itemize}
@@ -58,7 +58,7 @@ Het DECT-systeem staat voor Digital Enhanced Cordless Telecommunications, dit is
   \item Ontmanteling
 \end{enumerate}
 
-Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G en gezondheidszorg, en hoe deze worden bereikt aan de hand van bestaande frameworks.
+Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G en gezondheidszorg, en hoe deze worden bereikt aan de hand van bestaande frameworks. Er zijn verschillende mogelijkheden, maar met de focus op een toegankelijke methode zal er voornamelijk gefocust worden opens-source frameworks. Zo zijn er verschillende variaties op Open5G. Volgens \textcite{Open5GS2024} is Open5G 'een geavanceerd, open-source project ontworpen voor het bouwen en onderhouden van je eigen NR/LTE mobiele netwerk. Open5G Biedt een robuste oplossing voor het configureren van zowel 5G (NR) als LTE (Evolved) netwerken.' \\ Verder zijn er andere concepten zoals Open RAN waar onder andere het OpenCare5G netwerk is op gebaseerd. In dit framework wordt Open RAN in een privaat netwerk gebruikt voor digitale Gezondheids applicaties. Zo hebben \textcite{de2023opencare5g} onderzocht hoe dit framework kan gebruikt worden om gezondheidsonderzoeken te doen met draagbare ultrasound gereedschappen op veschillende locaties. Om deze onderzoeken te kunnen delen met artsen, werd er een lokaal privaat netwerk opgezet. Zo gebruikten ze een 5G xHaul ORAN Operations, Administration en Maintenance (OAM) privaat netwerk. Er wordt gekozen om een top-down systeem te gebruiken. Dit is een georganizeerde manier om een netwerk project te ontwikkelen. Dit komt omdat men kan steunen op het OSI-model en het 5G-RAN protocol layer model. Dit zal ook gebruikt worden bij de methodologie. Zo zal er een analyse zijn van elke laag van de 5G architectuur. Beginnend met de service laag, hier komen de verzoeken van de applicatie van. De architectuur eindigt met de infrastructuur laag. \autocite{de2023opencare5g}
 \\\\
 In samenspraak met de co-promotor is er geopteerd om cybersecurity niet actief te onderzoeken in deze bachelorproef thesis. Echter het is wel noodzakelijk om te weten dat er verschillende verplichtingen zijn in België en de Europese Unie. Hieronder een kleine verduidelijking als context.
 \\
@@ -82,25 +82,34 @@ Tenslotte is er een nieuwer initiatief genaamd EHDS (European Healthcare Data Sp
 Alvorens de methodologie volledig wordt besproken is er een belangrijke disclaimer noodzakelijk te vermelden.
 In samenspraak met de co-promotoris er geopteerd om cybersecurity niet actief te onderzoeken in deze bachelorproef thesis. Echter het is wel noodzakelijkom te weten dat er verschillende verplichtingen zijn in Belgie en de Europese Unie. In de literatuur studie is er wel een kort naslagwerk van de verplichtingen ten opzichte van cybersecurity.
 \\\\
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+Tijdens het verloop van de bachelorproef zullen er antwoorden worden vergaard op verschillende deelvragen zie helpen de onderzoeksvraag te beantwoorden. Zo zal elke deelvraag deel uitmaken van een onderdeel van de methodologie.
+\\\\
+De bachelorproef verloopt in volgende fasen:
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+\begin{enumerate}
+  \item Research / Voorbereiding
+  \item In dienst stellen / Setup
+  \item Gebruik en Testen
+  \item Conclusie
+\end{enumerate}
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
-
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
-
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+\textbf{1. Research / Voorbereiding Fase}\\
+De eerste vraag die moet gesteld worden is \textit{''Wat moet het 5G netwerk vervangen ?''} \\
+Hiermee wordt de onderzoeksfase gestart. De eerste stap van de onderzoeksfase is het in kaart brengen van het huidige DECT-systeem. Dit zal bekeken worden vanuit een algemeen overzicht. Het doel is om een topologisch schema en een duidelijk overzicht te hebben van de werking van een DECT-systeem.\\
+Vervolgens wordt er een opvolg vraag gesteld, \textit{''Hoe vervangen we het DECT-systeem?''}\\ Deze vraag kan enkel beantwoord worden na een kort onderzoek in de verschillende frameworks, architecturen. Als besluit van dit onderzoek zal er een vergelijkende studie zijn. Hieruit wordt het best passende framework gekozen.
+Als vervolg op de keuze van het framework, zullen de technische specificaties worden vastgelegd en opgelijst. Dit is een noodzakelijke stap om in de conclusie op het einde een duidelijk beeld te kunnen maken van mogelijke up-scaling.\\
+De laatste deelvraag van de research / voorbereidingsfase is \textit{''Hoe moet het 5G netwerk er uitzien, rekening houdend met framework en scaling?''}\\ Hoewel dit de laatste stap is in de voorbereidende fase, toch is deze cruciaal voor alle verdere fases. Hier wordt alle informatie vergaard in de Research fase samengebracht en in een netwerk schema / topologie verwerkt. Dit zal als leidraad worden gebruikt in het verdere verloop van de bachelorproef.\\\\
+\textbf{2. In dienst stellen / Setup Fase}\\
+Deze fase bestaat uit het omzetten van de verworven theorie naar een Proof-of-Concept (PoC). Deze bachelorproef zal bestaan uit 2 PoC's. De eerste zal een simulatie zijn die lokaal op de pc werkt. Het tweede deel is een praktische realisatie zijn met de artikelen opgelijst in de technische specificaties. \\\\
+\textbf{3. Gebruik en Test Fase}\\
+Het doel van deze fase is het antwoorden op de vraag \textit{''Wat kan er fout gaan en hoe kan dit worden vermeden ?''} De gebruik en test fase verloop net zoals de setup fase in twee delen. Het eerste deel is het opstellen van een eenduidig en gedetailleerd testplan. Dit gebeurt voor elke PoC. Hierna volgt de uitvoering van deze testplannen op hun respectievelijke PoC. Het is belangrijk dat tijdens de testfase verschillende activiteiten correct worden uitgevoerd. Zo is het noodzakelijk om gedetailleerd notities te hebben bij geval van problemen. Een tweede factor dat hier nauw bij samenhangt is de reproduceerbaarheid van de fout of het probleem. Vervolgens is de duur en intensisteit van de test belangrijk. Daarom worden de testplannen meerdere malen doorlopen met een vergrotende tijdsduur en belasting of gebruikintensiteit. Dit alles wordt ook opgenomen in een test verslag dat in de conclusie fase wordt verwerkt.\\\\
+\textbf{4. Conclusie}\\
+In de conclusie is er maar 1 doel. Dit is de onderzoeksvraag beantwoorden: \textit{''Hoe kan een 5G netwerk als integratie of vervanging van DECT-systemen worden gebruikt voor zorgsimulaties binnen HoGent ?''} In deze fase wordt alles uit vorige fases verzameld en verwerk tot een concreet antwoord en conclusie op deze vraag. Het eindresultaat zal de bachelorproef thesis zijn.
+\\\\
+Doorheen de hele bachelorproef wordt verwacht dat er een open en directe communicatie is tussen de student en de co-promotor. Dit is belangrijk omwille van het einddoel van de bachelorproef. Hoewel de onderzoeksvraag een antwoord wil op mogelijke vervanging / integratie, ook is het de bedoeling dat de tweede PoC in gebruik kan worden genomen door de Hogeschool Gent Departement Gezondheidszorg. Met op het oog om een simulatie te kunnen bieden aan de studenten van een vervang optie van het DECT-systeem, om alarmmoeheid tegen te gaan.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
-
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+Het verwachte resultaat is een werkende PoC.
