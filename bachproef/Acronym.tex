@@ -1,5 +1,11 @@
+%Packages
+\usepackage[utf8]{inputenc}
 \usepackage[acronym]{glossaries}
+\usepackage[toc]{glossaries}
+
 \makeglossaries
+
+%Áfkoringen
 
 \newacronym{dect}{DECT}{Digital Enhanced Cordless Telecommunications}
 \newacronym{poc}{poc}{Proof of concept}
@@ -21,11 +27,46 @@
 \newacronym{nis2}{NIS2}{Network and Information Security 2-richtlijn}
 \newacronym{ehds}{EHDS}{European Healthcare Data Space}
 \newacronym{sdr}{SDR}{Software Defined Radio}
+\newacronym{ueransim}{UERANSIM}{open source state-of-the-art 5G UE and RAN (gNodeB) simulator}
+\newacronym{ue}{UE}{User Equipment}
+\newacronym{srsran}{srsRAN}{RAN with SRS}
+\newacronym{srs}{SRS}{Software Radio Systems}
+\newacronym{e2e}{E2E}{End to end}
+\newacronym{pdu}{PDU}{Protocol Data Unit}
+\newacronym{udr}{UDR}{Unified Data Repository}
+\newacronym{sa}{SA}{Stand-alone}
+\newacronym{nsa}{NSA}{Non Stand-alone}
+\newacronym{nas}{NAS}{Non-Access Stratum}
+\newacronym{ngap}{NGAP}{Next Generation Application Protocol}
+\newacronym{sbi}{SBI}{Service Based Interface}
 
 
+%Woordverklaring
 
+\newglossaryentry{srsRAN}
+{
+    name=srsRAN,
+    description={srsRAN is een software suite. Het is een open-source collectie van 4G en 5G software radio implementaties van SRS. \textcite{McAuliffe2023}},
+},
 
+\newglossaryentry{Open5GS}
+{
+    name=Open5GS,
+    description={Open-source software that simulates the 5G core network. \textcite{Open5GS2023}},
+},
+
+\newglossaryentry{label}
+{
+    name=Name,
+    description={Description},
+},
+%Print
 \chapter{\IfLanguageName{dutch}{Afkortingen}{Acronyms}}%
-\label{ch:ListOfAcronyms}
+\label{ch:Acronym}
 
 \printglossary[type=\acronymtype]
+
+\chapter{\IfLanguageName{dutch}{Woordverklaring}{Glossary}}%
+\label{ch:Glossary}
+
+\printglossary
