@@ -17,8 +17,8 @@
 \graphicspath{{../graphics/}}
 
 %% For source code highlighting, requires pygments to be installed
-% Compile with the -shell-escape flag!
-% \usepackage[chapter]{minted}
+%% Compile with the -shell-escape flag!
+%% \usepackage[chapter]{minted}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
 \usepackage[chapter,outputdir=../output]{minted}
@@ -46,6 +46,69 @@
 }
 
 % Other packages not already included can be imported here
+
+%%---------- Afkortingen en woordverklaringen -------------------------------------------------
+\usepackage{glossaries}
+
+\setacronymstyle{long-sc-short}
+
+\makeglossaries
+
+%Áfkoringen
+
+\newacronym{dect}{DECT}{Digital Enhanced Cordless Telecommunications}
+\newacronym{poc}{PoC}{Proof of concept}
+\newacronym{lte}{LTE}{Long Term Evolution}
+\newacronym{voip}{VoIP}{Voice over IP}
+\newacronym{qos}{QOS}{Quality of Service}
+\newacronym{ran}{RAN}{Radio Access Network}
+\newacronym{ai}{AI}{Artificiele Intelligent}
+\newacronym{o-ran}{O-RAN}{Open Radio Access Network}
+\newacronym{5gnr}{5G NR}{Fifth Generation New Radio}
+\newacronym{oam}{OAM}{Operations, Administration \& Maintenance}
+\newacronym{osi}{OSI}{Open Systems Interconnection}
+\newacronym{ule}{ULE}{Ultra low energy}
+\newacronym{cat-iq}{CAT-iq}{Cordless Advanced Technology \-internet \& quality}
+\newacronym{pstn}{PSTN}{Public Switched Telephone Network}
+\newacronym{voipsa}{VOIPSA}{Voice over IP Security Alliance}
+\newacronym{cia}{CIA}{confidentiality, integrity, availability}
+\newacronym{b2h}{B2H}{Blockchain to Healthcare}
+\newacronym{bits}{BITS}{Blockchain-driven Intelligent Scheme for Telesurgery System}
+\newacronym{gdpr}{GDPR}{General Data Protection Regulation}
+\newacronym{nis2}{NIS2}{Network and Information Security 2-richtlijn}
+\newacronym{ehds}{EHDS}{European Healthcare Data Space}
+\newacronym{sdr}{SDR}{Software Defined Radio}
+\newacronym{ueransim}{UERANSIM}{open source state-of-the-art 5G UE and RAN (gNodeB) simulator}
+\newacronym{ue}{UE}{User Equipment}
+\newacronym{srsran}{srsRAN}{RAN with SRS}
+\newacronym{srs}{SRS}{Software Radio Systems}
+\newacronym{e2e}{E2E}{End to end}
+\newacronym{pdu}{PDU}{Protocol Data Unit}
+\newacronym{udr}{UDR}{Unified Data Repository}
+\newacronym{sa}{SA}{Stand-alone}
+\newacronym{nsa}{NSA}{Non Stand-alone}
+\newacronym{nas}{NAS}{Non-Access Stratum}
+\newacronym{ngap}{NGAP}{Next Generation Application Protocol}
+\newacronym{sbi}{SBI}{Service Based Interface}
+\newacronym{mvp}{MVP}{Minimu Viable Product}
+
+%Woordverklaring
+
+\newglossaryentry{srsRAN}
+{
+    name=srsRAN,
+    description={srsRAN is een software suite. Het is een open-source collectie van 4G en 5G software radio implementaties van SRS. \textcite{McAuliffe2023}},
+}
+\newglossaryentry{Open5GS}
+{
+    name=Open5GS,
+    description={Open-source software that simulates the 5G core network. \textcite{Open5GS2023}},
+}
+\newglossaryentry{label}
+{
+    name=Name,
+    description={Description},
+}
 
 %%---------- Document metadata -------------------------------------------------
 % Replaced this with your own information
@@ -120,7 +183,12 @@
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
 % https://www.overleaf.com/learn/latex/Glossaries
 
-\input{Acronym}
+%Print
+
+\chapter{\IfLanguageName{dutch}{Afkortingen}{Acronyms}}
+\label{ch:acronym}
+\printglossary
+
 %---------- Kern ---------------------------------------------------------------
 
 \mainmatter{}
