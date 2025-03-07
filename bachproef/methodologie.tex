@@ -43,7 +43,8 @@ De bachelorproef verloopt in de volgende fasen:
   \item Conclusie
 \end{enumerate}
 
-\subsection{Research / Voorbereidingsfase}
+\section{\IfLanguageName{dutch}{Research / Voorbereidingsfase}{Research / Preparationphase}}%
+\label{sec:prep}%
 De eerste vraag die moet gesteld worden is: \textit{''Hoe kunnen technologieën worden ingezet om de communicatie aan te pakken in de gezondheidszorg?''}.\\ 
 
 Hiermee wordt de onderzoeksfase gestart. De eerste stap van de onderzoeksfase is het in kaart brengen van het huidige DECT-systeem. Dit zal bekeken worden vanuit een algemeen overzicht. Het doel is om de werking en kenmerken van het DECT-systeem in kaart te brengen .\\
@@ -64,10 +65,12 @@ Eenmaal de minimum vereisten gekend zijn kunnen de opgelijste alternatieven onde
 % Als vervolg op de keuze van het framework zullen de technische specificaties worden vastgelegd en opgelijst. Dit is een noodzakelijke stap om in de conclusie op het einde een duidelijk beeld te kunnen krijgen van mogelijke upsizing.\\
 % De volgende deelvraag is: \textit{''Hoe kan een 5G-netwerk een oplossing bieden?''}.\\ Met deze vraag wordt er dieper onderzoek gedaan naar de huidige 5G-systemen/-frameworks. De laatste deelvraag van de research-/voorbereidingsfase is: \textit{''Hoe moet het 5G-netwerk eruitzien, rekening houdend met framework en scaling?''}\\ Hoewel dit de laatste stap is in de voorbereidende fase, is deze cruciaal voor alle verdere fases. Hier wordt alle informatie vergaard in de researchfase en in een netwerkschema/-topologie verwerkt. Dit zal als leidraad worden gebruikt in het verdere verloop van de bachelorproef.
 
-\subsection{In dienst stellen / Setup-fase}
+\section{\IfLanguageName{dutch}{In dienst stellen / Setup-fase}{Setupphase}}%
+\label{sec:setup}%
 Deze fase bestaat uit het omzetten van de verworven theorie naar een proof-of-concept (PoC). Deze bachelorproef zal bestaan uit 2 PoC's. De eerste zal een simulatie zijn die lokaal op de pc werkt. Het tweede deel is een praktische realisatie, met de artikelen opgelijst in de technische specificaties.
 
-\subsubsection{POC 1: Lokale testomgeving}
+\subsection{\IfLanguageName{dutch}{POC 1: Lokale testomgeving}{poc1}}%
+\label{sec:poc1}%
 De testomgeving wordt opgesteld op de laptop van de student. Dit zal gebruikmaken van de volgende tools:
 
 \begin{itemize}
@@ -76,7 +79,8 @@ De testomgeving wordt opgesteld op de laptop van de student. Dit zal gebruikmake
     \item VirtualBox
 \end{itemize}
 
-\subsubsection{POC2: Praktische realisatie}
+\subsection{\IfLanguageName{dutch}{POC2: Praktische realisatie}{poc2}}%
+\label{sec:poc2}%
 
 Voor de praktische realisatie wordt er gebruikgemaakt van materiaal aangeleverd door Citymesh en 360° Zorglab. Dit materiaal zal in het zorglab blijven als een vaste opstelling. De noodzakelijke hardware wordt opgesplitst in categorieën:
 
@@ -90,14 +94,17 @@ Voor de praktische realisatie wordt er gebruikgemaakt van materiaal aangeleverd 
 
 Deze lijst zal meegroeien met het project.
 
-\subsection{Gebruik en Testfase}
+\section{\IfLanguageName{dutch}{Gebruik en Testfase}{Usage}
+\label{sec:use}
 Het doel van deze fase is het gebruiken en testen van de opstelling. Dit is voor optimalisatie, maar ook voor aftoetsing of de minimumvereisten ook in de praktijk zijn bereikt. De gebruik- en testfase verloopt net zoals de setupfase in twee delen. Het eerste deel is het opstellen van een eenduidig en gedetailleerd testplan. Dit gebeurt voor elke PoC. Hierna volgt de uitvoering van deze testplannen op hun respectievelijke PoC. Het is belangrijk dat tijdens de testfase verschillende activiteiten correct worden uitgevoerd. Zo is het noodzakelijk om gedetailleerde notities te hebben in geval van problemen. Een tweede factor die hier nauw bij samenhangt, is de reproduceerbaarheid van de fout of het probleem. Vervolgens zijn de duur en intensiteit van de test belangrijk. Daarom worden de testplannen meerdere malen doorlopen met een vergrotende tijdsduur en belasting- of gebruikintensiteit. Dit alles wordt ook opgenomen in een testverslag dat in de conclusiefase wordt verwerkt. In dit verslag wordt er ook een antwoord geformuleerd op de vraag: \textit{''Hoe kan de proof of concept voor de simulatie worden aangepast om in realiteit te kunnen gebruiken?''}. Dit zal een onderdeel zijn van de conclusie van het testverslag. Als laatste stap wordt een antwoord geformuleerd op de vraag: \textit{''Welke eigenschappen van het alternatief hebben een vermindering in alarmmoeheid als gevolg?''}.
 
-\subsection{Realisatiefactor bepaling}
+\section{\IfLanguageName{dutch}{Realisatiefactor bepaling}{realisation}
+\label{sec:realisation}
 Deze fase is er om een antwoord te bieden op de vraag: \textit{''Vanaf wanneer is het haalbaar om te implementeren op economisch vlak?''}. Deze vraag komt vanuit Citymesh. Als antwoord hierop wordt er gekeken naar de gradatie van het netwerk en de voordelen ten opzichte van de kosten. Deze afweging wordt zowel gemaakt voor kleine als grote ziekenhuizen. Deze afweging wordt dan gebundeld om het kantelpunt te achterhalen. \\ Voor deze bepaling wordt er gebruikgemaakt van zowel installatiekost als onderhoudskosten, maar ook van de voordelen die nieuwere systemen hebben ten opzichte van het personeel en hun efficiëntie en effectiviteit. 
 
 
-\subsection{Conclusie}
+\section{\IfLanguageName{dutch}{Conclusie}{conclusion}
+\label{sec:conclusion}
 In de conclusie is er maar één doel. Dit is de onderzoeksvraag beantwoorden: \textit{''Hoe kunnen technologieën worden ingezet om de communicatie aan te pakken in de gezondheidszorg?''} In deze fase wordt alles uit vorige fases verzameld en verwerkt tot een concreet antwoord en een conclusie op deze vraag. Het eindresultaat zal de bachelorproef zijn. Tenslotte wordt er een korte vergelijking gemaakt van het DECT-systeem met de PoC.
 \\\\
 Doorheen de hele bachelorproef wordt verwacht dat er een open en directe communicatie is tussen de student en de co-promotoren. Dit is belangrijk omwille van het einddoel van de bachelorproef. Hoewel de onderzoeksvraag een antwoord wil op mogelijke vervanging/integratie, is het de bedoeling dat de tweede PoC in gebruik kan worden genomen door de Hogeschool Gent Departement Gezondheidszorg. Met als doel om een simulatie te kunnen bieden aan de studenten van een vervangoptie van het DECT-systeem, om alarmmoeheid tegen te gaan.

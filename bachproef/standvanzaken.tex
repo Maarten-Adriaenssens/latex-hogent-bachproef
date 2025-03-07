@@ -9,13 +9,16 @@
 
 De huidige stand van zaken kan worden opgedeeld in 4 delen. Het eerste deel is een situatieschets van de huidige complete set-up, met al zijn gebreken en voordelen. Vervolgens is er een oplijsting van mogelijke alternatieven, gevolgd door de minimumvereisten voor een communicatiesysteem ter vervanging van het \gls{dect}-systeem. Na de oplijsting van de alternatieven en vereisten worden de alternatieven onder de loep genomen om hun eigenschappen en mogelijke gebruikswijzen aan te tonen. Als derde deel wordt er gekeken naar de mogelijke gebruik van data. Tenslotte is er de wetgeving en de veiligheidsaspecten die gepaard gaan met een communicatiesysteem voor gezondheidszorg.
 
-\subsection{\gls{dect}-systeem}
+\section{\IfLanguageName{dutch}{\gls{dect}-systeem}{\gls{dect}-system}}%
+\label{sec:dect-systeem}
 Het \gls{dect}-systeem staat voor Digital Enhanced Cordless Telecommunications; dit is een standaard in de EU sinds 1993. De meest gebruikte situatie is waar er meerdere gebruikers zijn voor een draadloze communicatie in werkomgevingen. De voornaamste reden voor gebruik van het \gls{dect}-draadloos systeem is dat het een grote dichtheid van veel gebruikers aankan. In vergelijking met andere mobiele communicatiesystemen werkt het niet buiten de werkomgeving. \autocite{Welinder1997} Na onderzoek van \textcite{Welinder1997} bleek dat de interferentie van het \gls{dect}-systeem op medisch gereedschap 11 procent was. De interferentie valt echter volledig weg bij een afstand van 0,5m tussen het gereedschap en het \gls{dect}-toestel.
 
 
 Hoewel het \gls{dect}-systeem een standaard is sinds 1993, zijn er toch verschillende innovaties toegepast op dit systeem, maar deze worden als een apart systeem gezien. 
 
-\subsection{Andere communicatietechnologieën}
+\section{\IfLanguageName{dutch}{Andere communicatietechnologie}{Other communication Technologies}}%
+\label{sec:label}%
+\section{Andere communicatietechnologieën}
 
 Door studies van \textcite{Montalvo2024}, \textcite{Kranz2010} en \textcite{Soenmez2018} kan er een lijst worden opgesteld van alternatieven voor het \gls{dect}-systeem:
 
@@ -27,7 +30,8 @@ Door studies van \textcite{Montalvo2024}, \textcite{Kranz2010} en \textcite{Soen
 
 \end{itemize}
 
-\subsubsection{Minimumvereisten}
+\subsection{\IfLanguageName{dutch}{Minimumvereisten}{Minimal Requirements}}%
+\label{sec:minreq}%
 
 Volgens \textcite{Coiera2006} zijn de volgende zaken vereist om te spreken van een communicatiesysteem:
 \begin{itemize}
@@ -52,8 +56,8 @@ Verder zijn er eisen omwille van het gebruik van dit communicatiesysteem in de g
 \end{itemize}
 
 Het is belangrijk ook om te vermelden dat in deze bachelorproef enkel Inter-ziekenhuis communicatie wordt onderzocht. Dit betekent dat enkel binnen eenzelfde site wordt gekeken om een oplossing of alternatief te bieden voor het \gls{dect}-systeem.
-
-\subsubsection{\gls{lte} Advanced}
+\subsection{\IfLanguageName{dutch}{\gls{lte} Advanced}{\gls{lte} Advanced}}%
+\label{sec:ltea}%
 
 \gls{lte} of Long Term Evolution is de overkoepelende technologie waaronder 5G valt. Volgens \textcite{Bakare2022} is ook een verbetering van \gls{lte} Advanced, een stap naar de toekomst van \gls{lte}. De voornaamste eigenschappen van \gls{lte} Advanced zijn, opgelijst door \textcite{Bakare2022}:
 
@@ -69,7 +73,8 @@ Het is belangrijk ook om te vermelden dat in deze bachelorproef enkel Inter-ziek
   \item Zeer goede compatibiliteit met \gls{lte}
 \end{itemize}
 
-\subsubsection{5G}
+\subsection{\IfLanguageName{dutch}{5G}{5G}}%
+\label{sec:5g}%
 5G is een stap in de evolutie van het mobiele netwerk, opvolger van 4G. In deze bachelorproef gaat het om het private 5G-netwerk. Volgens \textcite{wen2021private} zijn er eigenschappen van private 5G die nauw aansluiten met die van \gls{dect}-systemen. De eerste eigenschap wijst op de hoge apparatuurdichtheid, maar bij 5G gaat deze ook nog eens gepaard met hoge throughput. Dit zorgt voor integratie van externe devices, zoals sensoren, camera's, etc. Vervolgens heeft 5G ook voordelen ten opzichte van \gls{dect}-systemen volgens \textcite{wen2021private}. Zo is er een hoge betrouwbaarheid met een lage latency. Deze lage latency geeft nieuwe mogelijkheden, zoals bv. een chirurgische ingreep vanop afstand.\\ De tweede eigenschap van het privaat netwerk is de flexibiliteit en voorspelbaarheid van \gls{qos}. Daarnaast zijn er verschillende architecturen die men kan implementeren om een privaat 5G-netwerk op te zetten. De eerste methode is een stand-alone deployment. Hierbij wordt een privaat netwerk opgezet, waarbij alle netwerk functies van het netwerk zijn gelimiteerd binnen een logische perimeter bestaande uit vooraf gedefinieerde regio's. De andere methode is een publiek netwerk geïntegreerd deployment. Deze architectuur kan worden opgesplitst in verschillende types, afhankelijk van de gradatie van integratie. Deze 4 types zijn de volgende:
 
 \begin{itemize}
@@ -103,8 +108,8 @@ Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G
 \end{itemize}
 
 Volgens \textcite{Open5GS2024} is Open5G 'een geavanceerd open-source project ontworpen voor het bouwen en onderhouden van je eigen NR/\gls{lte} mobiele netwerk. Open5G biedt een robuuste oplossing voor het configureren van zowel \gls{5gnr} als \gls{lte} (Evolved) netwerken.' \\ Verder zijn er andere concepten zoals \gls{o-ran}, waar onder andere het OpenCare5G-netwerk op gebaseerd is. In dit framework wordt Open RAN in een privaat netwerk gebruikt voor digitale gezondheidsapplicaties. Zo hebben \textcite{de2023opencare5g} onderzocht hoe dit framework kan gebruikt worden om gezondheidsonderzoeken te doen met draagbare ultrasone gereedschappen op verschillende locaties. Om deze onderzoeken te kunnen delen met artsen, werd er een lokaal privaat netwerk opgezet. Zo gebruikten ze een 5G xHaul ORAN \gls{oam} privaat netwerk. Er wordt gekozen om een top-down systeem te gebruiken. Dit is een georganiseerde manier om een netwerk project te ontwikkelen. Dit komt doordat men kan steunen op het OSI-model en het 5G-\gls{ran} protocol layer model. Dit zal ook gebruikt worden bij de methodologie. Zo zal er een analyse zijn van elke laag van de 5G-architectuur. Deze architectuur begint met de service laag. Op deze laag komen de verzoeken van de applicatie vandaan. De architectuur eindigt met de infrastructuurlaag. \autocite{de2023opencare5g}
-
-\subsubsection{\gls{ule}}
+\subsection{\IfLanguageName{dutch}{ULE}{ULE}}%
+\label{sec:ule}%
 
 \gls{ule} is een uitbreiding op het \gls{dect}-systeem zelf. Volgens \textcite{GariniDil2014} is dit een samenwerking tussen het \gls{dect}-systeem, \gls{cat-iq} (nieuwste HD voice-technologie) en een nieuwste aanpassing van data technologie \gls{ule} (Ultra Low Energy). Aangezien dit een uitbreiding is op het huidige \gls{dect}-systeem is er dus een makkelijke installatie en compatibiliteit.
 
@@ -119,7 +124,8 @@ De grootste voordelen van deze technologie volgens \textcite{GariniDil2014} zijn
   \item Video en audio
 \end{itemize}
 
-\subsubsection{\gls{voip}}
+\subsection{\IfLanguageName{dutch}{VoIP}{VoIP}%
+\label{sec:voip}%
 
 \gls{voip} of Voice Communication over the Internet Protocol is een communicatietechnologie dat telefooncommunicatie stuurt over het internet in plaats van het telefoonnetwerk te gebruiken. \Autocite{Soenmez2018} Er zijn 5 scenario's waarin \gls{voip} kan worden gebruikt. Deze worden opgelijst door \textcite{Soenmez2018}:
 
@@ -133,13 +139,15 @@ De grootste voordelen van deze technologie volgens \textcite{GariniDil2014} zijn
 
 Echter, \textcite{Soenmez2018} bevestigt wel dat er een groot aanvalsoppervlak bestaat. Zo heeft de \gls{voipsa} een lijst gepubliceerd met 6 beveiligingspunten waar countermeasures moeten geinstalleerd worden om een veilige omgeving te garanderen.
 
-\subsection{Data}
+\section{\IfLanguageName{dutch}{Data}{Data}}%
+\label{sec:data}%
 
 Volgens \textcite{Niekerk2020} is de gezondheidszorg rijk aan data en is deze data ook nog eens waardevol. Toch wordt er maar 50\% gebruikt 
 De data kan een ondersteunende factor zijn om de alarmmoeheid weg te werken. Zo onderzocht \textcite{Hever2019} de mogelijkheid om met data en machine learning de valse alarmen te verminderen. In dat onderzoek werd dit getest op de Intensieve Zorg afdeling. In de conclusie van \textcite{Hever2019} stelt deze dat door het gebruik van deze data er een \gls{ai}-model opgeleid kon worden om de afdeling stiller en betrouwbaarder te maken. Dit verminderde het effect van alarmmoeheid. Verder meldt \textcite{Hever2019} dat door deze data en het model  ontbrekende factoren kunnen interpoleren.
 
+\section{\IfLanguageName{dutch}{Beveiliging}{Security}}%
+\label{sec:security}%
 
-\subsection{Security}
 In samenspraak met de co-promotor is er geopteerd om cybersecurity niet actief te onderzoeken in deze bachelorproef. Echter, het is wel noodzakelijk om te weten dat er verschillende verplichtingen zijn in België en de Europese Unie. Als men een introductie van een 5G-netwerk uitvoert in een gezondheidszorgomgeving en/of ziekenhuizen is er sprake van een vergroting van de 'attack surface'. De beveiliging van dit type omgeving, ook wel de beveiliging van gezondheidszorg 5.0 genoemd, doet een beroep op de \gls{cia}-principes. Echter, \textcite{Wazid2022} voegt nog enkele extra eisen toe:
 
 \begin{itemize}
@@ -161,8 +169,8 @@ Als al deze principes worden toegepast, kan men stellen dat er voldaan is aan de
   \item Systeembreed sleutelschema \autocite{Chang2022}
   \item \gls{bits} \autocite{Gupta2020}
 \end{itemize}
-
-\subsubsection{Wetgevingen}
+\subsection{\IfLanguageName{dutch}{Wetgevingen}{Laws}}%
+\label{sec:wet}%
 
 Sinds 27 april 2016 is de verordening 2016/679 van toepassing. Deze start de \gls{gdpr} (General Data Protection Regulation) in de Europese Unie. De verordening 2016/679 vermeldt dat "regels worden vastgelegd betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en het vrije verkeer van persoonsgegevens. Het beschermt de grondrechten en de fundamentele vrijheden van natuurlijke personen, met name hun recht op bescherming van persoonsgegeven."\\ (Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016) %\autocite{gdpr2016} 
 \\\\

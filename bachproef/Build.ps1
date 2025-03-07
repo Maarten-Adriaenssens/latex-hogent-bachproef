@@ -1,5 +1,5 @@
 xelatex ./AdriaenssensMaartenBP.tex
-biber ./AdriaenssensMaartenBP.tbcf
+biber ./AdriaenssensMaartenBP.bcf
 makeglossaries AdriaenssensMaartenBP
 xelatex ./AdriaenssensMaartenBP.tex
 xelatex ./AdriaenssensMaartenBP.tex

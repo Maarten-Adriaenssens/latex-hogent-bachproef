@@ -37,5 +37,16 @@
 		],
 		"description": "Create a new glossary entry"
 	},
+
+	"section":{
+		"scope":"latex",
+		"prefix": "section",
+		"body": [
+			"\\section{\\IfLanguageName{dutch}{${1:nederlands}}{${2:engels}}}%",
+			"\\label{sec:${3:label}}%",
+		],
+		"description": "Create a new section"
+	}
+
 	
 }
