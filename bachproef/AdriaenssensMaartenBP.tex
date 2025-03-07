@@ -95,6 +95,25 @@
 \newacronym{mvp}{MVP}{Minimu Viable Product}
 \newacronym{vm}{VM}{Virtual Machine}
 \newacronym{os}{OS}{Operating System}
+\newacronym{mme}{MME}{Mobility Management Entity}
+\newacronym{hss}{HSS}{Home Subscriber Server}
+\newacronym{pcrf}{PCRF}{Policy and Charging Rules Function}
+\newacronym{sgwc}{SWGC}{Serving Gateway Control Plane}
+\newacronym{pgwc-smf}{PGWC/SMF}{Packet Gateway Control Plane}
+\newacronym{pgwc-upf}{PWGC/UPF}{Packet Gateway User Plane}
+\newacronym{nrf}{NRF}{NF Repository Function}
+\newacronym{scp}{SCP}{Service Communication Proxy}
+\newacronym{sepp}{SEPP}{Security Edge Protection Proxy}
+\newacronym{amf}{AMF}{Access and Mobility Management Function}
+\newacronym{smf}{SMF}{Session Management Function}
+\newacronym{upf}{UPF}{User Plane Function}
+\newacronym{ausf}{AUSF}{Authentication Server Function}
+\newacronym{udm}{UDM}{Unified Data Management}
+\newacronym{pcf}{PCF}{Policy Control Function}
+\newacronym{nssf}{NSSF}{Network Slice Selection Function}
+\newacronym{bsf}{BSF}{Binding Support Function}
+\newacronym{sba}{SBA}{Service Based Architecture}
+\newacronym{cups}{CUPS}{Control/User Plane Separation}
 
 %Woordverklaring
 \newglossaryentry{srsRAN}
@@ -210,8 +229,6 @@
 % elke fase in je onderzoek in een apart hoofdstuk bespreken.
 
 \input{MinReq}
-%\input{...}
-%...
 
 \input{poc1}
 
@@ -232,7 +249,11 @@
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
 %% TODO: 
-%\section*{Samenvatting}
+\section*{Samenvatting}
+Communicatie is een heel belangrijk onderdeel van een goede werking van een ziekenhuis. Toch is het meest gebruikte communicatie systeem in ziekehuizen sinds 1993 niet veranderd van principe. Dit pricipe/systeem is het DECT-systeem. Dit onderzoek focust zich op het onderzoeken van de mogelijke technologieën die kunnen worden ingezet ingezet om de communicatie aan te pakken in de gezondheidszorg. De reden van dit onderzoek is om een kwaliteitsvol alternatief te bieden voor de vervanging van het DECT-systeem. Een reden voor deze vervanging is dat deze aanleiding geeft tot alarmmoeheid.
+    Volgens \textcite{Ferrara2023} kan alarmmoeheid worden omschreven als ''een overprikkeling of zintuiglijke overbelasting, in staat tot het veroorzaken van gevoelloosheid ten opzichte van alarmen door een te groot aantal alarmen die foutief of klinisch onbelangrijk zijn.''.\\ Eerst zal er breed worden gekeken naar alle mogelijke innovaties, nadien wordt er gefocust op een toepassing van een privaat 5G-netwerk. 
+    Vervolgens worden er twee proof-of-concepts (PoC) gemaakt. De eerste is een testomgeving, lokaal op de laptop van de student. De tweede PoC is een praktische realisatie; deze wordt ontwikkeld op kleine schaal, maar met uitbreidingsmogelijkheden. Tenslotte wordt er ook onderzocht wat de kost is van een 5G-deployment. Dit wordt verwerkt zodat er een overzicht is van wanneer een ziekenhuis het zou overwegen om de kosten te kunnen verantwoorden.\\
+    Er wordt verwacht dat de PoC's beiden worden gerealiseerd en een overzicht wordt opgesteld met betrekking tot de kost voor deployment en support. De kost om een privaat 5G-netwerk te creëren is hoog, het is dus een logische redenering om te concluderen dat enkel bij grote ziekenhuizen deze kost vaak verantwoord kan worden. Echter, er zal een afweging moeten worden gemaakt ten opzichte van de productiviteitsboost door de alarmmoeheidvermindering.
 
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.
 

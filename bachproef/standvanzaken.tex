@@ -114,15 +114,58 @@ Volgens \textcite{Open5GS2024} is Open5G 'een geavanceerd open-source project on
 \subsubsection{\IfLanguageName{dutch}{Simulatie}{Simulation}}
 \label{sec:open5gs}
 
-%TODO:
+Alvorens er wordt gekeken naar \gls{open5gs}, moet er een opsplitsing worden gemaakt in de 5G realisatie.
+Zo bestaan er volgens \textcite{Lee2025a} 2 type 5G-Cores:
 
-\textbf{DIT HOOFDSTUK ZAL WORDEN AANGEVULD TEGEN DE 2DE DEADLINE (SEMESTER 2)}
+\begin{itemize}
+  \item 5G \gls{nsa} vereist een 4G topologie als backbone
+  \item 5G \gls{sa}, is een systeem dat zonder andere netwerken kan werken.
+\end{itemize}
 
-\begin{figure}[h]
+Hieronder is een figuur die het hele 4G-/ 5G netwerk omvat. De reden dat 4G toch wordt vermeldt in dit schema, is omdat de de 5G \gls{nsa} topologie een 4G backbone nodig heeft. \autocite{Lee2025a}
+
+\begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/Open5GS-Schema.jpg}
   \caption{Gesimuleerd 5G-netwerk met Open5GS. \autocite[Door][Copyright 2021 van \citeauthor{Lee2021}]{Lee2021}}
   \label{fig:open5gs-schema}
 \end{figure}
+
+\textbf{DIT HOOFDSTUK ZAL WORDEN AANGEVULD TEGEN DE 2DE DEADLINE (SEMESTER 2)}\\\\
+%TODO: Uitleggen van de figuur
+\textbf{5G \gls{nsa} Core}\\\\
+Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
+
+\begin{itemize}
+  \item \gls{mme}
+  \item \gls{hss}
+  \item \gls{pcrf}
+  \item \gls{sgwc}
+  \item \gls{sgwu}
+  \item \gls{pgwc-smf}
+  \item \gls{pgwc-upf}
+\end{itemize}
+
+\textbf{5G \gls{sa} Core}\\\\
+
+Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
+
+\begin{itemize}
+  \item \gls{nrf}
+  \item \gls{scp}
+  \item \gls{sepp}
+  \item \gls{amf}
+  \item \gls{smf}
+  \item \gls{upf}
+  \item \gls{ausf}
+  \item \gls{udm}
+  \item \gls{udr}
+  \item \gls{pcf}
+  \item \gls{nssf}
+  \item \gls{bsf}
+\end{itemize}
+
+Verder stelt \textcite{Lee2025a} ook dat 5G \gls{sa} gebruik maakt van een \gls{sba}. Dit betekent dat een duidelijke scheiding is tussen de Control Plan functies, geregistreerd in de \gls{nrf}, en de User Plane. Deze laatste bevat maar \'e\'en functie, namelijk de \gls{upf}.
+
 
 \subsection{\IfLanguageName{dutch}{ULE}{ULE}}%
 \label{sec:ule}%
