@@ -46,7 +46,17 @@
 			"\\label{sec:${3:label}}%",
 		],
 		"description": "Create a new section"
-	}
+	},
+
+	"code-block":{
+		"scope": "latex",
+		"prefix": "code",
+		"body": [
+			"\\begin{lstlisting}[language=${1:language}, caption=${2:caption}]",
+			"${3:code}",
+			"\\end{lstlisting}"
+		],
+	},
 
 	
 }

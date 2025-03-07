@@ -16,9 +16,8 @@ Het \gls{dect}-systeem staat voor Digital Enhanced Cordless Telecommunications; 
 
 Hoewel het \gls{dect}-systeem een standaard is sinds 1993, zijn er toch verschillende innovaties toegepast op dit systeem, maar deze worden als een apart systeem gezien. 
 
-\section{\IfLanguageName{dutch}{Andere communicatietechnologie}{Other communication Technologies}}%
+\section{\IfLanguageName{dutch}{Andere communicatietechnologieën}{Other communication Technologies}}%
 \label{sec:label}%
-\section{Andere communicatietechnologieën}
 
 Door studies van \textcite{Montalvo2024}, \textcite{Kranz2010} en \textcite{Soenmez2018} kan er een lijst worden opgesteld van alternatieven voor het \gls{dect}-systeem:
 
@@ -46,7 +45,10 @@ Volgens \textcite{Coiera2006} zijn de volgende zaken vereist om te spreken van e
 Verder zijn er eisen omwille van het gebruik van dit communicatiesysteem in de gezondheidszorg:
 
 \begin{itemize}
-  \item Wetgeving conform (\gls{ehds}, \gls{nis2}, \gls{gdpr}, \dots)
+  \item Wetgeving conform
+  \subitem \gls{ehds}
+  \subitem \gls{nis2}
+  \subitem \gls{gdpr}
   \item Gesloten systeem
   \item Interne data gebruik mogelijk
   \item Opties voor meer dan enkel audiocommunicatie
@@ -109,11 +111,16 @@ Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G
 
 Volgens \textcite{Open5GS2024} is Open5G 'een geavanceerd open-source project ontworpen voor het bouwen en onderhouden van je eigen NR/\gls{lte} mobiele netwerk. Open5G biedt een robuuste oplossing voor het configureren van zowel \gls{5gnr} als \gls{lte} (Evolved) netwerken.' \\ Verder zijn er andere concepten zoals \gls{o-ran}, waar onder andere het OpenCare5G-netwerk op gebaseerd is. In dit framework wordt Open RAN in een privaat netwerk gebruikt voor digitale gezondheidsapplicaties. Zo hebben \textcite{de2023opencare5g} onderzocht hoe dit framework kan gebruikt worden om gezondheidsonderzoeken te doen met draagbare ultrasone gereedschappen op verschillende locaties. Om deze onderzoeken te kunnen delen met artsen, werd er een lokaal privaat netwerk opgezet. Zo gebruikten ze een 5G xHaul ORAN \gls{oam} privaat netwerk. Er wordt gekozen om een top-down systeem te gebruiken. Dit is een georganiseerde manier om een netwerk project te ontwikkelen. Dit komt doordat men kan steunen op het OSI-model en het 5G-\gls{ran} protocol layer model. Dit zal ook gebruikt worden bij de methodologie. Zo zal er een analyse zijn van elke laag van de 5G-architectuur. Deze architectuur begint met de service laag. Op deze laag komen de verzoeken van de applicatie vandaan. De architectuur eindigt met de infrastructuurlaag. \autocite{de2023opencare5g}
 
-\subsubsection{\iflanguage{dutch}{Simulatie}{Simulation}}
+\subsubsection{\IfLanguageName{dutch}{Simulatie}{Simulation}}
 \label{sec:open5gs}
 
 %TODO:
 
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{../graphics/Open5GS-Schema.jpg}
+  \caption{Gesimuleerd 5G-netwerk met Open5GS. \autocite[Door][Copyright 2021 van \citeauthor{Lee2021}]{Lee2021}}
+  \label{fig:open5gs-schema}
+\end{figure}
 
 \subsection{\IfLanguageName{dutch}{ULE}{ULE}}%
 \label{sec:ule}%

@@ -46,7 +46,7 @@
 }
 
 % Other packages not already included can be imported here
-
+\usepackage{listings}
 %%---------- Afkortingen en woordverklaringen -------------------------------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[acronym, toc]{glossaries}
@@ -93,6 +93,8 @@
 \newacronym{ngap}{NGAP}{Next Generation Application Protocol}
 \newacronym{sbi}{SBI}{Service Based Interface}
 \newacronym{mvp}{MVP}{Minimu Viable Product}
+\newacronym{vm}{VM}{Virtual Machine}
+\newacronym{os}{OS}{Operating System}
 
 %Woordverklaring
 \newglossaryentry{srsRAN}
@@ -100,11 +102,12 @@
     name=srsRAN,
     description={srsRAN is een software suite. Het is een open-source collectie van 4G en 5G software radio implementaties van SRS. \textcite{McAuliffe2023}},
 }
-\newglossaryentry{open5GS}
+\newglossaryentry{open5gs}
 {
     name=Open5GS,
-    description={Open-source software that simulates the 5G core network. \textcite{Open5GS2023}},
+    description={Open-source software that simulates the 5G core network. \textcite{Open5GS.org2024}},
 }
+
 
 
 %%---------- Document metadata -------------------------------------------------
@@ -217,8 +220,6 @@
 \input{financieel}
 
 \input{controle}
-
-\input{realisatiefactor}
 
 \input{conclusie}
 

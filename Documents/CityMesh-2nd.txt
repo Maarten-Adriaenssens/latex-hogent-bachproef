@@ -1,0 +1,122 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+Loading personal and system profiles took 2317ms.
+  ~     ssh researchadmin@10.162.20.183
+(researchadmin@10.162.20.183) Password:
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-133-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Fri Feb 21 10:22:44 AM UTC 2025
+
+  System load:  0.01               Processes:             151
+  Usage of /:   32.0% of 31.32GB   Users logged in:       1
+  Memory usage: 9%                 IPv4 address for eth0: 10.162.20.183
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Fri Feb 21 09:20:45 2025 from 10.162.22.252
+researchadmin@vm-bc2411b96d52:~$ cd ~/UERANSIM/
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ ls
+build                CMakeLists.txt  CONTRIBUTING.md  makefile   src
+cmake-build-release  config          LICENSE          README.md  tools
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ tail -f /var/lo
+local/ lock/  log/
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ tail -f /var/log/open5gs/amf.log
+02/21 09:57:46.880: [sbi] INFO: NF EndPoint(addr) setup [127.0.0.10:7777] (../lib/sbi/nnrf-handler.c:949)
+02/21 09:57:46.880: [sbi] INFO: [4d61d384-f03a-41ef-bdb5-07b378fd0002] Subscription created until 2025-02-22T09:57:46.880096+00:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:868)
+02/21 09:57:47.221: [sbi] INFO: [470564d8-f03a-41ef-acac-43807db4e85e] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1133)
+02/21 09:57:47.221: [sbi] INFO: [470564d8-f03a-41ef-acac-43807db4e85e] (NRF-notify) NF Profile updated [type:PCF] (../lib/sbi/nnrf-handler.c:1147)
+02/21 09:57:47.221: [sbi] INFO: NF EndPoint(addr) setup [127.0.0.13:80] (../lib/sbi/context.c:2195)
+02/21 09:57:47.221: [sbi] INFO: NF EndPoint(addr) setup [127.0.0.13:7777] (../lib/sbi/context.c:1934)
+02/21 10:27:08.570: [amf] INFO: gNB-N2 accepted[127.0.0.1]:32823 in ng-pathmodule (../src/amf/ngap-sctp.c:113)
+02/21 10:27:08.570: [amf] INFO: gNB-N2 accepted[127.0.0.1] in master_sm module (../src/amf/amf-sm.c:796)
+02/21 10:27:08.573: [amf] INFO: [Added] Number of gNBs is now 1 (../src/amf/context.c:1238)
+02/21 10:27:08.573: [amf] INFO: gNB-N2[127.0.0.1] max_num_of_ostreams : 10 (../src/amf/amf-sm.c:842)
+
+^C
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ ls
+build                CMakeLists.txt  CONTRIBUTING.md  makefile   src
+cmake-build-release  config          LICENSE          README.md  tools
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ sudo vim /config/open5gs-ue.yaml
+[sudo] password for researchadmin:
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ sudo vim config/open5gs-ue.yaml
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ researchadmin@vm-bc2411b96d52:~/UERANSIM$ sudo ./build/nr-ue  -c config/open5gs-ue.yaml
+UERANSIM v3.2.7
+[2025-02-21 10:31:39.810] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
+[2025-02-21 10:31:39.810] [rrc] [debug] New signal detected for cell[1], total [1] cells in coverage
+[2025-02-21 10:31:39.810] [nas] [info] Selected plmn[999/70]
+[2025-02-21 10:31:39.810] [rrc] [info] Selected cell plmn[999/70] tac[1] category[SUITABLE]
+[2025-02-21 10:31:39.810] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
+[2025-02-21 10:31:39.810] [nas] [info] UE switches to state [MM-DEREGISTERED/NORMAL-SERVICE]
+[2025-02-21 10:31:39.810] [nas] [debug] Initial registration required due to [MM-DEREG-NORMAL-SERVICE]
+[2025-02-21 10:31:39.810] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2025-02-21 10:31:39.810] [nas] [debug] Sending Initial Registration
+[2025-02-21 10:31:39.810] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
+[2025-02-21 10:31:39.810] [rrc] [debug] Sending RRC Setup Request
+[2025-02-21 10:31:39.810] [rrc] [info] RRC connection established
+[2025-02-21 10:31:39.810] [rrc] [info] UE switches to state [RRC-CONNECTED]
+[2025-02-21 10:31:39.810] [nas] [info] UE switches to state [CM-CONNECTED]
+[2025-02-21 10:31:39.814] [rrc] [debug] RRC Release received
+[2025-02-21 10:31:39.814] [nas] [error] Initial Registration failed [PLMN_NOT_ALLOWED]
+[2025-02-21 10:31:39.814] [nas] [info] UE switches to state [5U3-ROAMING-NOT-ALLOWED]
+[2025-02-21 10:31:39.814] [nas] [info] Performing local release of NAS connection
+[2025-02-21 10:31:39.814] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
+[2025-02-21 10:31:39.814] [nas] [info] UE switches to state [CM-IDLE]
+[2025-02-21 10:31:39.814] [rrc] [info] UE switches to state [RRC-IDLE]
+[2025-02-21 10:31:45.315] [nas] [info] UE switches to state [MM-DEREGISTERED/NO-CELL-AVAILABLE]
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ $ sudo vim config/open5gs-ue.yaml
+sudo: o: command not found
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ sudo vim config/open5gs-ue.yaml
+researchadmin@vm-bc2411b96d52:~/UERANSIM$ sudo ./build/nr-ue  -c config/open5gs-ue.yaml
+UERANSIM v3.2.7
+[2025-02-21 10:33:28.428] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
+[2025-02-21 10:33:28.428] [rrc] [debug] New signal detected for cell[1], total [1] cells in coverage
+[2025-02-21 10:33:28.428] [nas] [info] Selected plmn[999/70]
+[2025-02-21 10:33:28.428] [rrc] [info] Selected cell plmn[999/70] tac[1] category[SUITABLE]
+[2025-02-21 10:33:28.428] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
+[2025-02-21 10:33:28.428] [nas] [info] UE switches to state [MM-DEREGISTERED/NORMAL-SERVICE]
+[2025-02-21 10:33:28.428] [nas] [debug] Initial registration required due to [MM-DEREG-NORMAL-SERVICE]
+[2025-02-21 10:33:28.428] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2025-02-21 10:33:28.428] [nas] [debug] Sending Initial Registration
+[2025-02-21 10:33:28.428] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
+[2025-02-21 10:33:28.428] [rrc] [debug] Sending RRC Setup Request
+[2025-02-21 10:33:28.428] [rrc] [info] RRC connection established
+[2025-02-21 10:33:28.428] [rrc] [info] UE switches to state [RRC-CONNECTED]
+[2025-02-21 10:33:28.428] [nas] [info] UE switches to state [CM-CONNECTED]
+[2025-02-21 10:33:28.430] [nas] [debug] Authentication Request received
+[2025-02-21 10:33:28.430] [nas] [debug] Received SQN [000000000000]
+[2025-02-21 10:33:28.430] [nas] [debug] SQN-MS [000000000000]
+[2025-02-21 10:33:28.430] [nas] [debug] Sending Authentication Failure due to SQN out of range
+[2025-02-21 10:33:28.432] [nas] [debug] Authentication Request received
+[2025-02-21 10:33:28.432] [nas] [debug] Received SQN [000000000021]
+[2025-02-21 10:33:28.432] [nas] [debug] SQN-MS [000000000000]
+[2025-02-21 10:33:28.435] [nas] [debug] Security Mode Command received
+[2025-02-21 10:33:28.435] [nas] [debug] Selected integrity[2] ciphering[0]
+[2025-02-21 10:33:28.443] [nas] [debug] Registration accept received
+[2025-02-21 10:33:28.443] [nas] [info] UE switches to state [MM-REGISTERED/NORMAL-SERVICE]
+[2025-02-21 10:33:28.443] [nas] [debug] Sending Registration Complete
+[2025-02-21 10:33:28.443] [nas] [info] Initial Registration is successful
+[2025-02-21 10:33:28.443] [nas] [debug] Sending PDU Session Establishment Request
+[2025-02-21 10:33:28.443] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2025-02-21 10:33:28.645] [nas] [debug] Configuration Update Command received
+[2025-02-21 10:33:28.650] [nas] [debug] PDU Session Establishment Accept received
+[2025-02-21 10:33:28.650] [nas] [info] PDU Session establishment is successful PSI[1]
+[2025-02-21 10:33:28.660] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun0, 10.45.0.2] is up.
