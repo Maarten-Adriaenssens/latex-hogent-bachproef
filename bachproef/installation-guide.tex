@@ -1,0 +1,152 @@
+\begin{center}
+    \large\textbf{Code Disclaimer}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent De code in dit hoofdstuk is grotendeels afkomsting van de Quickstart guide van \gls{open5gs} \autocite{Lee2025a}. De code is aangepast om te voldoen aan de noden van deze bachelorproef. Indien de configuratie is aangepast of er eigen code wordt gebruikt zal dit expliciet vermeld worden.
+\vspace{0.3cm}
+
+\section{\IfLanguageName{dutch}{Installatie van afhankelijkheden/vereisten}{Installation of dependencies/requirements}}
+
+Om \gls{open5gs} te installeren, zijn er een aantal afhankelijkheden nodig. Volgende software pakketten zijn vereist:
+
+\begin{itemize}
+    \item Databank
+\end{itemize}
+
+Op deze \gls{vm} wordt er een MongoDB databank geinstallleerd met als functie: \gls{udr}.
+
+% \begin{listing}
+%     \listingcode{bash}{Installatie van MongoDB}
+%     sudo apt update
+%     sudo apt install gnupg
+%     curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
+
+%     echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+%     sudo apt update
+%     sudo apt install -y mongodb-org
+
+%     sudo systemctl start mongod 
+%     sudo systemctl enable mongod
+% \end{listing}
+
+\begin{lstlisting}[language=Bash, caption=Installatie van MongoDB]
+    sudo apt update
+    sudo apt install gnupg
+    curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg 
+        -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
+
+    echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb
+        -server-6.0.gpg] https://repo.mongodb.org/apt/
+        ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt
+        /sources.list.d/mongodb-org-6.0.list
+
+    sudo apt update
+    sudo apt install -y mongodb-org
+
+    sudo systemctl start mongod 
+    sudo systemctl enable mongod
+\end{lstlisting}
+
+Om te controlleren of de MongoDB service draait, kan er gebruik gemaakt worden van volgend commando: \textit{Eigen code}
+
+% \begin{listing}
+%     \listingcode{bash}{Controle MongoDB status}
+%     sudo systemctl status mongod
+
+%     # Verwacht resultaat:
+%     ● mongod.service - MongoDB Database Server
+%     Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor pr>
+%     Active: active (running) since Fri 2025-02-21 09:55:54 UTC; 24s ago
+%     Docs: https://docs.mongodb.org/manual
+%     Main PID: 2197 (mongod)
+%     Memory: 68.3M
+%     CPU: 159ms
+%     CGroup: /system.slice/mongod.service
+%             └─2197 /usr/bin/mongod --config /etc/mongod.conf
+% \end{listing}
+
+\begin{lstlisting}[language=Bash, caption=Controle MongoDB status]
+    sudo systemctl status mongod
+
+    #Verwacht resultaat:
+    mongod.service - MongoDB Database Server
+    Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor pr>
+    Active: active (running) since Fri 2025-02-21 09:55:54 UTC; 24s ago
+    Docs: https://docs.mongodb.org/manual
+    Main PID: 2197 (mongod)
+    Memory: 68.3M
+    CPU: 159ms
+    CGroup: /system.slice/mongod.service
+            |_2197 /usr/bin/mongod --config /etc/mongod.conf
+\end{lstlisting}
+
+\section{\IfLanguageName{dutch}{Installatie van Open5GS}{Installation of Open5GS}}
+
+De \gls{open5gs} pakketten voor Ubuntu zijn beschikbaar op OBS. 
+
+\textit{\textbf{Opgepast: Het is belangrijk dat MongoDB al geinstalleerd voor de \gls{open5gs} installatie wordt gestart.}} \autocite{Lee2025a}
+
+% \begin{listing}
+%     \listingcode{bash}{Installatie van Open5GS}
+%     sudo apt update
+
+%     wget -qO - https://download.opensuse.org/repositories/home:/acetcom:/open5gs:/latest/Debian_10/Release.key | sudo apt-key add -
+%     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/acetcom:/open5gs:/latest/Debian_10/ ./' > /etc/apt/sources.list.d/open5gs.list"
+    
+%     sudo apt update
+%     sudo apt install open5gs    
+% \end{listing}
+
+\begin{lstlisting}[language=Bash, caption=Installatie van Open5GS]
+    sudo apt update
+
+    wget -qO - https://download.opensuse.org/repositories/home:/acetcom:
+        /open5gs:/latest/Debian_10/Release.key | sudo apt-key add -
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:
+        /acetcom:/open5gs:/latest/Debian_10/ ./' 
+        > /etc/apt/sources.list.d/open5gs.list"
+    
+    sudo apt update
+    sudo apt install open5gs
+\end{lstlisting}
+
+\section{\IfLanguageName{dutch}{Installatie van de web-interface van \gls{open5gs}}{Installation of the web-interface of \gls{open5gs}}}
+
+Voor de installatie van \gls{open5gs} wordt volgende code uitegevoerd:
+
+\begin{lstlisting}[language=Bash, caption=Installatie van web-interface]
+    # Download and import the Nodesource GPG key
+    sudo apt update
+    sudo apt install -y ca-certificates curl gnupg
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource
+        -repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings
+        /nodesource.gpg
+    
+    # Create deb repository
+    NODE_MAJOR=20
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] 
+        https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" 
+        | sudo tee /etc/apt/sources.list.d/nodesource.list
+    
+    # Run Update and Install
+    sudo apt update
+    sudo apt install nodejs -y
+
+    # Install the web interface
+    curl -fsSL https://open5gs.org/open5gs/assets/webui/install 
+        | sudo -E bash -
+\end{lstlisting}
+
+\textbf{DIT HOOFDSTUK ZAL WORDEN AANGEVULD TEGEN DE 2DE DEADLINE (SEMESTER 2)}
+
+\section{\IfLanguageName{dutch}{Configuratie van \gls{open5gs}}{Configuration of \gls{open5gs}}}
+
+\subsection{\IfLanguageName{dutch}{Configuratie van een 5G Core}{Configuration of a 5G Core}}
+
+\subsection{\IfLanguageName{dutch}{Configuratie van logging systeem}{Configuration of logging system}}
+
+\section{\IfLanguageName{dutch}{Activatie van eNB/gNB en UE}{Activation of eNB/gNB and UE}}
