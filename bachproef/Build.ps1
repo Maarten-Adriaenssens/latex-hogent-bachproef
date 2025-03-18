@@ -1,5 +1,5 @@
-xelatex ./AdriaenssensMaartenBP.tex
+xelatex -interaction=nonstopmode ./AdriaenssensMaartenBP.tex
 biber ./AdriaenssensMaartenBP.bcf
 makeglossaries AdriaenssensMaartenBP
-xelatex ./AdriaenssensMaartenBP.tex
-xelatex ./AdriaenssensMaartenBP.tex
+xelatex -interaction=nonstopmode ./AdriaenssensMaartenBP.tex
+xelatex -interaction=nonstopmode ./AdriaenssensMaartenBP.tex
