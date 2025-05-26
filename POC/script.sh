@@ -29,6 +29,11 @@ curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
 
 git clone https://github.com/aligungr/UERANSIM
 sudo apt install -y cmake
+sudo apt install -y gcc
+sudo apt install -y g++
+sudo apt install -y libsctp-dev lksctp-tools
+sudo apt install -y iproute2
+sudo snap install cmake --classic
 cd UERANSIM
 make
 
