@@ -22,6 +22,8 @@ Vagrant.configure("2") do |config|
         cond.vm.box_version = "2404.0.2503"
         # Set the host name of the VM
         cond.vm.hostname = "Centrale"
+        # Set portforwarding
+        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: 127.0.0.1, id: "open5gs"
         # VirtualBox specific configuration
         cond.vm.provider "virtualbox" do |vb|
             # VirtualBox Display Name
