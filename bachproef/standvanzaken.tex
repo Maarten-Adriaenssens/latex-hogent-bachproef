@@ -130,7 +130,6 @@ Hieronder is een figuur die het hele 4G-/ 5G netwerk omvat. De reden dat 4G toch
   \label{fig:open5gs-schema}
 \end{figure}
 
-\textbf{DIT HOOFDSTUK ZAL WORDEN AANGEVULD TEGEN DE 2DE DEADLINE (SEMESTER 2)}\\\\
 %TODO: Uitleggen van de figuur
 \textbf{5G \gls{nsa} Core}\\\\
 Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
@@ -185,6 +184,41 @@ De grootste voordelen van deze technologie volgens \textcite{GariniDil2014} zijn
 
 %TODO: ULE uitleggen
 
+Verder onderzoek door \textcite{Das2012} toont aan dat \gls{ule} ook een goede oplossing is voor de gezondheidszorg. Dit komt door de lage energieconsumptie, de lange levensduur van de batterij en de lage kosten. Dit maakt het een goede kandidaat voor een communicatiesysteem in de gezondheidszorg. Uit de deze studie (\textcite{Das2012}) kan men ook een oplijsting halen waarin verschillende technologieën worden vergeleken met het \gls{dect}-systeem. Dit is te zien in de tabel hieronder.
+
+%TODO: tabel
+TO BE FIXED:
+\begin{table}[H]
+  \centering
+  \caption{Vergelijking van verschillende technologieën. \autocite[Door][Copyright 2012 van \citeauthor{Das2012}]{Das2012}}
+  \label{tab:comparison}
+  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+    \textbf{Radio technologie} & \textbf{Operationele frequentieband} & \textbf{MAC-DLL mechanisme} & \textbf{Radius binnen} & \textbf{Radius buiten} & \textbf{Channel bandbreedte} & \textbf{Aantal toestellen} &\textbf{Maximum data snelheid} & \textbf{Modulatie} & \textbf{Netwerk architectuur}\\
+    \hline
+    WirelessHART & 2400-2483 MHz & Channel-hopping, blacklisting, TDMA-TDD & 30m & 90m & 2 MHz & Honderd & 250 kbps & O-QPSK, DSSS & Ster, Boom\\
+    ISA 100.11a & 2400-2483 MHz & \gls{csma/ca}, Channel-hopping, blacklisting, Superframe optimalisatie & 30m & 90m & 2 MHz & Honderden & 250 kbps& O-QPSK, DSSS & Ster, Boom\\
+    WiFi & 2400-2483 MHz (In Europa) & \gls{csma/ca} & 33m & 95m & 20, 22, 40 MHz & Honderden & 11, 54, 150 Mbps & DSSS, OFDM & Mesh\\
+    \gls{dect} & 1880-1900 MHz & DCS, FDMA, TDMA-TDD & 75m & 300m & 1.728 MHz & Duizenden & 1.152 Mbps & GFSK & Ster, Boom\\
+  \end{tabular}
+\end{table}
+
+Temporary fix:
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{../graphics/overzicht.jpg}
+  \caption{OVerzicht \autocite[Door][Copyright 2012 van \citeauthor{Das2012}]{Das2012}}
+  \label{fig:overzicht}
+\end{figure}
+
+
+Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de channels die worden gebruikt door \gls{ule}. Verder wordt er naar de kans dat een channel selectie faalt in het \gls{ule}-systeem, de vertraging op communicatie en de gehele performantie vna het netwerk onder verschillende belastingen. Hieronder zijn een overzicht van de mogelijke channels die\gls{ule} kan gebruiken.
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{../graphics/ULE-channels.jpg}
+  \caption{Lijst met channel selectie \autocite[Door][Copyright 2012 van \citeauthor{Das2012}]{Das2012}}
+  \label{fig:ule-channels}
+\end{figure}
 
 
 \subsection{\IfLanguageName{dutch}{VoIP}{VoIP}}%
