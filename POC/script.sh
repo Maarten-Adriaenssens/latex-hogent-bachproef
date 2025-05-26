@@ -25,4 +25,10 @@ sudo apt install nodejs -y
 
 curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
 
-sudo vim /usr/lib/node_modules/open5gs/server/index.js
+#sudo vim /usr/lib/node_modules/open5gs/server/index.js
+
+git clone https://github.com/aligungr/UERANSIM
+sudo apt install -y cmake
+cd UERANSIM
+make
+
