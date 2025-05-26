@@ -1,0 +1,39 @@
+
+# Vagrant automation POC
+#  2024-2025
+# ------------------------------------
+#                                      
+# This is the Vagrantfile based on the template of Windows Server II - 2024-2025. 
+#
+# Use `vagrant up` to bring up the environment, 
+#   or `vagrant reload` to redeploy the environment after changing this file.
+# ------------------------------------
+
+Vagrant.configure("2") do |config|
+    config.vm.provider "virtualbox" do |vb|
+    # Stel de gedeelde map in om automatisch te mounten
+    vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
+end
+
+# Server 1
+config.vm.define "Conductor" do |cond|
+    # This is the base image for the VM - do not change this!
+    
+    Vagrant.configure("2") do |config|
+    cond.vm.box = "gusztavvargadr/ubuntu-server"
+    cond.vm.box_version = "2404.0.2503"
+    # Set the host name of the VM
+    cond.vm.hostname = "Centrale"
+    # VirtualBox specific configuration
+    cond.vm.provider "virtualbox" do |vb|
+        # VirtualBox Display Name
+        vb.name = "Centrale"
+        # VirtualBox Group
+        vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
+        # 1GB vRAM
+        vb.memory = "8192"
+        # 1vCPU
+        vb.cpus = "2"
+    end
+    cond.vm.provision "shell", path: "script.sh"
+end
