@@ -7,30 +7,51 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-De huidige stand van zaken kan worden opgedeeld in 4 delen. Het eerste deel is een situatieschets van de huidige complete set-up, met al zijn gebreken en voordelen. Vervolgens is er een oplijsting van mogelijke alternatieven, gevolgd door de minimumvereisten voor een communicatiesysteem ter vervanging van het \gls{dect}-systeem. Na de oplijsting van de alternatieven en vereisten worden de alternatieven onder de loep genomen om hun eigenschappen en mogelijke gebruikswijzen aan te tonen. Als derde deel wordt er gekeken naar de mogelijke gebruik van data. Tenslotte is er de wetgeving en de veiligheidsaspecten die gepaard gaan met een communicatiesysteem voor gezondheidszorg.
+De huidige stand van zaken kan worden opgedeeld in 5 delen. Het eerste deel is een situatieschets van de huidige complete set-up van het \gls{dect}-systeem, met al zijn gebreken en voordelen. Deze voor- en nadelen worden dan verwerkt in het 2de deel. Hierin wordt er een oplijstinge gemaakt waaraan de nieuwe / vervangende technologieën aan moeten voldoen. Het overzicht is opgesteld via de MoSCoW techniek. Vervolgens is er een oplijsting van mogelijke alternatieven voor het \gls{dect}-systeemgevolgd door een uitdieping van de alternatieven hun eigenschappen en mogelijke gebruik. Om na de uiteenzetting afgetoetst te worden aan de requirements. Als voorlaatste deel wordt er gekeken naar de data en de implicatie hiervan. Dit hoofdstuk wordt afgesloten met een uiteenzetting van het huidige  securitylandschap.
 
 \section{\IfLanguageName{dutch}{\gls{dect}-systeem}{\gls{dect}-system}}%
 \label{sec:dect-systeem}
 Het \gls{dect}-systeem staat voor Digital Enhanced Cordless Telecommunications; dit is een standaard in de EU sinds 1993. De meest gebruikte situatie is waar er meerdere gebruikers zijn voor een draadloze communicatie in werkomgevingen. De voornaamste reden voor gebruik van het \gls{dect}-draadloos systeem is dat het een grote dichtheid van veel gebruikers aankan. In vergelijking met andere mobiele communicatiesystemen werkt het niet buiten de werkomgeving. \autocite{Welinder1997} Na onderzoek van \textcite{Welinder1997} bleek dat de interferentie van het \gls{dect}-systeem op medisch gereedschap 11 procent was. De interferentie valt echter volledig weg bij een afstand van 0,5m tussen het gereedschap en het \gls{dect}-toestel.
 
+%TODO: HOE DECT
 
 Hoewel het \gls{dect}-systeem een standaard is sinds 1993, zijn er toch verschillende innovaties toegepast op dit systeem, maar deze worden als een apart systeem gezien. 
+\\Het is belangrijk ook om te vermelden dat in deze bachelorproef enkel Inter-ziekenhuis communicatie wordt onderzocht. Dit betekent dat enkel binnen eenzelfde site wordt gekeken om een oplossing of alternatief te bieden voor het \gls{dect}-systeem.
 
-\section{\IfLanguageName{dutch}{Andere communicatietechnologieën}{Other communication Technologies}}%
-\label{sec:label}%
+\section{\IfLanguageName{dutch}{Vereisten}{Requirements}}%
+\label{sec:req}%
 
-Door studies van \textcite{Montalvo2024}, \textcite{Kranz2010} en \textcite{Soenmez2018} kan er een lijst worden opgesteld van alternatieven voor het \gls{dect}-systeem:
+Voor de vereisten of requirements wordt er gebruik gemaakt van de MoSCoW techniek. Dit is een prioritisatie techniek uit het Agile framework. Volgens \textcite{2025agile} staan de letters voor:
 
 \begin{itemize}
-  \item \gls{lte} Advanced
-  \item 5G
-  \item \gls{ule}
-  \item \gls{voip}
-
+  \item \textbf{M}ust have - Noodzakelijk
+  \item \textbf{S}hould have - Duidelijke meerwaarde
+  \item \textbf{C}ould have - Niet-noodzakelijke meerwaarde
+  \item \textbf{W}on't have this time - Niet in deze versie
 \end{itemize}
 
-\subsection{\IfLanguageName{dutch}{Minimumvereisten}{Minimal Requirements}}%
-\label{sec:minreq}%
+Als er dan dieper wordt gekeken naar deze opdeling kan men bij elke categorie een verduidelijking plaatsen. Zo stelt \textcite{2025agile}:\\
+
+\textbf{\textit{Must have}} bestaat uit de minimale oplijsting van vereisten die nodig zijn om het project te kunnen opleveren. Dit houdt in dat er gekeken wordt naar wetten, veiligheid, wat er als 'bare-minimum' moet zijn.\\
+
+\textbf{\textit{Should have}} wordt beschreven als belangrijk maar niet noodzakelijk. Het project kan bestaan zonder, maar mogelijke workarounds zijn nodig alddanniet tijdelijk.\\
+
+\textbf{\textit{Could have}} zijn zaken die een meerwaarde kunnen bieden, maar een minimale impact hebben indien niet geimplementeerd. Het verschil tussen should en could have ligt in de gradatie van problemen/pijn veroorzaakt indien er niet aan de vereiste wordt voldaan.\\
+
+\textbf{\textit{Won't have}}, vereisten die op het eerste zich interessant zijn maar de laagste prioriteit krijgen. Dit is geen onderdeel van het huidige product/project, maar kan in de toekomst met een revisie worden geimplementeerd.\\
+
+\subsection{Must have}
+\label{sec:Must-have}
+
+\begin{itemize}
+  \item Wetgeving conform
+  \subitem \gls{ehds}
+  \subitem \gls{nis2}
+  \subitem \gls{gdpr}
+  \item Gesloten systeem
+  \item Stabiel
+  \item Communicatie-eisen
+\end{itemize}
 
 Volgens \textcite{Coiera2006} zijn de volgende zaken vereist om te spreken van een communicatiesysteem:
 \begin{itemize}
@@ -42,22 +63,45 @@ Volgens \textcite{Coiera2006} zijn de volgende zaken vereist om te spreken van e
   \item Beveiligingsbeleid
 \end{itemize}
 
-Verder zijn er eisen omwille van het gebruik van dit communicatiesysteem in de gezondheidszorg:
+\subsection{Should have}
+\label{sec:Should-have}
 
 \begin{itemize}
-  \item Wetgeving conform
-  \subitem \gls{ehds}
-  \subitem \gls{nis2}
-  \subitem \gls{gdpr}
-  \item Gesloten systeem
-  \item Interne data gebruik mogelijk
   \item Opties voor meer dan enkel audiocommunicatie
-  \item Stabiel
-  \item Schaalbaar
-  \item Filter-functionaliteit mogelijk
+  \item 
 \end{itemize}
 
-Het is belangrijk ook om te vermelden dat in deze bachelorproef enkel Inter-ziekenhuis communicatie wordt onderzocht. Dit betekent dat enkel binnen eenzelfde site wordt gekeken om een oplossing of alternatief te bieden voor het \gls{dect}-systeem.
+\subsection{Could have}
+\label{sec:Could-have}
+
+\begin{itemize}
+  \item Interne data gebruik mogelijk
+  \item Monitoring software voor audits van het systeem
+  \item AI controle systeem
+\end{itemize}
+
+\subsection{Won't have}
+\label{sec:Wont-have}
+
+\begin{itemize}
+  \item Integratie medische apparatuur
+  \item Monitoring software voor audits van het systeem
+\end{itemize}
+
+\section{\IfLanguageName{dutch}{Andere communicatietechnologieën}{Other communication Technologies}}%
+\label{sec:label}%
+
+Door studies van \textcite{Montalvo2024}, \textcite{Kranz2010} en \textcite{Soenmez2018} kan er een lijst worden opgesteld van alternatieven voor het \gls{dect}-systeem:
+
+\begin{itemize}
+  \item \gls{lte} Advanced
+  \item 5G
+  \item \gls{ule}
+  \item \gls{voip}
+\end{itemize}
+
+Elke technologie wordt besproken op eenzelfde manier. Eerst wordt de techniek verklaard, vervolgens wordt de functionaliteit uitgeklaard. Eens deze duidelijk zijn wordt de technologie afgetoetst op de vereisten.
+
 \subsection{\IfLanguageName{dutch}{\gls{lte} Advanced}{\gls{lte} Advanced}}%
 \label{sec:ltea}%
 
@@ -96,9 +140,9 @@ Het is belangrijk ook om te vermelden dat in deze bachelorproef enkel Inter-ziek
   \item Ontmanteling
 \end{enumerate}
 
-\subsubsection{\IfLanguageName{dutch}{Connecties tussen 5G en gezondheidszorg}{Connection between 5G and healthcare}}
+\subsubsection{\IfLanguageName{dutch}{Frameworks}{Frameworks}}
 
-Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G en gezondheidszorg, en hoe deze worden bereikt aan de hand van bestaande frameworks. Er zijn verschillende mogelijkheden, maar met de focus op een toegankelijke methode zal er voornamelijk gefocust worden op open-source frameworks. Zo lijst \textcite{Eswaran2022} de verschillende variaties op een open-source 5G-framework voor private 5G-netwerken op:
+Er zijn verschillende frameworks beschikbaar, maar met de focus op een toegankelijke methode zal er voornamelijk gefocust worden op open-source frameworks. Zo lijst \textcite{Eswaran2022} de verschillende variaties op een open-source 5G-framework voor private 5G-netwerken op:
 
 \begin{itemize}
   \item Magma
@@ -108,6 +152,8 @@ Het derde luik van de literatuurstudie gaat dieper in op de connecties tussen 5G
   \item \gls{srsRAN}
   \item OpenAirInterface \gls{ue}
 \end{itemize}
+
+Na verder onderzoek wordt ook \gls{open5gs} toegevoegd aan deze lijst.\\
 
 Volgens \textcite{Open5GS2024} is Open5G 'een geavanceerd open-source project ontworpen voor het bouwen en onderhouden van je eigen NR/\gls{lte} mobiele netwerk. Open5G biedt een robuuste oplossing voor het configureren van zowel \gls{5gnr} als \gls{lte} (Evolved) netwerken.' \\ Verder zijn er andere concepten zoals \gls{o-ran}, waar onder andere het OpenCare5G-netwerk op gebaseerd is. In dit framework wordt Open RAN in een privaat netwerk gebruikt voor digitale gezondheidsapplicaties. Zo hebben \textcite{de2023opencare5g} onderzocht hoe dit framework kan gebruikt worden om gezondheidsonderzoeken te doen met draagbare ultrasone gereedschappen op verschillende locaties. Om deze onderzoeken te kunnen delen met artsen, werd er een lokaal privaat netwerk opgezet. Zo gebruikten ze een 5G xHaul ORAN \gls{oam} privaat netwerk. Er wordt gekozen om een top-down systeem te gebruiken. Dit is een georganiseerde manier om een netwerk project te ontwikkelen. Dit komt doordat men kan steunen op het OSI-model en het 5G-\gls{ran} protocol layer model. Dit zal ook gebruikt worden bij de methodologie. Zo zal er een analyse zijn van elke laag van de 5G-architectuur. Deze architectuur begint met de service laag. Op deze laag komen de verzoeken van de applicatie vandaan. De architectuur eindigt met de infrastructuurlaag. \autocite{de2023opencare5g}
 
@@ -220,7 +266,6 @@ Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de channels die wo
   \label{fig:ule-channels}
 \end{figure}
 
-
 \subsection{\IfLanguageName{dutch}{VoIP}{VoIP}}%
 \label{sec:voip}%
 
@@ -236,6 +281,7 @@ Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de channels die wo
 
 Echter, \textcite{Soenmez2018} bevestigt wel dat er een groot aanvalsoppervlak bestaat. Zo heeft de \gls{voipsa} een lijst gepubliceerd met 6 beveiligingspunten waar countermeasures moeten geinstalleerd worden om een veilige omgeving te garanderen.
 
+%TODO verklaar
 \section{\IfLanguageName{dutch}{Data}{Data}}%
 \label{sec:data}%
 
@@ -268,6 +314,8 @@ Als al deze principes worden toegepast, kan men stellen dat er voldaan is aan de
 \end{itemize}
 \subsection{\IfLanguageName{dutch}{Wetgevingen}{Laws}}%
 \label{sec:wet}%
+
+%TODO Uitgebreider !!!
 
 Sinds 27 april 2016 is de verordening 2016/679 van toepassing. Deze start de \gls{gdpr} (General Data Protection Regulation) in de Europese Unie. De verordening 2016/679 vermeldt dat "regels worden vastgelegd betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en het vrije verkeer van persoonsgegevens. Het beschermt de grondrechten en de fundamentele vrijheden van natuurlijke personen, met name hun recht op bescherming van persoonsgegeven."\\ (Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016) %\autocite{gdpr2016} 
 \\\\
