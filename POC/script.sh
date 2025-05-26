@@ -25,7 +25,11 @@ sudo apt install nodejs -y
 
 curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
 
-sudo sed -i 's/localhost/10.0.2.15;/' /usr/lib/node_modules/open5gs/server/index.js
+sudo systemctl start open5gs-webui
+sudo systemctl enable open5gs-webui
+
+sudo sed -i "s/'localhost'/'10.0.2.15'/" /usr/lib/node_modules/open5gs/server/index.js
+sudo systemctl daemon-reload
 sudo systemctl restart open5gs-webui.service
 sudo systemctl restart open5gs-webui
 
