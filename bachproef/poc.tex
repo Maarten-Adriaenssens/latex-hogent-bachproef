@@ -1,14 +1,26 @@
 \chapter{\IfLanguageName{dutch}{POC: Simulatie}{POC: Simulation}}%
-\label{ch:poc1}
+\label{ch:poc}
 
-%TODO:
+\section{\IfLanguageName{dutch}{Simulation}{Simulation}}%
+\label{sec:sim}%
 De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy. 
 
 De opbouw van de simulatie zal in 2 fases gebeuren. De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een \gls{gnb} en een \gls{ue}. Beiden zullen op eenzelfde toestel in een \gls{vm} worden gerund. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}
 
 Als basis hardward configuratie is er gekozen voor een \gls{vm} met 8 Gigabyte RAM en 2 CPU cores. Verder is de netwerkkaart geconfigureerd op het NAT netwerk van VirtualBox zelf.
 
-De basis installatie gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a}:
+\section{\IfLanguageName{dutch}{Installatie}{Installation}}%
+\label{sec:installation}%
+
+De installatie bestaat uit 3 delen:
+
+\begin{itemize}
+    \item Vereiste software
+    \item Open5GS
+    \item UERANSIM
+\end{itemize}
+
+De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a}:
 
 \begin{enumerate}
     \item Installatie van afhankelijkheden/vereisten
@@ -23,42 +35,66 @@ De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref
 
 Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. Echter some configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd.
 
-\begin{lstlisting}[language=vagrant, caption=Vagrantfile]
-    Vagrant.configure("2") do |config|
-        config.vm.provider "virtualbox" do |vb|
-        # Stel de gedeelde map in om automatisch te mounten
-        vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
-        end
+\begin{lstlisting}[language=sh, caption=Vagrantfile]
+Vagrant.configure("2") do |config|
+    config.vm.provider "virtualbox" do |vb|
+    # Stel de gedeelde map in om automatisch te mounten
+    vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
+    end
 
-        config.vm.define "conductor" do |cond|
-            # This is the base image for the VM - do not change this!
-            cond.vm.box = "gusztavvargadr/ubuntu-server"
-            cond.vm.box_version = "2404.0.2503"
-            # Set the host name of the VM
-            cond.vm.hostname = "Centrale"
-            # Set portforwarding
-            cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"
-            # VirtualBox specific configuration
-            cond.vm.provider "virtualbox" do |vb|
-                # VirtualBox Display Name
-                vb.name = "Centrale"
-                # VirtualBox Group
-                vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
-                # 1GB vRAM
-                vb.memory = "8192"
-                # 1vCPU
-                vb.cpus = "2"
-            end
-            cond.vm.provision "shell", path: "script-cent.sh"
+    config.vm.define "conductor" do |cond|
+        # This is the base image for the VM - do not change this!
+        cond.vm.box = "gusztavvargadr/ubuntu-server"
+        cond.vm.box_version = "2404.0.2503"
+        # Set the host name of the VM
+        cond.vm.hostname = "Centrale"
+        # Set portforwarding
+        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"
+        # VirtualBox specific configuration
+        cond.vm.provider "virtualbox" do |vb|
+            # VirtualBox Display Name
+            vb.name = "Centrale"
+            # VirtualBox Group
+            vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
+            # 1GB vRAM
+            vb.memory = "8192"
+            # 1vCPU
+            vb.cpus = "2"
         end
+        cond.vm.provision "shell", path: "script-cent.sh"
+    end
+end
+\end{lstlisting}
+
+Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: 'vagrant up'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
+
+\begin{lstlisting}[language=sh, caption=Build Script]
+Start-Transcript -Path "vagrant.log"
+vagrant destroy -f
+vagrant up
+Stop-Transcript
 \end{lstlisting}
 
 
-Installation mongodb
 
-missing part: 
+\section{\IfLanguageName{dutch}{Configuratie}{Configuration}}%
+\label{sec:Config}%
 
-`echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list`
-after curl before updte
+De automatische configuratie wordt gedeployed door het oproepen van een script. Dit is geschreven in bash voor linux, terug te vinden in de bijlagen (hoofdstuk \ref{sec:script}).
 
-congif vm: 8gb 2 cpu debian 12 bookwormn
+Het einde van de automatische configuratie kan worden gedetecteerd aan de hand van de log file ide woerdt gegenereerd tijdens de installatie in de githubrepo. Deze log fie, vagrant.log, is beschikbaar door de shared folder die wordt aangemaakt in het begin van de \gls{vm} installatie. 
+
+
+Eenmaal de configuratie klaar is moet enkel de handmatige confiuratie gebeuren.
+
+
+
+
+
+
+% Installation mongodb
+
+% missing part: 
+
+% `echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list`
+% after curl before updte
