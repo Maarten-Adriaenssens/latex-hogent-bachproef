@@ -6,20 +6,52 @@ De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik
 
 De opbouw van de simulatie zal in 2 fases gebeuren. De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een \gls{gnb} en een \gls{ue}. Beiden zullen op eenzelfde toestel in een \gls{vm} worden gerund. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}
 
-Als basis hardward configuratie is er gekozen voor een \gls{vm} met 8 Gigabyte RAM en 2 CPU cores. Verder is de netwerkkaart geconfigureerd op het NAT netwerk van 
+Als basis hardward configuratie is er gekozen voor een \gls{vm} met 8 Gigabyte RAM en 2 CPU cores. Verder is de netwerkkaart geconfigureerd op het NAT netwerk van VirtualBox zelf.
 
-
-De basis installatie gebeurt volgens de Quickstart van \gls{open5gs} \textcite{Lee2025a}:
+De basis installatie gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a}:
 
 \begin{enumerate}
     \item Installatie van afhankelijkheden/vereisten
     \item Installatie van \gls{open5gs}
     \item Configuratie van \gls{open5gs}
     \item Starten van de \gls{open5gs} services
-    \item Configuratie van de \gls{ue}
 \end{enumerate}
 
-Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant
+Nadien wordt \gls{ueransim} geinstalleerd om de simulatie te finaliseren. 
+
+De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref{ch:InstallationGuide}.
+
+Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. Echter some configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd.
+
+\begin{lstlisting}[language=vagrant, caption=Vagrantfile]
+    Vagrant.configure("2") do |config|
+        config.vm.provider "virtualbox" do |vb|
+        # Stel de gedeelde map in om automatisch te mounten
+        vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
+        end
+
+        config.vm.define "conductor" do |cond|
+            # This is the base image for the VM - do not change this!
+            cond.vm.box = "gusztavvargadr/ubuntu-server"
+            cond.vm.box_version = "2404.0.2503"
+            # Set the host name of the VM
+            cond.vm.hostname = "Centrale"
+            # Set portforwarding
+            cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"
+            # VirtualBox specific configuration
+            cond.vm.provider "virtualbox" do |vb|
+                # VirtualBox Display Name
+                vb.name = "Centrale"
+                # VirtualBox Group
+                vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
+                # 1GB vRAM
+                vb.memory = "8192"
+                # 1vCPU
+                vb.cpus = "2"
+            end
+            cond.vm.provision "shell", path: "script-cent.sh"
+        end
+\end{lstlisting}
 
 
 Installation mongodb
