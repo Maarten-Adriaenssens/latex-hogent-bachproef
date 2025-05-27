@@ -35,6 +35,25 @@ Vagrant.configure("2") do |config|
             # 1vCPU
             vb.cpus = "2"
         end
-        cond.vm.provision "shell", path: "script.sh"
+        cond.vm.provision "shell", path: "scrip-cent.sh"
+    end
+
+
+
+    config.vm.define "Member" do |memb|
+        memb.vm.box = "indrisepos/vbox-999-jammy"
+        memb.vm.box_version = "4"
+        memb.vm.hostname = "ue"
+        cond.vm.provider "virtualbox" do |vb|
+            # VirtualBox Display Name
+            vb.name = "Centrale"
+            # VirtualBox Group
+            vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
+            # 1GB vRAM
+            vb.memory = "4096"
+            # 1vCPU
+            vb.cpus = "2"
+        end
+        cond.vm.provision "shell", path: "script-ue.sh"
     end
 end

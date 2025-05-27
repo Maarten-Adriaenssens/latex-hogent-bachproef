@@ -2,7 +2,12 @@
 \label{ch:poc1}
 
 %TODO:
-De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy.
+De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy. 
+
+De opbouw van de simulatie zal in 2 fases gebeuren. De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een \gls{gnb} en een \gls{ue}. Beiden zullen op eenzelfde toestel in een \gls{vm} worden gerund. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}
+
+Als basis hardward configuratie is er gekozen voor een \gls{vm} met 8 Gigabyte RAM en 2 CPU cores. Verder is de netwerkkaart geconfigureerd op het NAT netwerk van 
+
 
 De basis installatie gebeurt volgens de Quickstart van \gls{open5gs} \textcite{Lee2025a}:
 
@@ -13,6 +18,8 @@ De basis installatie gebeurt volgens de Quickstart van \gls{open5gs} \textcite{L
     \item Starten van de \gls{open5gs} services
     \item Configuratie van de \gls{ue}
 \end{enumerate}
+
+Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant
 
 
 Installation mongodb
