@@ -66,7 +66,7 @@ Vagrant.configure("2") do |config|
 end
 \end{lstlisting}
 
-Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: 'vagrant up'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
+Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: \verb|vagrant up|'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
 
 \begin{lstlisting}[language=sh, caption=Build Script]
 Start-Transcript -Path "vagrant.log"
@@ -84,10 +84,20 @@ De automatische configuratie wordt gedeployed door het oproepen van een script. 
 
 Het einde van de automatische configuratie kan worden gedetecteerd aan de hand van de log file ide woerdt gegenereerd tijdens de installatie in de githubrepo. Deze log fie, vagrant.log, is beschikbaar door de shared folder die wordt aangemaakt in het begin van de \gls{vm} installatie. 
 
-
 Eenmaal de configuratie klaar is moet enkel de handmatige confiuratie gebeuren.
 
+De manuale configuratie bestaat uit X delen:
 
+\begin{itemize}
+    \item IP check
+    \item Open5GS amf configuratie
+    \item UE configuratie
+    \item gNB configuratie
+\end{itemize}
+
+Eerst wordt er gekeken naar de huidige IP van de \gls{vm}, dit via het \verb|ip a| commando. Hier kan men het IP adres van de netwerkkaar eth0. Dit IP adres zal worden gebruikt voor verdere configuratie. In het geval van de\gls{poc}, is dit 10.0.2.15
+
+Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de amf. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.2.15. Dit is het IP  adres van de ngap server.
 
 
 
