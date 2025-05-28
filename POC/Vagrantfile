@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     end
 
     # Server 1
-    config.vm.define "Conductor" do |cond|
+    config.vm.define "conductor" do |cond|
         # This is the base image for the VM - do not change this!
         cond.vm.box = "gusztavvargadr/ubuntu-server"
         cond.vm.box_version = "2404.0.2503"
