@@ -81,11 +81,11 @@ Het einde van de automatische configuratie kan worden gedetecteerd aan de hand v
 
 Eenmaal de configuratie klaar is moet enkel de handmatige confiuratie gebeuren.
 
-De manuale configuratie bestaat uit X delen:
+De manuale configuratie bestaat uit 4 delen:
 
 \begin{itemize}
     \item IP check
-    \item Open5GS amf configuratie
+    \item Open5GS \gls{amf} configuratie
     \item UE configuratie
     \item gNB configuratie
 \end{itemize}
@@ -95,7 +95,7 @@ Eerst wordt er gekeken naar de huidige IP van de \gls{vm}, dit via het \verb|ip 
 \subsection{\IfLanguageName{dutch}{Open5GS AMF configuratie}{Open5GS AMF configuration}}%
 \label{sec:open5gs_amf}%
 
-Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de amf. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.2.15. Dit is het IP  adres van de ngap server.
+Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de \gls{amf}. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.2.15. Dit is het IP  adres van de ngap server.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Open5GS amf configuratie]
 logger:
@@ -124,7 +124,7 @@ amf:
 ...
 \end{lstlisting}
 
-Het is heel belangrijk om de AMF te herstarten om de nieuwe configuaratie in te laden. Dit wordt gedaan met het commando: 
+Het is heel belangrijk om de \gls{amf} te herstarten om de nieuwe configuaratie in te laden. Dit wordt gedaan met het commando: 
 
 \subsection{\IfLanguageName{dutch}{gNB configuratie}{gNB configuration}}%
 \label{sec:gnb_config}%
@@ -215,25 +215,26 @@ Eenmaal aangemeld met de correcte gegevens, terug te vinden in de config-files:
     \item Password: 1423
 \end{itemize}
 
-Nadien kan een  subscriber worden toegevoegd.
-
-\begin{figure}[h]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{../graphics/POC-WebUI-home.png}
     \caption{Homescherm Open5GS WebUI }
     \label{fig:Home WebUI}
 \end{figure}
 
-Voor de feietelijke configuratie van de subscriber zijn er gegevens nodig uit de configuaratie file van de \gls{ue}. De gegevens die nodig zijn:
+Nadien kan een  subscriber worden toegevoegd.
+Voor de feitelijke configuratie van de subscriber zijn er gegevens nodig uit de configuaratie file van de \gls{ue}. De gegevens die nodig zijn:
 
 \begin{itemize}
-    \item 
+    \item \gls{imsi}
+    \item Subscriber Key
+    \item \gls{amf}
+    \item USIM Type
+    \item Operator Key
 \end{itemize}
 
+\begin{figure}[h]
+    \includegraphics[width=\linewidth]{../graphics/POC-subConfig.png}
+    \caption{Configuratie Subscriber}
+    \label{fig:SubConfig}
+\end{figure}
 
-
-% Installation mongodb
-
-% missing part: 
-
-% `echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list`
-% after curl before updte
