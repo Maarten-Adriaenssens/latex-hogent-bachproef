@@ -35,7 +35,7 @@ De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref
 
 Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. Echter some configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd.
 
-\begin{lstlisting}[language=sh, caption=Vagrantfile]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrantfile]
 Vagrant.configure("2") do |config|
     config.vm.provider "virtualbox" do |vb|
     # Stel de gedeelde map in om automatisch te mounten
@@ -43,15 +43,12 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "conductor" do |cond|
-        # This is the base image for the VM - do not change this!
         cond.vm.box = "gusztavvargadr/ubuntu-server"
         cond.vm.box_version = "2404.0.2503"
-        # Set the host name of the VM
-        cond.vm.hostname = "Centrale"
-        # Set portforwarding
-        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"
-        # VirtualBox specific configuration
-        cond.vm.provider "virtualbox" do |vb|
+        cond.vm.hostname = "Centrale"        # Set the host name of the VM
+        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"        # Set portforwarding
+
+        cond.vm.provider "virtualbox" do |vb|        # VirtualBox specific configuration
             # VirtualBox Display Name
             vb.name = "Centrale"
             # VirtualBox Group
@@ -68,14 +65,12 @@ end
 
 Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: \verb|vagrant up|'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
 
-\begin{lstlisting}[language=sh, caption=Build Script]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Build Script]
 Start-Transcript -Path "vagrant.log"
 vagrant destroy -f
 vagrant up
 Stop-Transcript
 \end{lstlisting}
-
-
 
 \section{\IfLanguageName{dutch}{Configuratie}{Configuration}}%
 \label{sec:Config}%
@@ -102,37 +97,39 @@ Eerst wordt er gekeken naar de huidige IP van de \gls{vm}, dit via het \verb|ip 
 
 Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de amf. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.2.15. Dit is het IP  adres van de ngap server.
 
-\begin{lstlisting}[language=sh, caption=Open5GS amf configuratie]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Open5GS amf configuratie]
 logger:
-  file:
-    path: /var/log/open5gs/amf.log
+    file:
+        path: /var/log/open5gs/amf.log
 #  level: info   # fatal|error|warn|info(default)|debug|trace
 
 global:
-  max:
-    ue: 1024  # The number of UE can be increased depending on memory size.
+    max:
+        ue: 1024  # The number of UE can be increased depending on memory size.
 #    peer: 64
 
 amf:
-  sbi:
-    server:
-      - address: 127.0.0.5
-        port: 7777
-    client:
+    sbi:
+        server:
+            - address: 127.0.0.5
+            port: 7777
+        client:
 #      nrf:
 #        - uri: http://127.0.0.10:7777
-      scp:
-        - uri: http://127.0.0.200:7777
-  ngap:
-    server:
-      - address: 10.0.2.15 -------------
+        scp:
+            - uri: http://127.0.0.200:7777
+    ngap:
+        server:
+            - address: 10.0.2.15  #CHANGE VALUE
 ...
 \end{lstlisting}
+
+Het is heel belangrijk om de AMF te herstarten om de nieuwe configuaratie in te laden. Dit wordt gedaan met het commando: 
 
 \subsection{\IfLanguageName{dutch}{gNB configuratie}{gNB configuration}}%
 \label{sec:gnb_config}%
 
-\begin{lstlisting}[language=sh, caption=gnb configuratie]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=gnb configuratie]
 mcc: '999'          # Mobile Country Code value
 mnc: '70'           # Mobile Network Code value (2 or 3 digits)
 
@@ -140,13 +137,13 @@ nci: '0x000000010'  # NR Cell Identity (36-bit)
 idLength: 32        # NR gNB ID length in bits [22...32]
 tac: 1              # Tracking Area Code
 
-linkIp: 10.0.2.15-----------   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
-ngapIp: 10.0.2.15-----------   # gNB's local IP address for N2 Interface (Usually same with local IP)
-gtpIp: 10.0.2.15-----------    # gNB's local IP address for N3 Interface (Usually same with local IP)
+linkIp: 10.0.2.15 #CHANGE VALUE   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
+ngapIp: 10.0.2.15 #CHANGE VALUE  # gNB's local IP address for N2 Interface (Usually same with local IP)
+gtpIp: 10.0.2.15 #CHANGE VALUE    # gNB's local IP address for N3 Interface (Usually same with local IP)
 
 # List of AMF address information
 amfConfigs:
-  - address: 10.0.2.15---------------
+  - address: 10.0.2.15 #CHANGE VALUE
     port: 38412
 
 # List of supported S-NSSAIs by this gNB
@@ -160,7 +157,7 @@ ignoreStreamIds: true
 \subsection{\IfLanguageName{dutch}{UE configuratie}{UE configuration}}%
 \label{sec:ue_config}%
 
-\begin{lstlisting}[language=sh, caption=UE configuratie]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=UE configuratie]
 # IMSI number of the UE. IMSI = [MCC|MNC|MSISDN] (In total 15 digits)
 supi: 'imsi-999700000000001'
 # Mobile Country Code value of HPLMN
@@ -194,12 +191,43 @@ tunNetmask: '255.255.255.0'
 
 # List of gNB IP addresses for Radio Link Simulation
 gnbSearchList:
-  - 10.0.2.15 -------------------
+    - 10.0.2.15 #CHANGE VALUE
+
+...
 \end{lstlisting}
 
 \subsection{\IfLanguageName{dutch}{Subscriber configuratie}{Subscriber configuration}}%
 \label{sec:subscriber_config}%
 
+Voor de configuratie van de subscriber moet er gebruik gemaakt worden van de \gls{open5gs} Web interface. Hiervoor is er een forward-regel zodat deze via de browser van de host-laptop kan worden geraadpleegd op \lstinline!localhost:9999!. Dan wordt de gebruiker verwelkomd met dit aanmeldscherm:
+
+\begin{figure}[h]
+    \includegraphics[width=\linewidth]{../graphics/POC-WebUI-Login.png}
+    \caption{Aanmeldscherm Open5GS WebUI }
+    \label{fig:Aanmeld WebUI}
+\end{figure}
+
+Eenmaal aangemeld met de correcte gegevens, terug te vinden in de config-files:
+
+
+\begin{itemize}
+    \item Username: admin
+    \item Password: 1423
+\end{itemize}
+
+Nadien kan een  subscriber worden toegevoegd.
+
+\begin{figure}[h]
+    \includegraphics[width=\linewidth]{../graphics/POC-WebUI-home.png}
+    \caption{Homescherm Open5GS WebUI }
+    \label{fig:Home WebUI}
+\end{figure}
+
+Voor de feietelijke configuratie van de subscriber zijn er gegevens nodig uit de configuaratie file van de \gls{ue}. De gegevens die nodig zijn:
+
+\begin{itemize}
+    \item 
+\end{itemize}
 
 
 

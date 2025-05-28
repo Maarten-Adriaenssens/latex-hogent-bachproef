@@ -32,7 +32,7 @@ Op deze \gls{vm} wordt er een MongoDB databank geinstallleerd met als functie: \
 %     sudo systemctl enable mongod
 % \end{listing}
 
-\begin{lstlisting}[language=Bash, caption=Installatie van MongoDB]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Installatie van MongoDB]
     sudo apt update
     sudo apt install gnupg
     curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg 
@@ -68,7 +68,7 @@ Om te controlleren of de MongoDB service draait, kan er gebruik gemaakt worden v
 %             └─2197 /usr/bin/mongod --config /etc/mongod.conf
 % \end{listing}
 
-\begin{lstlisting}[language=Bash, caption=Controle MongoDB status]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Controle MongoDB status]
     sudo systemctl status mongod
 
     #Verwacht resultaat:
@@ -100,7 +100,7 @@ De \gls{open5gs} pakketten voor Ubuntu zijn beschikbaar op OBS.
 %     sudo apt install open5gs    
 % \end{listing}
 
-\begin{lstlisting}[language=Bash, caption=Installatie van Open5GS]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Installatie van Open5GS]
     sudo apt update
 
     wget -qO - https://download.opensuse.org/repositories/home:/acetcom:
@@ -117,7 +117,7 @@ De \gls{open5gs} pakketten voor Ubuntu zijn beschikbaar op OBS.
 
 Voor de installatie van \gls{open5gs} wordt volgende code uitegevoerd:
 
-\begin{lstlisting}[language=Bash, caption=Installatie van web-interface]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Installatie van web-interface]
     # Download and import the Nodesource GPG key
     sudo apt update
     sudo apt install -y ca-certificates curl gnupg
@@ -136,26 +136,24 @@ Voor de installatie van \gls{open5gs} wordt volgende code uitegevoerd:
     curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
 \end{lstlisting}
 
-\section{\IfLanguageName{dutch}{Configuratie van \gls{open5gs}}{Configuration of \gls{open5gs}}}
-
-
-
-\subsection{\IfLanguageName{dutch}{Configuratie van een 5G Core}{Configuration of a 5G Core}}
-
-
-
-\subsection{\IfLanguageName{dutch}{Configuratie van logging systeem}{Configuration of logging system}}
-
-
-
-\section{\IfLanguageName{dutch}{Activatie van eNB/gNB en UE}{Activation of eNB/gNB and UE}}
 
 \section{\IfLanguageName{dutch}{Bash script voor vagrant deployment}{Bash script for vagrant deployment}}
 \label{sec:script}
 
 Dit is het script dat wordt gebruikt door vagrant om de simulatie te installeren en configureren op de \gls{vm}:
 
-\begin{lstlisting}[language=Bash, caption=Script]
+[
+    basicstyle=\small,
+    frame=single,   
+        breaklines=true,
+        postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+        escapeinside ={\%,},
+    escapechar={!},
+    caption={Configuration de l'hôte virtuel dans \emph{Apache} après installation des certificats avec CertBot.},
+    label={codeA3.A}
+    ]
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Script]
     # Script to install Open5GS and UERANSIM on Ubuntu 22.04
     #Device: Conductur / Centrale
     #-----------------------------------------------------------
