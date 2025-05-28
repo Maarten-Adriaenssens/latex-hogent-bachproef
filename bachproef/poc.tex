@@ -92,6 +92,31 @@ De manuale configuratie bestaat uit X delen:
 
 Eerst wordt er gekeken naar de huidige IP van de \gls{vm}, dit via het \verb|ip a| commando. Hier kan men het IP adres van de netwerkkaar eth0. Dit IP adres zal worden gebruikt voor verdere configuratie. In het geval van de\gls{poc}, is dit 10.0.2.15
 
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=IP configuratie]
+vagrant@Centrale:~/UERANSIM/config$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+        valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:e1:3d:ae brd ff:ff:ff:ff:ff:ff
+    altname enp0s3
+    inet 10.0.2.15/24 metric 100 brd 10.0.2.255 scope global dynamic eth0
+        valid_lft 84941sec preferred_lft 84941sec
+    inet6 fe80::a00:27ff:fee1:3dae/64 scope link
+        valid_lft forever preferred_lft forever
+3: ogstun: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1400 qdisc fq_codel state UP group default qlen 500
+    link/none
+    inet 10.45.0.1/16 brd 10.45.255.255 scope global ogstun
+        valid_lft forever preferred_lft forever
+    inet6 2001:db8:cafe::1/48 scope global
+        valid_lft forever preferred_lft forever
+    inet6 fe80::b792:657a:a404:d020/64 scope link stable-privacy
+        valid_lft forever preferred_lft forever
+\end{lstlisting}
+
 \subsection{\IfLanguageName{dutch}{Open5GS AMF configuratie}{Open5GS AMF configuration}}%
 \label{sec:open5gs_amf}%
 
