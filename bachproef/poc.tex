@@ -99,6 +99,32 @@ Eerst wordt er gekeken naar de huidige IP van de \gls{vm}, dit via het \verb|ip 
 
 Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de amf. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.2.15. Dit is het IP  adres van de ngap server.
 
+\begin{lstlisting}[language=sh, caption=Open5GS amf configuratie]
+logger:
+  file:
+    path: /var/log/open5gs/amf.log
+#  level: info   # fatal|error|warn|info(default)|debug|trace
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+amf:
+  sbi:
+    server:
+      - address: 127.0.0.5
+        port: 7777
+    client:
+#      nrf:
+#        - uri: http://127.0.0.10:7777
+      scp:
+        - uri: http://127.0.0.200:7777
+  ngap:
+    server:
+      - address: 10.0.2.15
+...
+\end{lstlisting}
 
 
 
