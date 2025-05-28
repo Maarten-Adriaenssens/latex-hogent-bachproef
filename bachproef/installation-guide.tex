@@ -35,13 +35,9 @@ Op deze \gls{vm} wordt er een MongoDB databank geinstallleerd met als functie: \
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Installatie van MongoDB]
     sudo apt update
     sudo apt install gnupg
-    curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg 
-        -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
+    curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
 
-    echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb
-        -server-6.0.gpg] https://repo.mongodb.org/apt/
-        ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt
-        /sources.list.d/mongodb-org-6.0.list
+    echo "deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 
     sudo apt update
     sudo apt install -y mongodb-org
@@ -50,7 +46,7 @@ Op deze \gls{vm} wordt er een MongoDB databank geinstallleerd met als functie: \
     sudo systemctl enable mongod
 \end{lstlisting}
 
-Om te controlleren of de MongoDB service draait, kan er gebruik gemaakt worden van volgend commando: \textit{Eigen code}
+Om te controlleren of de MongoDB service draait, kan er gebruik gemaakt worden van volgend commando:
 
 % \begin{listing}
 %     \listingcode{bash}{Controle MongoDB status}
@@ -103,11 +99,8 @@ De \gls{open5gs} pakketten voor Ubuntu zijn beschikbaar op OBS.
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Installatie van Open5GS]
     sudo apt update
 
-    wget -qO - https://download.opensuse.org/repositories/home:/acetcom:
-        /open5gs:/latest/Debian_10/Release.key | sudo apt-key add -
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:
-        /acetcom:/open5gs:/latest/Debian_10/ ./' 
-        > /etc/apt/sources.list.d/open5gs.list"
+    wget -qO - https://download.opensuse.org/repositories/home:/acetcom:/open5gs:/latest/Debian_10/Release.key | sudo apt-key add -
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/acetcom:/open5gs:/latest/Debian_10/ ./' > /etc/apt/sources.list.d/open5gs.list"
     
     sudo apt update
     sudo apt install open5gs
@@ -136,22 +129,25 @@ Voor de installatie van \gls{open5gs} wordt volgende code uitegevoerd:
     curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
 \end{lstlisting}
 
+\section{\IfLanguageName{dutch}{Installatie van \gls{ueransim}}{Installation of the web-interface of \gls{ueransim}}}
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Installatie van web-interface]
+    git clone https://github.com/aligungr/UERANSIM
+
+    sudo apt install -y cmake
+    sudo apt install -y gcc
+    sudo apt install -y g++
+    sudo apt install -y libsctp-dev lksctp-tools
+    sudo apt install -y iproute2
+    sudo snap install cmake --classic
+
+    cd UERANSIM
+    make
+\end{lstlisting}
 
 \section{\IfLanguageName{dutch}{Bash script voor vagrant deployment}{Bash script for vagrant deployment}}
 \label{sec:script}
 
 Dit is het script dat wordt gebruikt door vagrant om de simulatie te installeren en configureren op de \gls{vm}:
-
-[
-    basicstyle=\small,
-    frame=single,   
-        breaklines=true,
-        postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-        escapeinside ={\%,},
-    escapechar={!},
-    caption={Configuration de l'hôte virtuel dans \emph{Apache} après installation des certificats avec CertBot.},
-    label={codeA3.A}
-    ]
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Script]
     # Script to install Open5GS and UERANSIM on Ubuntu 22.04
