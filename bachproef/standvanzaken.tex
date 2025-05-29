@@ -49,48 +49,48 @@ Hoewel het \gls{dect}-systeem een standaard is sinds 1993, zijn er toch verschil
 
 % \section{\IfLanguageName{dutch}{Betrouwbaarheid en Beschikbaarheid}{Reliability and Availability}}
 % \label{sec:betrouwbaarheid-en-beschikbaarheid}
-% %TODO:
+%
 
 
 % \section{\IfLanguageName{dutch}{Beveiliging en Privacy}{Security and Privacy}}
 % \label{sec:beveiliging-en-privacy}
-% %TODO:
+%
 
 
 
 % \section{\IfLanguageName{dutch}{Quality of Service}{Quality of Service}}
 % \label{sec:quality-of-service}
-% %TODO:
+%
 
 
 
 % \section{\IfLanguageName{dutch}{Interoperabiliteit}{Interoperability}}
 % \label{sec:interoperabiliteit}
-% %TODO:
+% 
 
 
 
 % \section{\IfLanguageName{dutch}{Mobilitetit en Dekking}{Mobility and Coverage}}
 % \label{sec:mobilitetit-en-dekking}
-% %TODO:
+% 
 
 
 
 % \section{\IfLanguageName{dutch}{Schaalbaarheid}{Scalability}}
 % \label{sec:schaalbaarheid}
-% %TODO:
+% %
 
 
 
 % \section{\IfLanguageName{dutch}{Gebruiksvriendelijkheid}{User-friendly Interface}}
 % \label{sec:gebruiksvriendelijkheid}
-% %TODO:
+%
 
 
 
 % \section{\IfLanguageName{dutch}{Integratie met (huidige) klinische workflows}{Integration with Clinical Workflows}}
 % \label{sec:integratie-met-klinische-workflows}
-% %TODO:
+%
 %---------
 Voor de vereisten of requirements wordt er gebruik gemaakt van de MoSCoW techniek. Dit is een prioritisatie techniek uit het Agile framework. Volgens \textcite{2025agile} staan de letters voor:
 
@@ -138,6 +138,7 @@ Volgens \textcite{Coiera2006} zijn de volgende zaken vereist om te spreken van e
 \label{sec:Should-have}
 
 \begin{itemize}
+  \item Segregatie
   \item Opties voor meer dan enkel audiocommunicatie
 \end{itemize}
 
@@ -210,7 +211,34 @@ Elke technologie wordt besproken op eenzelfde manier. Eerst wordt de techniek ve
   \item Ontmanteling
 \end{enumerate}
 
+
+\subsubsection{\IfLanguageName{dutch}{Publiek versus privaat}{Public versus private}}
+\label{public-v-private}
+
+Binnen België is het 5G spectrum door overheid vastgelegd. Volgens \textcite{Eede2023} zijn er 3 delen op het 5G spectrum:\\\\
+Het eerste deel is een non-licensed deel, dit betekent dat dit vrij is voor iedereen. Dit deel ligt tussen de 2,40 en de 2,48 GHz. Op de deel van het 5G spectrum werkt onder andere WLAN, Bluetooth en ZigBee.\\
+Het tweede deel wat wordt beheerd door de telecom providers.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{3600MHz-band}      & \textbf{Bandbreedte} & \textbf{Frequentiebereik}    \\ \hline
+Citymesh Mobile NV         & 50 MHz               & 3430--3480 MHz               \\ \hline
+PROXIMUS                   & 20 MHz               & 3580--3600 MHz               \\ \hline
+Orange Belgium NV          & 100 MHz              & 3600--3700 MHz               \\ \hline
+Proximus NV                & 100 MHz              & 3700--3800 MHz               \\ \hline
+Telenet Group NV           & 100 MHz              & 3480--3580 MHz               \\ \hline
+\end{tabular}
+\caption{5G verdeling onder telecom providers. \autocite[Door][Copyright 2023 van]{Eede2023} \textcite{Eede2023}}
+\end{table}
+
+
+Tenslotte is er het laatste deel gereserveerd voor het 5G private netwerk.  Dit ligt tussen de 3,80 en de 4,20 GHz, wat betekend dat er 40 MHz beschikbaar is voor het private netwerk.
+
+
 \subsubsection{\IfLanguageName{dutch}{Frameworks}{Frameworks}}
+\label{framework}
 
 Er zijn verschillende frameworks beschikbaar, maar met de focus op een toegankelijke methode zal er voornamelijk gefocust worden op open-source frameworks. Zo lijst \textcite{Eswaran2022} de verschillende variaties op een open-source 5G-framework voor private 5G-netwerken op:
 
@@ -242,11 +270,10 @@ Hieronder is een figuur die het hele 4G-/ 5G netwerk omvat. De reden dat 4G toch
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/Open5GS-Schema.jpg}
-  \caption{Gesimuleerd 5G-netwerk met Open5GS. \autocite[Door][Copyright 2021 van \textcite{Lee2021}]{Lee2021}}
+  \caption{Gesimuleerd 5G-netwerk met Open5GS. \autocite[Door][Copyright 2021 van]{Lee2021} \textcite{Lee2021}}
   \label{fig:open5gs-schema}
 \end{figure}
 
-%TODO: Uitleggen van de figuur
 \textbf{5G \gls{nsa} Core}\\\\
 Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
 
@@ -281,12 +308,18 @@ Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
 
 Verder stelt \textcite{Lee2025a} ook dat 5G \gls{sa} gebruik maakt van een \gls{sba}. Dit betekent dat een duidelijke scheiding is tussen de Control Plan functies, geregistreerd in de \gls{nrf}, en de User Plane. Deze laatste bevat maar \'e\'en functie, namelijk de \gls{upf}.
 
+Aangezien de simulatie via \gls{open5gs} wordt gedeployd en gekeken wordt vanuit een vervanging van het \gls{dect}-systeem, zal er geopteerd worden voor een 5G \gls{sa} Core. Om deze manier moet er niet eerst een 4G netwerk worden opgezet.
+
+Verder zullen de \gls{gnb} en \gls{ue} worden gesimuleerd met \gls{ueransim}. Dit is ook een bijdragende factor voor de keuze voor de \gls{sa} opstelling, aangezien \gls{ueransim} enkel met dit type netwerken kan werken. Het is wel belangrijk om te vermelden dat \gls{ueransim} geen active ontwikkeling meer kent.
+
 \subsubsection{\IfLanguageName{dutch}{Slicing}{Slicing}}
 \label{sec:Slicing}
 
+%TODO:
+
 Shan2023
 
-
+Foukas2017
 
 \subsubsection{\IfLanguageName{dutch}{Kosten}{Costs}}
 \label{sec:Cost}
@@ -356,7 +389,7 @@ Verder onderzoek door \textcite{Das2012} toont aan dat \gls{ule} ook een goede o
 \end{figure}
 
 
-Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de channels die worden gebruikt door \gls{ule}. Verder wordt er naar de kans dat een channel selectie faalt in het \gls{ule}-systeem, de vertraging op communicatie en de gehele performantie vna het netwerk onder verschillende belastingen. Hieronder zijn een overzicht van de mogelijke channels die\gls{ule} kan gebruiken.
+Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de channels die worden gebruikt door \gls{ule}. Verder wordt er naar de kans dat een channel selectie faalt in het \gls{ule}-systeem, de vertraging op communicatie en de gehele performantie vna het netwerk onder verschillende belastingen. Hieronder zijn een overzicht van de mogelijke channels die\gls{ule} kan gebruiken. Deze verschillende channels kan worden geïnterpreteerd als het \gls{ule} alternatief voor het 5G slicen.
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/ULE-channels.jpg}
@@ -379,6 +412,7 @@ Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de channels die wo
 
 Echter, \textcite{Soenmez2018} bevestigt wel dat er een groot aanvalsoppervlak bestaat. Zo heeft de \gls{voipsa} een lijst gepubliceerd met 6 beveiligingspunten waar countermeasures moeten geinstalleerd worden om een veilige omgeving te garanderen.
 
+%TODO:
 %TODO verklaar
 \section{\IfLanguageName{dutch}{Data}{Data}}%
 \label{sec:data}%
@@ -413,7 +447,7 @@ Als al deze principes worden toegepast, kan men stellen dat er voldaan is aan de
 \subsection{\IfLanguageName{dutch}{Wetgevingen}{Laws}}%
 \label{sec:wet}%
 
-%TODO Uitgebreider !!!
+%TODO: Uitgebreider !!!
 
 Sinds 27 april 2016 is de verordening 2016/679 van toepassing. Deze start de \gls{gdpr} (General Data Protection Regulation) in de Europese Unie. De verordening 2016/679 vermeldt dat "regels worden vastgelegd betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en het vrije verkeer van persoonsgegevens. Het beschermt de grondrechten en de fundamentele vrijheden van natuurlijke personen, met name hun recht op bescherming van persoonsgegeven."\\ (Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016) %\autocite{gdpr2016} 
 \\\\

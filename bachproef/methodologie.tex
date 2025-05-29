@@ -37,8 +37,10 @@ De bachelorproef verloopt in de volgende fasen:
 
 \begin{enumerate}
   \item Research / Voorbereiding
-  \item In dienst stellen / Setup
-  \item Gebruik en testen
+  \item Set-up \gls{poc}
+  \item Testing \gls{poc}
+  \item Automatisatie \gls{poc}
+  \item Testing geautomatiseerde \gls{poc}
   \item Conclusie
 \end{enumerate}
 
@@ -46,38 +48,31 @@ De bachelorproef verloopt in de volgende fasen:
 \label{sec:prep}%
 De eerste vraag die moet gesteld worden is: \textit{''Hoe kan de informatie-uitwisseling tussen artsen en verplegend personeel in ziekenhuizen verbeterd worden door het inzetten van nieuwe technologieën?''}.\\ 
 
-Hiermee wordt de onderzoeksfase gestart. De eerste stap van de onderzoeksfase is het in kaart brengen van het huidige DECT-systeem. Dit zal bekeken worden vanuit een algemeen overzicht. Het doel is om de werking en kenmerken van het DECT-systeem in kaart te brengen. Hiermee formuleren we een antwoord op de vraag: \textit{Wat zijn de kenmerken van het \gls{dect}-systeem?}\\
-Vervolgens wordt er een opvolgvraag gesteld: \textit{''Wat is het huidige systeem (met \hyphenation{rand-apparatuur}randapparatuur) en wat zijn de nadelen hiervan?''} Hiermee wordt er diepgaand onderzoek gedaan naar het huidige systeem en zijn nadelen. Deze nadelen worden verzameld om achteraf deze te vergelijken het het alternatief.\\ Omdat deze bachelorproef in samenwerking is met 360° Zorglab, zal er onderzocht moeten worden \textit{''Hoe kan een zorgsimulatie worden gesimuleerd?''}. Als dit gekend is kan er een stappenplan worden opgesteld om het alternatief te testen in zo'n simulatie.
+Hiermee wordt de onderzoeksfase gestart. De eerste stap van de onderzoeksfase is het in kaart brengen van het huidige \gls{dect}-systeem. Dit zal bekeken worden vanuit een algemeen overzicht. Het doel is om de werking en kenmerken van het \gls{dect}-systeem in kaart te brengen. Hiermee formuleren we een antwoord op de vraag: \textit{Wat zijn de kenmerken van het \gls{dect}-systeem?}\\
+Vervolgens wordt er een vervolgvraag gesteld: \textit{''Wat is het huidige systeem (met \hyphenation{rand-apparatuur}randapparatuur) en wat zijn de nadelen hiervan?''} Hiermee wordt er diepgaand onderzoek gedaan naar het huidige systeem en zijn nadelen. Deze nadelen worden verzameld om achteraf deze te vergelijken het het alternatief.\\ Omdat deze bachelorproef in samenwerking is met 360° Zorglab, zal er onderzocht moeten worden \textit{''Hoe kan een zorgsimulatie worden gesimuleerd?''}. Als dit gekend is kan er een stappenplan worden opgesteld om het alternatief te testen in zo'n simulatie.
 Nadat deze vragen te hebben beantwoord, is het probleem volledig in kaart gebracht.\\
 
-% \item \textit{Welke pogingen zijn al ondernomen om het DECT-systeem als standaard te vervangen?}
+% \item \textit{Welke pogingen zijn al ondernomen om het \gls{dect}-systeem als standaard te vervangen?}
 % \item \textit{Wat zijn de minimum vereisten voor technologieën, om als alternatief te kunnen \\worden beschouwd?}
 % \item \textit{Welke andere communicatie mogelijkheden zijn er die voldoen aan de minimum vereisten?}
 % \item \textit{Welke mogelijke data-integratie mogelijkheden hebben de alternatieven?}
 
 
-Zodra het probleem volledig is gekend, kan men aan de oplossing beginnen. Zo is het belangrijk om te weten: \textit{''Welke pogingen zijn al ondernomen om het DECT-systeem als standaard aan te passen?''} Dit kan inzicht geven in de mogelijke oplossingen. Verder kan men leren uit de tekortkomingen van vorige pogingen. In combinatie met de vorige pogingen voor een standaardverandering is het noodzakelijk om testbare minimumvereisen te hebben of met andere woorden \textit{''Wat zijn de minimum vereisten voor technologieën, om als alternatief te kunnen worden beschouwd?''} (Zie hoofdstuk \ref{sec:req}). 
-Eenmaal de minimum vereisten gekend zijn kunnen de opgelijste alternatieven onderworpen worden aan deze eisen (zie hoofdstuk \ref{sec:andere}). Als tussenstap in deze controle wordt elk alternatief ook getoetst op: \textit{''Welke mogelijke data-integratie mogelijkheden hebben de alternatieven?''}. Op deze manier is er een duidelijk antwoord op mogelijke verdere stappen na de bachelorproef voor automatisatie van foutanalyse of foutieve alarmen, met als doel de alarmmoeheid te verminderen en een betere zorg te kunnen bieden aan de patiënt (zie hoofdstuk \ref{sec:data}).
+Zodra het probleem volledig is gekend, kan men aan de oplossing beginnen. Zo is het belangrijk om te weten: \textit{''Welke pogingen zijn al ondernomen om het \gls{dect} -systeem als standaard aan te passen?''} Dit kan inzicht geven in de mogelijke oplossingen. Verder kan men leren uit de tekortkomingen van vorige pogingen. In combinatie met de vorige pogingen voor een standaardverandering is het noodzakelijk om testbare minimumvereisen te hebben of met andere woorden \textit{''Wat zijn de minimum vereisten voor technologieën, om als alternatief te kunnen worden beschouwd?''} (Zie hoofdstuk \ref{sec:req}). 
+Eenmaal de minimum vereisten gekend zijn kunnen de opgelijste alternatieven onderworpen worden aan deze eisen (zie hoofdstuk \ref{sec:andere}). Als tussenstap in deze controle wordt elk alternatief ook getoetst op: \textit{''Welke mogelijke data integratie mogelijkheden hebben de alternatieven?''}. Op deze manier is er een duidelijk antwoord op mogelijke verdere stappen na de bachelorproef voor automatisatie van foutanalyse of foutieve alarmen, met als doel de alarmmoeheid te verminderen en een betere zorg te kunnen bieden aan de patiënt (zie hoofdstuk \ref{sec:data}).
 
 
 % Deze vraag kan enkel beantwoord worden na een kort onderzoek in de verschillende frameworks, architecturen. Als besluit van dit onderzoek zal er een vergelijkende studie zijn. Hieruit wordt het best passende framework gekozen.
 % Als vervolg op de keuze van het framework zullen de technische specificaties worden vastgelegd en opgelijst. Dit is een noodzakelijke stap om in de conclusie op het einde een duidelijk beeld te kunnen krijgen van mogelijke upsizing.\\
 % De volgende deelvraag is: \textit{''Hoe kan een 5G-netwerk een oplossing bieden?''}.\\ Met deze vraag wordt er dieper onderzoek gedaan naar de huidige 5G-systemen/-frameworks. De laatste deelvraag van de research-/voorbereidingsfase is: \textit{''Hoe moet het 5G-netwerk eruitzien, rekening houdend met framework en scaling?''}\\ Hoewel dit de laatste stap is in de voorbereidende fase, is deze cruciaal voor alle verdere fases. Hier wordt alle informatie vergaard in de researchfase en in een netwerkschema/-topologie verwerkt. Dit zal als leidraad worden gebruikt in het verdere verloop van de bachelorproef.
 
-\section{\IfLanguageName{dutch}{In dienst stellen / Setup-fase}{Setupphase}}%
-\label{sec:setup}%
-De 
-
-
-Deze bachelorproef zal bestaan uit 2 \gls{poc}'s. De eerste zal een simulatie zijn die lokaal op de pc werkt. Het tweede deel is een praktische realisatie, met de artikelen opgelijst in de technische specificaties.
-
 \section{\IfLanguageName{dutch}{POC: Lokale testomgeving}{poc}}%
 \label{sec:poc1}%
-Deze fase bestaat uit het omzetten van de verworven theorie naar een \gls{poc}. Er wordt lokaal op de de laptop van de student een 5G netwerk gerealiseerd. in een eerste fase zal dit manueel worden opgezet. Nadien wordt dit voor ver mogelijk geautomatiseerd. Hiervoor worden volgende tools gebruikt:
+Deze fase bestaat uit het omzetten van de verworven theorie naar een \gls{poc}. Er wordt lokaal op de laptop van de student een 5G netwerk gerealiseerd. in een eerste fase zal dit manueel worden opgezet. Nadien wordt dit voor ver mogelijk geautomatiseerd. Hiervoor worden volgende tools gebruikt:
 
 \begin{itemize}
     \item Vagrant
-    \item Bash-scripting
+    \item Bash scripting
     \item VirtualBox
 \end{itemize}
 
@@ -91,5 +86,5 @@ Het doel van deze fase is het testen van de opstelling. Dit is voor optimalisati
 \label{sec:conclusion}
 In de conclusie is er maar \'{e}\'{e}n doel. Dit is de onderzoeksvraag beantwoorden: \textit{''Hoe kan de informatie-uitwisseling tussen artsen en verplegend personeel in ziekenhuizen verbeterd worden door het inzetten van nieuwe technologieën?''} (Zie hoofdstuk \ref{ch:conclusie}: Conclusie). In deze fase wordt alles uit vorige fases verzameld en verwerkt tot een concreet antwoord en een conclusie op deze vraag. Het eindresultaat zal de bachelorproef zijn. 
 \\\\
-Doorheen de hele bachelorproef wordt verwacht dat er een open en directe communicatie is tussen de student en de co-promotoren. Dit is belangrijk omwille van het einddoel van de bachelorproef. Hoewel de onderzoeksvraag een antwoord wil op mogelijke vervanging/integratie, is het de bedoeling dat de tweede \gls{poc} in gebruik kan worden genomen door de Hogeschool Gent Departement Gezondheidszorg. Met als doel om de start te zijn voor verderonderzoek naar een oplossing en een mogelijke simulatie te kunnen bieden aan de studenten van een vervangoptie van het DECT-systeem, om alarmmoeheid tegen te gaan.
+Doorheen de hele bachelorproef wordt verwacht dat er een open en directe communicatie is tussen de student en de copromotoren. Dit is belangrijk omwille van het einddoel van de bachelorproef. Hoewel de onderzoeksvraag een antwoord wil op mogelijke vervanging/integratie, is het de bedoeling dat de tweede \gls{poc} in gebruik kan worden genomen door de Hogeschool Gent Departement Gezondheidszorg. Met als doel om de start te zijn voor verder onderzoek naar een oplossing en een mogelijke simulatie te kunnen bieden aan de studenten van een vervanging van het \gls{dect}-systeem, om alarmmoeheid tegen te gaan.
 
