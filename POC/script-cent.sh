@@ -1,4 +1,4 @@
-# Script to install Open5GS and UERANSIM on Ubuntu 22.04
+# Script to install Open5GS on Ubuntu 22.04
 #Device: Conductur / Centrale
 #-----------------------------------------------------------
 #Install MongoDB for Open5GS

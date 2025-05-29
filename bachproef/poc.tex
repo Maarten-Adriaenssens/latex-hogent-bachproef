@@ -71,37 +71,9 @@ Vervolgens wordt op de 2de \gls{vm}, ook wel de Member \gls{vm} genoemd, \gls{ue
 
 De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref{ch:InstallationGuide}.
 
-Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. Echter some configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd.
+Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. De Vagrantfile is samen met de installatiescripten toegevoegd aan de bijlagen (zie hoofdstuk \ref{ch:vagrant}). Echter sommige configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd, deze wordt verduidelijkt verder in dit hoofdstuk.
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrantfile]
-Vagrant.configure("2") do |config|
-    config.vm.provider "virtualbox" do |vb|
-    # Stel de gedeelde map in om automatisch te mounten
-    vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
-    end
-
-    config.vm.define "conductor" do |cond|
-        cond.vm.box = "gusztavvargadr/ubuntu-server"
-        cond.vm.box_version = "2404.0.2503"
-        cond.vm.hostname = "Centrale"        # Set the host name of the VM
-        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"        # Set portforwarding
-
-        cond.vm.provider "virtualbox" do |vb|        # VirtualBox specific configuration
-            # VirtualBox Display Name
-            vb.name = "Centrale"
-            # VirtualBox Group
-            vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
-            # 1GB vRAM
-            vb.memory = "8192"
-            # 1vCPU
-            vb.cpus = "2"
-        end
-        cond.vm.provision "shell", path: "script-cent.sh"
-    end
-end
-\end{lstlisting}
-
-Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: \verb|vagrant up|'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
+Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: 'vagrant up'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Build Script]
 Start-Transcript -Path "vagrant.log"
