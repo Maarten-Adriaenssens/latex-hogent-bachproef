@@ -2,13 +2,12 @@
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrantfile]
 Vagrant.configure("2") do |config|
     config.vm.provider "virtualbox" do |vb|
-    # Stel de gedeelde map in om automatisch te mounten
-    vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
+        # Stel de gedeelde map in om automatisch te mounten
+        vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
     end
 
     # Server 1
     config.vm.define "conductor" do |cond|
-        # This is the base image for the VM - do not change this!
         cond.vm.box = "gusztavvargadr/ubuntu-server"
         cond.vm.box_version = "2404.0.2503"
         cond.vm.network "private_network", ip: "10.0.0.10"

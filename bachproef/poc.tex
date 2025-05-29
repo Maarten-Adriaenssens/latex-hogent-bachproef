@@ -285,26 +285,37 @@ Na de configuratie sla de subscriber op. Nu is het netwerk volledige geconfigure
 
 %TODO: Run uitleggen en aantonen dat het werkt ???
 Om de simulatie te starten is het noodzakelijk om een 2de ssh sessie te openen.
-In de eerste sessie start je de \gls{gnb} module. Dit wordt gestart aan de hand van de volgende commando's
+In de eerste sessie start je de \gls{gnb} module. Dit wordt gestart aan de hand van de volgende commando's met hun corresponderende resultaat:
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=gNB start]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=gNB run en resultaat]
 cd ~/UERANSIM/build
-./nr-gnb -c ../config/open5gs-gnb.yaml
+vagrant@ue:~/UERANSIM/build$ ./nr-gnb -c ../config/open5gs-gnb.yaml
+
+UERANSIM v3.2.7
+[2025-05-29 10:23:08.261] [sctp] [info] Trying to establish SCTP connection... (10.0.0.10:38412)
+[2025-05-29 10:23:08.343] [sctp] [info] SCTP connection established (10.0.0.10:38412)
+[2025-05-29 10:23:08.343] [sctp] [debug] SCTP association setup ascId[3]
+[2025-05-29 10:23:08.343] [ngap] [debug] Sending NG Setup Request
+[2025-05-29 10:23:08.349] [ngap] [debug] NG Setup Response received
+[2025-05-29 10:23:08.349] [ngap] [info] NG Setup procedure is successful
+[2025-05-29 10:23:59.177] [rrc] [debug] UE[1] new signal detected
+[2025-05-29 10:23:59.179] [rrc] [info] RRC Setup for UE[1]
+[2025-05-29 10:23:59.180] [ngap] [debug] Initial NAS message received from UE[1]
+[2025-05-29 10:23:59.207] [ngap] [debug] Initial Context Setup Request received
+[2025-05-29 10:23:59.439] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
+[2025-05-29 10:24:04.086] [rls] [debug] UE[1] signal lost
+[2025-05-29 10:24:05.848] [rrc] [debug] UE[2] new signal detected
+[2025-05-29 10:24:05.850] [rrc] [info] RRC Setup for UE[2]
+[2025-05-29 10:24:05.851] [ngap] [debug] Initial NAS message received from UE[2]
+[2025-05-29 10:24:05.867] [ngap] [debug] UE Context Release Command received
+[2025-05-29 10:24:05.867] [rrc] [info] Releasing RRC connection for UE[1]
+[2025-05-29 10:24:05.874] [ngap] [debug] Initial Context Setup Request received
+[2025-05-29 10:24:06.094] [ngap] [info] PDU session resource(s) setup for UE[2] count[1]
 \end{lstlisting}
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=UE start]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=UE run en resultaat]
 cd ~/UERANSIM/build
-./nr-ue -c ../config/open5gs-ue.yaml
-\end{lstlisting}
-
-Als de connectie is geslaagd kan dit op meerdere manieren worden nagekeken. Om te beginnen moet er in de temrinals volgende code verschijnen:
-
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat gNB]
-cd ~/UERANSIM/build
-./nr-gnb -c ../config/open5gs-gnb.yaml
-\end{lstlisting}
-
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat UE]vagrant@Centrale:~/UERANSIM/build$ sudo ./nr-ue -c ../config/open5gs-ue.yaml
+vagrant@Centrale:~/UERANSIM/build$ sudo ./nr-ue -c ../config/open5gs-ue.yaml
 
 UERANSIM v3.2.7
 [2025-05-29 08:05:17.683] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
@@ -362,7 +373,19 @@ Om te controleren of de setup is gelukt zijn er verschillende testen die kunnen 
     \item Wireshark
 \end{enumerate}
 
+\subsection{\IfLanguageName{dutch}{Netwerkkaart}{network interface card}}%
+\label{sec:Test-NIC}%
 
+
+
+\subsection{\IfLanguageName{dutch}{Ping}{Ping}}%
+\label{sec:Test-ping}%
+
+\subsection{\IfLanguageName{dutch}{Curl}{Curl}}%
+\label{sec:Test-curl}%
+
+\subsection{\IfLanguageName{dutch}{Wireshark}{Wireshark}}%
+\label{sec:Test-capture}%
 
 \section{\IfLanguageName{dutch}{Andere features}{Additional features}}%
 \label{sec:addFeature}%
