@@ -54,3 +54,32 @@ UERANSIM v3.2.7
 [2025-05-29 10:24:05.867] [rrc] [info] Releasing RRC connection for UE[1]
 [2025-05-29 10:24:05.874] [ngap] [debug] Initial Context Setup Request received
 [2025-05-29 10:24:06.094] [ngap] [info] PDU session resource(s) setup for UE[2] count[1]
+
+
+
+vagrant@ue:~$ ping -I uesimtun0 google.Com
+PING google.Com (172.217.20.206) from 10.45.0.3 uesimtun0: 56(84) bytes of data.
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6182 ttl=116 time=25.1 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6183 ttl=116 time=41.6 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6184 ttl=116 time=30.3 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6185 ttl=116 time=38.5 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6186 ttl=116 time=23.5 ms
+--- google.Com ping statistics ---
+6198 packets transmitted, 6195 received, 0.0484027% packet loss, time 6231019ms
+rtt min/avg/max/mdev = 21.394/27.963/159.611/7.694 ms
+vagrant@ue:~$
+
+
+
+vagrant@ue:~$ curl --interface uesimtun0 -X GET "https://httpbin.org/get"
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/8.5.0",
+    "X-Amzn-Trace-Id": "Root=1-683836c9-7cca29e43a4cd009264470d9"
+  },
+  "origin": "91.179.82.137",
+  "url": "https://httpbin.org/get"
+}
