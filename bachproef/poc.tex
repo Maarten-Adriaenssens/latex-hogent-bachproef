@@ -368,24 +368,39 @@ Hieronder twee screenshot met de volledige overview van de terminals.
 Om te controleren of de setup is gelukt zijn er verschillende testen die kunnen worden uitgevoerd.
 \begin{enumerate}
     \item Netwerkkaart
+    \item Wireshark
     \item Ping
     \item Curl
-    \item Wireshark
 \end{enumerate}
 
 \subsection{\IfLanguageName{dutch}{Netwerkkaart}{network interface card}}%
 \label{sec:Test-NIC}%
 
+\subsection{\IfLanguageName{dutch}{Wireshark}{Wireshark}}%
+\label{sec:Test-capture}%
 
+Dit is een stap in het testplan dat blijft lopen tot de laatste stap is afgerond. Op deze manier wordt een optimale netwerk opname gegarandeerd. De opname wordt uitgevoerd vanuit de /vagrant directory. Dit is omdat dit de op voorhand geconfigureerde gedeelde map is. Door de netwerkopname hier uit te voeren, zorgen we ervoor dat de laptop ook aan de opname kan. Hierdoor kan een Wireshark GUI worden gebruikt.
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Tcpdump]
+cd /vagrant/
+sudo tcpdump -i eth1 -n -w traf.pcap
+\end{lstlisting}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{../graphics/POC-wireshark.png}
+    \caption{Network capture in wireshark}
+    \label{fig:wireshark}
+\end{figure}
 
 \subsection{\IfLanguageName{dutch}{Ping}{Ping}}%
 \label{sec:Test-ping}%
 
+
+
 \subsection{\IfLanguageName{dutch}{Curl}{Curl}}%
 \label{sec:Test-curl}%
 
-\subsection{\IfLanguageName{dutch}{Wireshark}{Wireshark}}%
-\label{sec:Test-capture}%
+Na deze controle wordt de netwerkopname stopgezet.
 
 \section{\IfLanguageName{dutch}{Andere features}{Additional features}}%
 \label{sec:addFeature}%
