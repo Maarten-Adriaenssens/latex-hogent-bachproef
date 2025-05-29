@@ -33,3 +33,24 @@ UERANSIM v3.2.7
 
 
 
+vagrant@ue:~/UERANSIM/build$ ./nr-gnb -c ../config/open5gs-gnb.yaml
+UERANSIM v3.2.7
+[2025-05-29 10:23:08.261] [sctp] [info] Trying to establish SCTP connection... (10.0.0.10:38412)
+[2025-05-29 10:23:08.343] [sctp] [info] SCTP connection established (10.0.0.10:38412)
+[2025-05-29 10:23:08.343] [sctp] [debug] SCTP association setup ascId[3]
+[2025-05-29 10:23:08.343] [ngap] [debug] Sending NG Setup Request
+[2025-05-29 10:23:08.349] [ngap] [debug] NG Setup Response received
+[2025-05-29 10:23:08.349] [ngap] [info] NG Setup procedure is successful
+[2025-05-29 10:23:59.177] [rrc] [debug] UE[1] new signal detected
+[2025-05-29 10:23:59.179] [rrc] [info] RRC Setup for UE[1]
+[2025-05-29 10:23:59.180] [ngap] [debug] Initial NAS message received from UE[1]
+[2025-05-29 10:23:59.207] [ngap] [debug] Initial Context Setup Request received
+[2025-05-29 10:23:59.439] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
+[2025-05-29 10:24:04.086] [rls] [debug] UE[1] signal lost
+[2025-05-29 10:24:05.848] [rrc] [debug] UE[2] new signal detected
+[2025-05-29 10:24:05.850] [rrc] [info] RRC Setup for UE[2]
+[2025-05-29 10:24:05.851] [ngap] [debug] Initial NAS message received from UE[2]
+[2025-05-29 10:24:05.867] [ngap] [debug] UE Context Release Command received
+[2025-05-29 10:24:05.867] [rrc] [info] Releasing RRC connection for UE[1]
+[2025-05-29 10:24:05.874] [ngap] [debug] Initial Context Setup Request received
+[2025-05-29 10:24:06.094] [ngap] [info] PDU session resource(s) setup for UE[2] count[1]
