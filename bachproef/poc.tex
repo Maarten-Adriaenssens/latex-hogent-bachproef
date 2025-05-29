@@ -239,7 +239,7 @@ gnbSearchList:
 \subsection{\IfLanguageName{dutch}{Subscriber configuratie}{Subscriber configuration}}%
 \label{sec:subscriber_config}%
 
-Voor de configuratie van de subscriber moet er gebruik gemaakt worden van de \gls{open5gs} Web interface. Hiervoor is er een forward-regel zodat deze via de browser van de host-laptop kan worden geraadpleegd op \lstinline!localhost:9999!. Dan wordt de gebruiker verwelkomd met dit aanmeldscherm:
+Voor de configuratie van de subscriber moet er gebruik gemaakt worden van de \gls{open5gs} Web interface. Hiervoor is er een forward-regel zodat deze via de browser van de host-laptop kan worden geraadpleegd op 'localhost:9999'. Dan wordt de gebruiker verwelkomd met dit aanmeldscherm:
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-WebUI-Login.png}
@@ -381,7 +381,7 @@ Om te controleren of de setup is gelukt zijn er verschillende testen die kunnen 
 
 Dit is een stap in het testplan dat blijft lopen tot de laatste stap is afgerond. Op deze manier wordt een optimale netwerk opname gegarandeerd. De opname wordt uitgevoerd vanuit de /vagrant directory. Dit is omdat dit de op voorhand geconfigureerde gedeelde map is. Door de netwerkopname hier uit te voeren, zorgen we ervoor dat de laptop ook aan de opname kan. Hierdoor kan een Wireshark GUI worden gebruikt.
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Tcpdump]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Test - Tcpdump]
 cd /vagrant/
 sudo tcpdump -i eth1 -n -w traf.pcap
 \end{lstlisting}
@@ -395,15 +395,45 @@ sudo tcpdump -i eth1 -n -w traf.pcap
 \subsection{\IfLanguageName{dutch}{Ping}{Ping}}%
 \label{sec:Test-ping}%
 
-
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Test - Ping]
+    vagrant@ue:~$ ping -I uesimtun0 google.Com
+PING google.Com (172.217.20.206) from 10.45.0.3 uesimtun0: 56(84) bytes of data.
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6182 ttl=116 time=25.1 ms
+...
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6183 ttl=116 time=41.6 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6184 ttl=116 time=30.3 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6185 ttl=116 time=38.5 ms
+64 bytes from par10s41-in-f14.1e100.net (142.250.75.238): icmp_seq=6186 ttl=116 time=23.5 ms
+...
+--- google.Com ping statistics ---
+6198 packets transmitted, 6195 received, 0.0484027% packet loss, time 6231019ms
+rtt min/avg/max/mdev = 21.394/27.963/159.611/7.694 ms
+vagrant@ue:~$
+\end{lstlisting}
 
 \subsection{\IfLanguageName{dutch}{Curl}{Curl}}%
 \label{sec:Test-curl}%
 
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Test - Curl]
+vagrant@ue:~$ curl --interface uesimtun0 -X GET "https://httpbin.org/get"
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/8.5.0",
+    "X-Amzn-Trace-Id": "Root=1-683836c9-7cca29e43a4cd009264470d9"
+  },
+  "origin": "91.179.82.137",
+  "url": "https://httpbin.org/get"
+}
+\end{lstlisting}
+
 Na deze controle wordt de netwerkopname stopgezet.
 
-\section{\IfLanguageName{dutch}{Andere features}{Additional features}}%
-\label{sec:addFeature}%
+\section{\IfLanguageName{dutch}{Mogelijke praktische integraties}{Possible practical integrations}}%
+\label{sec:integrations}%
 
 De simulatie heeft het voordeel dat dit een volledig 5G netwerk kan simuleren, inclusief slicing. Echter zoals aangehaald in hoofdstuk \ref{sec:slicing} de overgang 
 
@@ -415,7 +445,6 @@ De simulatie heeft het voordeel dat dit een volledig 5G netwerk kan simuleren, i
     \label{fig:pocSlicing}
 \end{figure}
 
-\section{\IfLanguageName{dutch}{Mogelijke praktische integraties}{Possible practical integrations}}%
-\label{sec:integrations}%
+
 
 %TODO: Zebra TC27 Handheld Computer en conversie problemen?
