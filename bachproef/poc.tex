@@ -420,7 +420,37 @@ Om te controleren of de setup is gelukt zijn er verschillende testen die kunnen 
 \subsection{\IfLanguageName{dutch}{Netwerkkaart}{network interface card}}%
 \label{sec:Test-NIC}%
 
+Er moet een nieuwe netwerkkaart verschijnen met naam \textbf{uesimtun0}.
+Dit kan op 2 manieren worden gecontrolleerd.
 
+De ene manier is via het commando 'ip a'.
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Test - ip a]
+vagrant@ue:~$ ip a
+... 
+
+7: uesimtun0: <POINTOPOINT,PROMISC,NOTRAILERS,UP,LOWER_UP> mtu 1400 qdisc fq_codel state UNKNOWN group default qlen 500
+    link/none
+    inet 10.45.0.6/24 scope global uesimtun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::d55b:6f3f:aa19:fcf7/64 scope link stable-privacy
+       valid_lft forever preferred_lft forever
+\end{lstlisting}
+
+
+De andere manier is met het commando 'ifconfig'
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Test - ifconfig]
+vagrant@ue:~$ ifconfig
+...
+
+uesimtun0: flags=369<UP,POINTOPOINT,NOTRAILERS,RUNNING,PROMISC>  mtu 1400
+        inet 10.45.0.6  netmask 255.255.255.0  destination 10.45.0.6
+        inet6 fe80::d55b:6f3f:aa19:fcf7  prefixlen 64  scopeid 0x20<link>
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 500  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8  bytes 496 (496.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+\end{lstlisting}
 
 \subsection{\IfLanguageName{dutch}{Wireshark}{Wireshark}}%
 \label{sec:Test-capture}%
