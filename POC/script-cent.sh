@@ -36,7 +36,7 @@ curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
 sudo systemctl start open5gs-webui
 sudo systemctl enable open5gs-webui
 
-sudo sed -i "s/'localhost'/'10.0.0.10'/" /usr/lib/node_modules/open5gs/server/index.js # Change localhost
+sudo sed -i "s/'localhost'/'10.0.2.15'/" /usr/lib/node_modules/open5gs/server/index.js # Change localhost
 sudo systemctl daemon-reload
 sudo systemctl restart open5gs-webui.service
 sudo systemctl restart open5gs-webui
@@ -55,11 +55,11 @@ make
 
 #-----------------------------------------------------------
 #Change IP addresses in Open5GS and UERANSIM configuration files
-# sudo sed -i '23s/127.0.0.5/10.0.2.15/' /etc/open5gs/amf.yaml # Change AMF IP address
-# sudo systemctl restart open5gs-amfd # Restart AMF service to apply changes
-# sudo sed -i 's/127.0.0.1/10.0.2.15/' ~/UERANSIM/config/open5gs-ue.yaml # Change UE IP address
-# sudo sed -i 's/127.0.0.1/10.0.2.15/' ~/UERANSIM/config/open5gs-gnb.yaml # Change gNB IP address
-# sudo sed -i 's/127.0.0.5/10.0.2.15/' ~/UERANSIM/config/open5gs-gnb.yaml # Change gNB AMF IP address
+sudo sed -i '23s/127.0.0.5/10.0.0.10/' /etc/open5gs/amf.yaml # Change AMF IP address
+sudo sed -i '20s/127.0.0.7/10.0.0.10/' /etc/open5gs/upf.yaml # Change UPF IP address
+sudo systemctl daemon-reload # Reload systemd to recognize changes
+sudo systemctl restart open5gs-amfd # Restart AMF service to apply changes
+sudo systemctl restart open5gs-upfd # Restart UPF service to apply changes
 
 #-----------------------------------------------------------
 #NAT Port Forwarding

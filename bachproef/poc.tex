@@ -285,14 +285,43 @@ cd ~/UERANSIM/build
 
 Als de connectie is geslaagd kan dit op meerdere manieren worden nagekeken. Om te beginnen moet er in de temrinals volgende code verschijnen:
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat UE]
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat gNB]
 cd ~/UERANSIM/build
 ./nr-gnb -c ../config/open5gs-gnb.yaml
 \end{lstlisting}
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat gNB]
-cd ~/UERANSIM/build
-./nr-gnb -c ../config/open5gs-gnb.yaml
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat UE]vagrant@Centrale:~/UERANSIM/build$ sudo ./nr-ue -c ../config/open5gs-ue.yaml
+
+UERANSIM v3.2.7
+[2025-05-29 08:05:17.683] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
+[2025-05-29 08:05:17.685] [rrc] [debug] New signal detected for cell[1], total [1] cells in coverage
+[2025-05-29 08:05:17.685] [nas] [info] Selected plmn[999/70]
+[2025-05-29 08:05:17.685] [rrc] [info] Selected cell plmn[999/70] tac[1] category[SUITABLE]
+[2025-05-29 08:05:17.685] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
+[2025-05-29 08:05:17.685] [nas] [info] UE switches to state [MM-DEREGISTERED/NORMAL-SERVICE]
+[2025-05-29 08:05:17.685] [nas] [debug] Initial registration required due to [MM-DEREG-NORMAL-SERVICE]
+[2025-05-29 08:05:17.685] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2025-05-29 08:05:17.686] [nas] [debug] Sending Initial Registration
+[2025-05-29 08:05:17.686] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
+[2025-05-29 08:05:17.686] [rrc] [debug] Sending RRC Setup Request
+[2025-05-29 08:05:17.687] [rrc] [info] RRC connection established
+[2025-05-29 08:05:17.688] [rrc] [info] UE switches to state [RRC-CONNECTED]
+[2025-05-29 08:05:17.688] [nas] [info] UE switches to state [CM-CONNECTED]
+[2025-05-29 08:05:17.697] [nas] [debug] Authentication Request received
+[2025-05-29 08:05:17.697] [nas] [debug] Received SQN [000000000101]
+[2025-05-29 08:05:17.697] [nas] [debug] SQN-MS [000000000000]
+[2025-05-29 08:05:17.701] [nas] [debug] Security Mode Command received
+[2025-05-29 08:05:17.702] [nas] [debug] Selected integrity[2] ciphering[0]
+[2025-05-29 08:05:17.713] [nas] [debug] Registration accept received
+[2025-05-29 08:05:17.713] [nas] [info] UE switches to state [MM-REGISTERED/NORMAL-SERVICE]
+[2025-05-29 08:05:17.713] [nas] [debug] Sending Registration Complete
+[2025-05-29 08:05:17.713] [nas] [info] Initial Registration is successful
+[2025-05-29 08:05:17.713] [nas] [debug] Sending PDU Session Establishment Request
+[2025-05-29 08:05:17.714] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2025-05-29 08:05:17.921] [nas] [debug] Configuration Update Command received
+[2025-05-29 08:05:17.949] [nas] [debug] PDU Session Establishment Accept received
+[2025-05-29 08:05:17.949] [nas] [info] PDU Session establishment is successful PSI[1]
+[2025-05-29 08:05:17.969] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun0, 10.45.0.8] is up.
 \end{lstlisting}
 
 Hieronder twee screenshot met de volledige overview van de terminals.
@@ -310,6 +339,8 @@ Hieronder twee screenshot met de volledige overview van de terminals.
 
 \section{\IfLanguageName{dutch}{Andere features}{Additional features}}%
 \label{sec:addFeature}%
+
+De simulatie heeft het voordeel dat dit een volledig 5G netwerk kan simuleren, inclusief slicing. Echter zoals aangehaald in hoofdstuk \ref{sec:slicing} de overgang 
 
 %TODO: Slicing bespreken
 

@@ -16,6 +16,6 @@ make
 # #Change IP addresses in Open5GS and UERANSIM configuration files
 # sudo sed -i '23s/127.0.0.5/10.0.2.15/' /etc/open5gs/amf.yaml # Change AMF IP address
 # sudo systemctl restart open5gs-amfd # Restart AMF service to apply changes
-# sudo sed -i 's/127.0.0.1/10.0.2.15/' ~/ UERANSIM/config/open5gs-ue.yaml # Change UE IP address
-# sudo sed -i 's/127.0.0.1/10.0.2.15/' ~/ UERANSIM/config/open5gs-gnb.yaml # Change gNB IP address
-# sudo sed -i 's/127.0.0.5/10.0.2.15/' ~/ UERANSIM/config/open5gs-gnb.yaml # Change gNB AMF IP address
+sudo sed -i 's/127.0.0.1/10.0.0.11/' ~/ UERANSIM/config/open5gs-ue.yaml # Change UE IP address
+sudo sed -i 's/127.0.0.1/10.0.0.11/' ~/ UERANSIM/config/open5gs-gnb.yaml # Change gNB IP address
+sudo sed -i 's/127.0.0.5/10.0.0.10/' ~/ UERANSIM/config/open5gs-gnb.yaml # Change gNB AMF IP address
