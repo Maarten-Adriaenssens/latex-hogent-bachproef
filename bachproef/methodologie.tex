@@ -25,7 +25,7 @@
 %%
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
-Tijdens het verloop van de bachelorproef zullen er antwoorden worden vergaard op verschillende deelvragen die helpen de onderzoeksvraag te beantwoorden. Zo zal elke deelvraag deel uitmaken van een onderdeel van de methodologie.
+Tijdens het verloop van de bachelorproef zullen er antwoorden worden vergaard op verschillende deelvragen die helpen de onderzoeksvraag te beantwoorden (zie hoofdstuk \ref{sec:onderzoeksvraag}). Zo zal elke deelvraag deel uitmaken van een onderdeel van de methodologie.
 \\\\
 De bachelorproef verloopt in de volgende fasen:
 
@@ -39,15 +39,14 @@ De bachelorproef verloopt in de volgende fasen:
   \item Research / Voorbereiding
   \item In dienst stellen / Setup
   \item Gebruik en testen
-  \item Realisatiefactor bepaling
   \item Conclusie
 \end{enumerate}
 
 \section{\IfLanguageName{dutch}{Research / Voorbereidingsfase}{Research / Preparationphase}}%
 \label{sec:prep}%
-De eerste vraag die moet gesteld worden is: \textit{''Hoe kunnen technologieën worden ingezet om de communicatie aan te pakken in de gezondheidszorg?''}.\\ 
+De eerste vraag die moet gesteld worden is: \textit{''Hoe kan de informatie-uitwisseling tussen artsen en verplegend personeel in ziekenhuizen verbeterd worden door het inzetten van nieuwe technologieën?''}.\\ 
 
-Hiermee wordt de onderzoeksfase gestart. De eerste stap van de onderzoeksfase is het in kaart brengen van het huidige DECT-systeem. Dit zal bekeken worden vanuit een algemeen overzicht. Het doel is om de werking en kenmerken van het DECT-systeem in kaart te brengen .\\
+Hiermee wordt de onderzoeksfase gestart. De eerste stap van de onderzoeksfase is het in kaart brengen van het huidige DECT-systeem. Dit zal bekeken worden vanuit een algemeen overzicht. Het doel is om de werking en kenmerken van het DECT-systeem in kaart te brengen. Hiermee formuleren we een antwoord op de vraag: \textit{Wat zijn de kenmerken van het \gls{dect}-systeem?}\\
 Vervolgens wordt er een opvolgvraag gesteld: \textit{''Wat is het huidige systeem (met \hyphenation{rand-apparatuur}randapparatuur) en wat zijn de nadelen hiervan?''} Hiermee wordt er diepgaand onderzoek gedaan naar het huidige systeem en zijn nadelen. Deze nadelen worden verzameld om achteraf deze te vergelijken het het alternatief.\\ Omdat deze bachelorproef in samenwerking is met 360° Zorglab, zal er onderzocht moeten worden \textit{''Hoe kan een zorgsimulatie worden gesimuleerd?''}. Als dit gekend is kan er een stappenplan worden opgesteld om het alternatief te testen in zo'n simulatie.
 Nadat deze vragen te hebben beantwoord, is het probleem volledig in kaart gebracht.\\
 
@@ -57,8 +56,8 @@ Nadat deze vragen te hebben beantwoord, is het probleem volledig in kaart gebrac
 % \item \textit{Welke mogelijke data-integratie mogelijkheden hebben de alternatieven?}
 
 
-Zodra het probleem volledig is gekend, kan men aan de oplossing beginnen. Zo is het belangrijk om te weten: \textit{''Welke pogingen zijn al ondernomen om het DECT-systeem als standaard te vervangen?''} Dit kan inzicht geven in de mogelijke oplossingen. Verder kan men leren uit de tekortkomingen van vorige pogingen. In combinatie met de vorige pogingen voor een standaardverandering is het noodzakelijk om testbare minimumvereisen te hebben of met andere woorden \textit{''Wat zijn de minimum vereisten voor technologieën, om als alternatief te kunnen worden beschouwd?''}. 
-Eenmaal de minimum vereisten gekend zijn kunnen de opgelijste alternatieven onderworpen worden aan deze eisen. Als tussenstap in deze controle wordt elk alternatief ook getoetst op: \textit{''Welke mogelijke data-integratie mogelijkheden hebben de alternatieven?''}. Op deze manier is er een duidelijk antwoord op mogelijke verdere stappen na de bachelorproef voor automatisatie van foutanalyse of foutieve alarmen, met als doel de alarmmoeheid te verminderen en een betere zorg te kunnen bieden aan de patiënt.
+Zodra het probleem volledig is gekend, kan men aan de oplossing beginnen. Zo is het belangrijk om te weten: \textit{''Welke pogingen zijn al ondernomen om het DECT-systeem als standaard aan te passen?''} Dit kan inzicht geven in de mogelijke oplossingen. Verder kan men leren uit de tekortkomingen van vorige pogingen. In combinatie met de vorige pogingen voor een standaardverandering is het noodzakelijk om testbare minimumvereisen te hebben of met andere woorden \textit{''Wat zijn de minimum vereisten voor technologieën, om als alternatief te kunnen worden beschouwd?''} (Zie hoofdstuk \ref{sec:req}). 
+Eenmaal de minimum vereisten gekend zijn kunnen de opgelijste alternatieven onderworpen worden aan deze eisen (zie hoofdstuk \ref{sec:andere}). Als tussenstap in deze controle wordt elk alternatief ook getoetst op: \textit{''Welke mogelijke data-integratie mogelijkheden hebben de alternatieven?''}. Op deze manier is er een duidelijk antwoord op mogelijke verdere stappen na de bachelorproef voor automatisatie van foutanalyse of foutieve alarmen, met als doel de alarmmoeheid te verminderen en een betere zorg te kunnen bieden aan de patiënt (zie hoofdstuk \ref{sec:data}).
 
 
 % Deze vraag kan enkel beantwoord worden na een kort onderzoek in de verschillende frameworks, architecturen. Als besluit van dit onderzoek zal er een vergelijkende studie zijn. Hieruit wordt het best passende framework gekozen.
@@ -67,36 +66,30 @@ Eenmaal de minimum vereisten gekend zijn kunnen de opgelijste alternatieven onde
 
 \section{\IfLanguageName{dutch}{In dienst stellen / Setup-fase}{Setupphase}}%
 \label{sec:setup}%
-Deze fase bestaat uit het omzetten van de verworven theorie naar een proof-of-concept (PoC). Deze bachelorproef zal bestaan uit 2 PoC's. De eerste zal een simulatie zijn die lokaal op de pc werkt. Het tweede deel is een praktische realisatie, met de artikelen opgelijst in de technische specificaties.
+De 
 
-\subsection{\IfLanguageName{dutch}{POC : Lokale testomgeving}{poc1}}%
+
+Deze bachelorproef zal bestaan uit 2 \gls{poc}'s. De eerste zal een simulatie zijn die lokaal op de pc werkt. Het tweede deel is een praktische realisatie, met de artikelen opgelijst in de technische specificaties.
+
+\section{\IfLanguageName{dutch}{POC: Lokale testomgeving}{poc}}%
 \label{sec:poc1}%
-De testomgeving wordt opgesteld op de laptop van de student. Dit zal gebruikmaken van de volgende tools:
+Deze fase bestaat uit het omzetten van de verworven theorie naar een \gls{poc}. Er wordt lokaal op de de laptop van de student een 5G netwerk gerealiseerd. in een eerste fase zal dit manueel worden opgezet. Nadien wordt dit voor ver mogelijk geautomatiseerd. Hiervoor worden volgende tools gebruikt:
 
 \begin{itemize}
     \item Vagrant
-    \item Ansible
+    \item Bash-scripting
     \item VirtualBox
 \end{itemize}
 
-Zie hoofdstuk \ref{ch:poc} voor een uitgebreide uitleg van de PoC.
-
-%TODO: rewrite !!!
+Zie hoofdstuk \ref{ch:poc} voor een uitgebreide uitleg van de \gls{poc}.
 
 
-\section{\IfLanguageName{dutch}{Gebruik en testfase}{Usage}}
+\section{\IfLanguageName{dutch}{Testfase}{Testing}}
 \label{sec:use}
-Het doel van deze fase is het gebruiken en testen van de opstelling. Dit is voor optimalisatie, maar ook voor aftoetsing of de minimumvereisten ook in de praktijk zijn bereikt. De gebruik- en testfase verloopt net zoals de setupfase in twee delen. Het eerste deel is het opstellen van een eenduidig en gedetailleerd testplan. Dit gebeurt voor elke PoC. Hierna volgt de uitvoering van deze testplannen op hun respectievelijke PoC. Het is belangrijk dat tijdens de testfase verschillende activiteiten correct worden uitgevoerd. Zo is het noodzakelijk om gedetailleerde notities te hebben in geval van problemen. Een tweede factor die hier nauw bij samenhangt, is de reproduceerbaarheid van de fout of het probleem. Vervolgens zijn de duur en intensiteit van de test belangrijk. Daarom worden de testplannen meerdere malen doorlopen met een vergrotende tijdsduur en belasting- of gebruikintensiteit. Dit alles wordt ook opgenomen in een testverslag dat in de conclusiefase wordt verwerkt. In dit verslag wordt er ook een antwoord geformuleerd op de vraag: \textit{''Hoe kan de proof of concept voor de simulatie worden aangepast om in realiteit te kunnen gebruiken?''}. Dit zal een onderdeel zijn van de conclusie van het testverslag. Als laatste stap wordt een antwoord geformuleerd op de vraag: \textit{''Welke eigenschappen van het alternatief hebben een vermindering in alarmmoeheid als gevolg?''}.
-
-\section{\IfLanguageName{dutch}{Realisatiefactor bepaling}{realisation}}
-\label{sec:realisation}
-%TODO: Rewrite
-Deze fase is er om een antwoord te bieden op de vraag: \textit{''Vanaf wanneer is het haalbaar om te implementeren op economisch vlak?''}. Deze vraag komt vanuit Citymesh. Als antwoord hierop wordt er gekeken naar de gradatie van het netwerk en de voordelen ten opzichte van de kosten. Deze afweging wordt zowel gemaakt voor kleine als grote ziekenhuizen. Deze afweging wordt dan gebundeld om het kantelpunt te achterhalen. \\ Voor deze bepaling wordt er gebruikgemaakt van zowel installatiekost als onderhoudskosten, maar ook van de voordelen die nieuwere systemen hebben ten opzichte van het personeel en hun efficiëntie en effectiviteit. 
-Zie hoofdstuk \ref{ch:financieel} voor een uitgebreide uitleg van de realisatiefactor of het financieel overzicht.
-
+Het doel van deze fase is het testen van de opstelling. Dit is voor optimalisatie, maar ook voor aftoetsing of de minimumvereisten ook in de praktijk zijn bereikt. Het is belangrijk dat tijdens de testfase verschillende activiteiten correct worden uitgevoerd. Hiermee wordt bedoelt dat men eerst moet zeker zijn dat het stappenplan in de manuele vorm voldoet, alvorens men met automatisatie begint. Verder is het noodzakelijk om gedetailleerde notities te hebben in geval van problemen. Een tweede factor die hier nauw bij samenhangt, is de reproduceerbaarheid van de fout of het probleem.  Dit alles wordt ook opgenomen in het hoofdstuk \ref{ch:poc} om nadien in de conclusiefase te worden verwerkt. In dit verslag wordt er ook een antwoord geformuleerd op de vraag: \textit{''Hoe kan de proof of concept voor de simulatie worden aangepast om in realiteit te kunnen gebruiken?''} (zie hoofdstuk \ref{sec:integration}). Dit zal een onderdeel zijn van de conclusie van het testverslag.
 \section{\IfLanguageName{dutch}{Conclusie}{conclusion}}
 \label{sec:conclusion}
-In de conclusie is er maar één doel. Dit is de onderzoeksvraag beantwoorden: \textit{''Hoe kunnen technologieën worden ingezet om de communicatie aan te pakken in de gezondheidszorg?''}. In deze fase wordt alles uit vorige fases verzameld en verwerkt tot een concreet antwoord en een conclusie op deze vraag. Het eindresultaat zal de bachelorproef zijn. Tenslotte wordt er een korte vergelijking gemaakt van het DECT-systeem met de PoC.
+In de conclusie is er maar \'{e}\'{e}n doel. Dit is de onderzoeksvraag beantwoorden: \textit{''Hoe kan de informatie-uitwisseling tussen artsen en verplegend personeel in ziekenhuizen verbeterd worden door het inzetten van nieuwe technologieën?''} (Zie hoofdstuk \ref{ch:conclusie}: Conclusie). In deze fase wordt alles uit vorige fases verzameld en verwerkt tot een concreet antwoord en een conclusie op deze vraag. Het eindresultaat zal de bachelorproef zijn. 
 \\\\
-Doorheen de hele bachelorproef wordt verwacht dat er een open en directe communicatie is tussen de student en de co-promotoren. Dit is belangrijk omwille van het einddoel van de bachelorproef. Hoewel de onderzoeksvraag een antwoord wil op mogelijke vervanging/integratie, is het de bedoeling dat de tweede PoC in gebruik kan worden genomen door de Hogeschool Gent Departement Gezondheidszorg. Met als doel om een simulatie te kunnen bieden aan de studenten van een vervangoptie van het DECT-systeem, om alarmmoeheid tegen te gaan.
+Doorheen de hele bachelorproef wordt verwacht dat er een open en directe communicatie is tussen de student en de co-promotoren. Dit is belangrijk omwille van het einddoel van de bachelorproef. Hoewel de onderzoeksvraag een antwoord wil op mogelijke vervanging/integratie, is het de bedoeling dat de tweede \gls{poc} in gebruik kan worden genomen door de Hogeschool Gent Departement Gezondheidszorg. Met als doel om de start te zijn voor verderonderzoek naar een oplossing en een mogelijke simulatie te kunnen bieden aan de studenten van een vervangoptie van het DECT-systeem, om alarmmoeheid tegen te gaan.
 
