@@ -54,6 +54,6 @@ Vagrant.configure("2") do |config|
             # 1vCPU
             vb2.cpus = "2"
         end
-        # cond.vm.provision "shell", path: "script-ue.sh"
+        memb.vm.provision "shell", path: "script-ue.sh"
     end
 end
