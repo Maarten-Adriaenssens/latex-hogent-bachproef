@@ -69,10 +69,9 @@ De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}
 
 Vervolgens wordt op de 2de \gls{vm}, ook wel de Member \gls{vm} genoemd, \gls{ueransim} geinstalleerd om de installatie-fase te finaliseren. 
 
-De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref{ch:InstallationGuide}.
+De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref{ch:InstallationGuide}.\\
 
-Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. De Vagrantfile is samen met de installatiescripten toegevoegd aan de bijlagen (zie hoofdstuk \ref{ch:vagrant}). Echter sommige configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd, deze wordt verduidelijkt verder in dit hoofdstuk.
-
+Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. De Vagrantfile is samen met de installatiescripten toegevoegd aan de bijlagen (zie hoofdstuk \ref{ch:vagrant}). Echter sommige configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd, deze wordt verduidelijkt verder in dit hoofdstuk.\\
 Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: 'vagrant up'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Build Script]
@@ -101,8 +100,8 @@ De manuale configuratie bestaat uit 4 delen:
     \item gNB configuratie
 \end{itemize}
 
-Eerst wordt er gekeken naar de huidige IP van de \gls{vm}, dit via het \verb|ip a| commando. Hier kan men het IP adres van de netwerkkaar eth0. Dit IP adres zal worden gebruikt voor verdere configuratie. In het geval van de\gls{poc}, is dit 10.0.2.15
-
+Eerst wordt er gekeken naar de huidige IP van de \gls{vm}'s, dit via het 'ip a' commando. Hier kan men het IP adres van de netwerkkaar eth1. Deze IP adres zullen worden gebruikt voor verdere configuratie. In het geval van de\gls{poc}, is dit 10.0.0.10 en 10.0.0.10
+%TODO: change to new
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=IP configuratie]
 vagrant@Centrale:~/UERANSIM/config$ ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
