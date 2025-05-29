@@ -49,6 +49,7 @@
 \usepackage{listings}
 \usepackage[numbers]{natbib}
 \usepackage{float}
+\usepackage{tabularx}
 %%---------- Afkortingen en woordverklaringen -------------------------------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[acronym, toc]{glossaries}
@@ -71,7 +72,7 @@
 \newacronym{voip}{VoIP}{Voice over IP}
 \newacronym{qos}{QOS}{Quality of Service}
 \newacronym{ran}{RAN}{Radio Access Network}
-\newacronym{ai}{AI}{Artificiele Intelligent}
+\newacronym{ai}{AI}{Artificiele Intelligentie}
 \newacronym{o-ran}{O-RAN}{Open Radio Access Network}
 \newacronym{5gnr}{5G NR}{Fifth Generation New Radio}
 \newacronym{oam}{OAM}{Operations, Administration \& Maintenance}
@@ -87,7 +88,6 @@
 \newacronym{nis2}{NIS2}{Network and Information Security 2-richtlijn}
 \newacronym{ehds}{EHDS}{European Healthcare Data Space}
 \newacronym{sdr}{SDR}{Software Defined Radio}
-\newacronym{ueransim}{UERANSIM}{open source state-of-the-art 5G UE and RAN (gNodeB) simulator}
 \newacronym{ue}{UE}{User Equipment}
 \newacronym{srs}{SRS}{Software Radio Systems}
 \newacronym{e2e}{E2E}{End to end}
@@ -124,6 +124,8 @@
 \newacronym{gnb}{gNB}{gNodeB of Next Generation Node B}
 \newacronym{amf}{AMF}{Authentication Management Field}
 \newacronym{imsi}{IMSI}{international mobile subscriber identity}
+\newacronym{gtp}{GTP}{GPRS Tunnelling Protocol}
+\newacronym{ciot}{CIoT}{Cellular Internet of Things}
 
 
 %Woordverklaring
@@ -135,9 +137,13 @@
 \newglossaryentry{open5gs}
 {
     name=Open5GS,
-    description={Open-source software that simulates the 5G core network.},
+    description={Open-source software dat een 5G core netwerk simuleert.},
 }
-
+\newglossary{ueransim}
+{
+    name=UERANSIM,
+    description={Open-source state-of-the-art 5G UE en RAN (gNodeB) simulator.},
+}
 
 
 
