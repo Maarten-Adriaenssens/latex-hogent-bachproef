@@ -5,15 +5,15 @@
 \label{sec:sim}%
 De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs} en \gls{ueransim}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy. 
 
-De opbouw van de simulatie zal in 2 fases gebeuren. \\De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een 5G core server en een 5G RAN server. In de simulatie zal de 5G Core server \gls{open5gs} en de 5G RAN server zan UERANSIM draaien als simulatie software. Op de 5 RAN Server zijn opzich nog 2 deel elementen aanwezig die verbinden met het netwerk \gls{gnb} en een \gls{ue}. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}. Hieronder is een schematische weergaven van de opstelling in de simulatie. 
+De opbouw van de simulatie zal in 2 fases gebeuren. \\De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een 5G core server en een 5G RAN server. In de simulatie zal de 5G Core server \gls{open5gs} en de 5G RAN server van UERANSIM draaien als simulatie software. Op de 5 RAN Server zijn op zich nog 2 deel elementen aanwezig die verbinden met het netwerk \gls{gnb} en een \gls{ue}. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}. Hieronder is een schematische weergaven van de opstelling in de simulatie. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-setup.png}
-    \caption{POC Setup}
+    \caption{POC Set-up (Illustratie)}
     \label{fig:poc-setup}
 \end{figure}
 
-Voor de hardware configuratie is er voor de volgende setup gekozen:
+Voor de hardware configuratie is er voor de volgende set-up gekozen:
 
 \begin{table}[H]
 \centering
@@ -58,7 +58,7 @@ De installatie bestaat uit 3 delen:
     \item UERANSIM
 \end{itemize}
 
-De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a} enwordt enkel uitgevoerd op de 5G Core Server (of Conductor \gls{vm}):
+De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a} en wordt enkel uitgevoerd op de 5G Core Server (of Conductor \gls{vm}):
 
 \begin{enumerate}
     \item Installatie van afhankelijkheden/vereisten
@@ -67,11 +67,11 @@ De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}
     \item Starten van de \gls{open5gs} services
 \end{enumerate}
 
-Vervolgens wordt op de 2de \gls{vm}, ook wel de Member \gls{vm} genoemd, \gls{ueransim} geinstalleerd om de installatie-fase te finaliseren. 
+Vervolgens wordt op de 2de \gls{vm}, ook wel de Member \gls{vm} genoemd, \gls{ueransim} geïnstalleerd om de installatiefase te finaliseren. 
 
 De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref{ch:InstallationGuide}.\\
 
-Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. De Vagrantfile is samen met de installatiescripten toegevoegd aan de bijlagen (zie Bijlagen \ref{ch:InstallationGuide} en \ref{ch:vagrant}). Echter sommige configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd, deze wordt verduidelijkt verder in dit hoofdstuk.\\
+Er zijn ook eigen configuratie aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatie script voor de simulatie. De Vagrantfile is samen met de installatiescripten toegevoegd aan de bijlagen (zie Bijlagen \ref{ch:InstallationGuide} en \ref{ch:vagrant}). Echter sommige configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd, deze wordt verduidelijkt verder in dit hoofdstuk.\\
 Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: \lstinline!vagrant up!. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Build Script]
@@ -84,11 +84,11 @@ Stop-Transcript
 \section{\IfLanguageName{dutch}{Configuratie}{Configuration}}%
 \label{sec:Config}%
 
-De automatische configuratie wordt gedeployed door het oproepen van een script. Dit is geschreven in bash voor linux, terug te vinden in de bijlagen (Bijlage \ref{ch:vagrant}).\\
+De automatische configuratie wordt gedeployd door het oproepen van een script. Dit is geschreven in bash voor Linux, terug te vinden in de bijlagen (Bijlage \ref{ch:vagrant}).\\
 
-Het einde van de automatische configuratie kan worden gedetecteerd aan de hand van de log file ide woerdt gegenereerd tijdens de installatie in de githubrepo. Deze log fie, vagrant.log, is beschikbaar door de shared folder die wordt aangemaakt in het begin van de \gls{vm} installatie. \\
+Het einde van de automatische configuratie kan worden gedetecteerd aan de hand van de log file die wordt gegenereerd tijdens de installatie in de github-repopository. Deze log file, vagrant.log, is beschikbaar door de shared folder die wordt aangemaakt in het begin van de \gls{vm} installatie. \\
 
-Eenmaal de configuratie klaar is moet enkel de handmatige confiuratie gebeuren.
+Eenmaal de configuratie klaar is moet enkel de handmatige configuratie gebeuren.
 Om te verbinden met de \gls{vm} kan er gebruik worden gemaakt van het 'vagrant ssh' commando.
 
 De manuale configuratie bestaat uit 4 delen:
@@ -311,7 +311,7 @@ Voor de configuratie van de subscriber moet er gebruik gemaakt worden van de \gl
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-WebUI-Login.png}
-    \caption{Aanmeldscherm Open5GS WebUI }
+    \caption{Aanmeldscherm Open5GS WebUI (Screenshot)}
     \label{fig:Aanmeld WebUI}
 \end{figure}
 
@@ -324,7 +324,7 @@ Eenmaal aangemeld met de correcte gegevens, terug te vinden in de config-files:
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-WebUI-home.png}
-    \caption{Homescherm Open5GS WebUI }
+    \caption{Homescherm Open5GS WebUI (Screenshot)}
     \label{fig:Home WebUI}
 \end{figure}
 
@@ -342,7 +342,7 @@ Voor de feitelijke configuratie van de subscriber zijn er gegevens nodig uit de 
 Deze gegevens worden retchstreeks overgenomen uit de configuratie file naar de webinterface voor \gls{open5gs}. Hier kunnen meerdere toestellen als \gls{ue} worden geregistreerd. 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-subConfig.png}
-    \caption{Configuratie Subscriber}
+    \caption{Configuratie Subscriber (Screenshot)}
     \label{fig:SubConfig}
 \end{figure}
 
@@ -362,21 +362,21 @@ UERANSIM v3.2.7
 [2025-05-29 10:23:08.261] [sctp] [info] Trying to establish SCTP connection... (10.0.0.10:38412)
 [2025-05-29 10:23:08.343] [sctp] [info] SCTP connection established (10.0.0.10:38412)
 [2025-05-29 10:23:08.343] [sctp] [debug] SCTP association setup ascId[3]
-[2025-05-29 10:23:08.343] [ngap] [debug] Sending NG Setup Request
-[2025-05-29 10:23:08.349] [ngap] [debug] NG Setup Response received
-[2025-05-29 10:23:08.349] [ngap] [info] NG Setup procedure is successful
+[2025-05-29 10:23:08.343] [ngap] [debug] Sending NG setup Request
+[2025-05-29 10:23:08.349] [ngap] [debug] NG setup Response received
+[2025-05-29 10:23:08.349] [ngap] [info] NG setup procedure is successful
 [2025-05-29 10:23:59.177] [rrc] [debug] UE[1] new signal detected
-[2025-05-29 10:23:59.179] [rrc] [info] RRC Setup for UE[1]
+[2025-05-29 10:23:59.179] [rrc] [info] RRC setup for UE[1]
 [2025-05-29 10:23:59.180] [ngap] [debug] Initial NAS message received from UE[1]
-[2025-05-29 10:23:59.207] [ngap] [debug] Initial Context Setup Request received
+[2025-05-29 10:23:59.207] [ngap] [debug] Initial Context setup Request received
 [2025-05-29 10:23:59.439] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
 [2025-05-29 10:24:04.086] [rls] [debug] UE[1] signal lost
 [2025-05-29 10:24:05.848] [rrc] [debug] UE[2] new signal detected
-[2025-05-29 10:24:05.850] [rrc] [info] RRC Setup for UE[2]
+[2025-05-29 10:24:05.850] [rrc] [info] RRC setup for UE[2]
 [2025-05-29 10:24:05.851] [ngap] [debug] Initial NAS message received from UE[2]
 [2025-05-29 10:24:05.867] [ngap] [debug] UE Context Release Command received
 [2025-05-29 10:24:05.867] [rrc] [info] Releasing RRC connection for UE[1]
-[2025-05-29 10:24:05.874] [ngap] [debug] Initial Context Setup Request received
+[2025-05-29 10:24:05.874] [ngap] [debug] Initial Context setup Request received
 [2025-05-29 10:24:06.094] [ngap] [info] PDU session resource(s) setup for UE[2] count[1]
 \end{lstlisting}
 
@@ -395,7 +395,7 @@ UERANSIM v3.2.7
 [2025-05-29 08:05:17.685] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
 [2025-05-29 08:05:17.686] [nas] [debug] Sending Initial Registration
 [2025-05-29 08:05:17.686] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
-[2025-05-29 08:05:17.686] [rrc] [debug] Sending RRC Setup Request
+[2025-05-29 08:05:17.686] [rrc] [debug] Sending RRC setup Request
 [2025-05-29 08:05:17.687] [rrc] [info] RRC connection established
 [2025-05-29 08:05:17.688] [rrc] [info] UE switches to state [RRC-CONNECTED]
 [2025-05-29 08:05:17.688] [nas] [info] UE switches to state [CM-CONNECTED]
@@ -420,12 +420,12 @@ Hieronder twee screenshot met de volledige overview van de terminals.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-Run-1.png}
-    \caption{Running the simulation (Part 1)}
+    \caption{Running the simulation (Part 1) (Screenshot)}
     \label{fig:runPart1}
 \end{figure}
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-Run-2.png}
-    \caption{Running the simulation (Part 2)}
+    \caption{Running the simulation (Part 2) (Screenshot)}
     \label{fig:runPart2}
 \end{figure}
 
@@ -434,11 +434,11 @@ Hieronder twee screenshot met de volledige overview van de terminals.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-test.png}
-    \caption{Testing}
+    \caption{Testing (Screenshot)}
     \label{fig:Test-Overview}
 \end{figure}
 
-Om te controleren of de setup is gelukt zijn er verschillende testen die kunnen worden uitgevoerd.
+Om te controleren of de set-up is gelukt zijn er verschillende testen die kunnen worden uitgevoerd.
 
 \begin{enumerate}
     \item Netwerkkaart
@@ -494,7 +494,7 @@ sudo tcpdump -i eth1 -n -w traf.pcap
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-wireshark.png}
-    \caption{Network capture in wireshark}
+    \caption{Network capture in wireshark (Screenshot)}
     \label{fig:wireshark}
 \end{figure}
 
@@ -549,18 +549,13 @@ Na deze controle wordt de netwerkopname stopgezet.
 \section{\IfLanguageName{dutch}{Praktische integratie}{Possible practical integration}}%
 \label{sec:integration}%
 
+Een \'{e}\'{e}n-op-\'{e}\'{e}n conversie, op de manier zoals deze is geconfigureerd in de simulatie is mits de vereiste hardware zeker mogelijk. Echter van zodra men wil kijken naar slicing stoot men op problemen, zoals aangehaald in hoofdstuk \ref{sec:Slicing}. In de simulatie is dit een paar extra variabelen aanpassen bij de \gls{ue}. Zie de screenshot hieronder.
 
 
-% De simulatie heeft het voordeel dat dit een volledig 5G netwerk kan simuleren, inclusief slicing. Echter zoals aangehaald in hoofdstuk \ref{sec:slicing} de overgang 
-
-% %TODO: Slicing bespreken
-
-% \begin{figure}[H]
-%     \includegraphics[width=\linewidth]{../graphics/POC-Slicing.png}
-%     \caption{PoC Slicing}
-%     \label{fig:pocSlicing}
-% \end{figure}
-
-
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{../graphics/POC-Slicing.png}
+    \caption{PoC Slicing (Screenshot)}
+    \label{fig:pocSlicing}
+\end{figure}
 
 % %TODO: Zebra TC27 Handheld Computer en conversie problemen?
