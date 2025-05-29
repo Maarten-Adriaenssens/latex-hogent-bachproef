@@ -3,11 +3,49 @@
 
 \section{\IfLanguageName{dutch}{Simulation}{Simulation}}%
 \label{sec:sim}%
-De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy. 
+De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs} en \gls{ueransim}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy. 
 
-De opbouw van de simulatie zal in 2 fases gebeuren. De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een \gls{gnb} en een \gls{ue}. Beiden zullen op eenzelfde toestel in een \gls{vm} worden gerund. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}
+De opbouw van de simulatie zal in 2 fases gebeuren. De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een 5G core server en een 5G RAN server. In de simulatie zal de 5G Core server \gls{open5gs} en de 5G RAN server zan UERANSIM draaien als simulatie software. Op de 5 RAN Server zijn opzich nog 2 deel elementen aanwezig die verbinden met het netwerk \gls{gnb} en een \gls{ue}. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}. Hieronder is een schematische weergaven van de opstelling in de simulatie. 
 
-Als basis hardward configuratie is er gekozen voor een \gls{vm} met 8 Gigabyte RAM en 2 CPU cores. Verder is de netwerkkaart geconfigureerd op het NAT netwerk van VirtualBox zelf.
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{../graphics/POC-setup.png}
+    \caption{POC Setup}
+    \label{fig:poc-setup}
+\end{figure}
+
+Voor de hardware configuratie is er voor de volgende setup gekozen:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Harware configuratie} & \textbf{5G core server} & \textbf{5G RAN server} \\
+\hline
+RAM & 8 Gigabyte & 4 Gigabyte \\
+CPU-cores & 2 & 2 \\
+Netwerkkaart & \begin{tabular}[c]{@{}l@{}}NAT (VirtualBox)\\ Host-only, static IP 10.0.0.10\end{tabular} & \begin{tabular}[c]{@{}l@{}}NAT (VirtualBox)\\ Host-only, static IP 10.0.0.11\end{tabular} \\
+\hline
+\end{tabular}
+\caption{Configuratie van 5G core en RAN servers}
+\end{table}
+
+% \textbf{5G core server}:
+% \begin{itemize}
+%     \item RAM: 8 Gigabyte
+%     \item CPU-cores: 2
+%     \item Netwerkkaart
+%     \subitem NAT (VirtualBox)
+%     \subitem Host-only met static IP 10.0.0.10
+% \end{itemize}
+
+% \textbf{5G RAN server}:
+% \begin{itemize}
+%     \item RAM: 4 Gigabyte
+%     \item CPU-cores: 2
+%     \item Netwerkkaart
+%     \subitem NAT (VirtualBox)
+%     \subitem Host-only met static IP 10.0.0.11
+% \end{itemize}
 
 \section{\IfLanguageName{dutch}{Installatie}{Installation}}%
 \label{sec:installation}%
@@ -20,7 +58,7 @@ De installatie bestaat uit 3 delen:
     \item UERANSIM
 \end{itemize}
 
-De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a}:
+De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a} enwordt enkel uitgevoerd op de 5G Core Server (of Conductor \gls{vm}):
 
 \begin{enumerate}
     \item Installatie van afhankelijkheden/vereisten
@@ -29,41 +67,13 @@ De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}
     \item Starten van de \gls{open5gs} services
 \end{enumerate}
 
-Nadien wordt \gls{ueransim} geinstalleerd om de simulatie te finaliseren. 
+Vervolgens wordt op de 2de \gls{vm}, ook wel de Member \gls{vm} genoemd, \gls{ueransim} geinstalleerd om de installatie-fase te finaliseren. 
 
 De volledige installatie gids is ook toegevoegd in de bijlagen, zie bijlage \ref{ch:InstallationGuide}.
 
-Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. Echter some configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd.
+Er zijn ook eigen configuratie-aanpassingen gebeurt om deze \gls{poc} automatisch te deployen via Vagrant. Hiervoor is er gebruikgemaakt van een Vagrantfile. Deze bevat de hardware configuratie en een link naar het installatiescript voor de simulatie. De Vagrantfile is samen met de installatiescripten toegevoegd aan de bijlagen (zie hoofdstuk \ref{ch:vagrant}). Echter sommige configuratie aanpassingen moeten nog steeds manueel worden uitgevoerd, deze wordt verduidelijkt verder in dit hoofdstuk.
 
-\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrantfile]
-Vagrant.configure("2") do |config|
-    config.vm.provider "virtualbox" do |vb|
-    # Stel de gedeelde map in om automatisch te mounten
-    vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
-    end
-
-    config.vm.define "conductor" do |cond|
-        cond.vm.box = "gusztavvargadr/ubuntu-server"
-        cond.vm.box_version = "2404.0.2503"
-        cond.vm.hostname = "Centrale"        # Set the host name of the VM
-        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"        # Set portforwarding
-
-        cond.vm.provider "virtualbox" do |vb|        # VirtualBox specific configuration
-            # VirtualBox Display Name
-            vb.name = "Centrale"
-            # VirtualBox Group
-            vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
-            # 1GB vRAM
-            vb.memory = "8192"
-            # 1vCPU
-            vb.cpus = "2"
-        end
-        cond.vm.provision "shell", path: "script-cent.sh"
-    end
-end
-\end{lstlisting}
-
-Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: \verb|vagrant up|'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
+Om deze \gls{vm} te maken wordt er gebruikgemaakt van het commando: 'vagrant up'. Echter door het meermaals testen van de \gls{vm} is er gekozen om een script te schrijven in powershell. Dit script verwijdert de vorige \gls{vm} en start de logging van de terminal. Dit is handig om te detecteren of de \gls{vm} klaar is met de configuratie, maar ook om mogelijk fouten sneller te detecteren.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Build Script]
 Start-Transcript -Path "vagrant.log"
@@ -146,7 +156,12 @@ amf:
             - uri: http://127.0.0.200:7777
     ngap:
         server:
-            - address: 10.0.2.15  #CHANGED VALUE
+            - address: 10.0.0.10  #CHANGED VALUE
+...
+\end{lstlisting}
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Open5GS upf configuratie]
+%TODO:
 ...
 \end{lstlisting}
 
@@ -163,13 +178,13 @@ nci: '0x000000010'  # NR Cell Identity (36-bit)
 idLength: 32        # NR gNB ID length in bits [22...32]
 tac: 1              # Tracking Area Code
 
-linkIp: 10.0.2.15 #CHANGED VALUE   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
-ngapIp: 10.0.2.15 #CHANGED VALUE  # gNB's local IP address for N2 Interface (Usually same with local IP)
-gtpIp: 10.0.2.15 #CHANGED VALUE    # gNB's local IP address for N3 Interface (Usually same with local IP)
+linkIp: 10.0.0.11 #CHANGED VALUE   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
+ngapIp: 10.0.0.11 #CHANGED VALUE  # gNB's local IP address for N2 Interface (Usually same with local IP)
+gtpIp: 10.0.0.11 #CHANGED VALUE    # gNB's local IP address for N3 Interface (Usually same with local IP)
 
 # List of AMF address information
 amfConfigs:
-    - address: 10.0.2.15 #CHANGED VALUE
+    - address: 10.0.0.10 #CHANGED VALUE
         port: 38412
 
 # List of supported S-NSSAIs by this gNB
@@ -217,7 +232,7 @@ tunNetmask: '255.255.255.0'
 
 # List of gNB IP addresses for Radio Link Simulation
 gnbSearchList:
-    - 10.0.2.15 #CHANGED VALUE
+    - 10.0.0.11 #CHANGED VALUE
 
 ...
 \end{lstlisting}
@@ -336,6 +351,19 @@ Hieronder twee screenshot met de volledige overview van de terminals.
     \caption{Running the simulation (Part 2)}
     \label{fig:runPart2}
 \end{figure}
+
+\section{\IfLanguageName{dutch}{Test}{Testing}}%
+\label{sec:Test}%
+
+Om te controleren of de setup is gelukt zijn er verschillende testen die kunnen worden uitgevoerd.
+\begin{enumerate}
+    \item Netwerkkaart
+    \item Ping
+    \item Curl
+    \item Wireshark
+\end{enumerate}
+
+
 
 \section{\IfLanguageName{dutch}{Andere features}{Additional features}}%
 \label{sec:addFeature}%

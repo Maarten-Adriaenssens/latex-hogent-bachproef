@@ -1,0 +1,146 @@
+\section{\IfLanguageName{dutch}{Vagrantfile}{Vagrantfile}}
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrantfile]
+Vagrant.configure("2") do |config|
+    config.vm.provider "virtualbox" do |vb|
+    # Stel de gedeelde map in om automatisch te mounten
+    vb.customize ["sharedfolder", "add", :id, "--name", "vagrant_data", "--hostpath", ".", "--automount"]
+    end
+
+    # Server 1
+    config.vm.define "conductor" do |cond|
+        # This is the base image for the VM - do not change this!
+        cond.vm.box = "gusztavvargadr/ubuntu-server"
+        cond.vm.box_version = "2404.0.2503"
+        cond.vm.network "private_network", ip: "10.0.0.10"
+        # Set the host name of the VM
+        cond.vm.hostname = "Centrale"
+        # Set portforwarding
+        cond.vm.network "forwarded_port", guest: 9999, host: 9999, host_ip: "127.0.0.1", id: "open5gs"
+        # VirtualBox specific configuration
+        cond.vm.provider "virtualbox" do |vb|
+            # VirtualBox Display Name
+            vb.name = "Centrale"
+            # VirtualBox Group
+            vb.customize ["modifyvm", :id, "--groups", "/BPoc"]
+            # 1GB vRAM
+            vb.memory = "8192"
+            # 1vCPU
+            vb.cpus = "2"
+        end
+        cond.vm.provision "shell", path: "script-cent.sh"
+    end
+
+    config.vm.define "member" do |memb|
+        memb.vm.box = "gusztavvargadr/ubuntu-server"
+        memb.vm.box_version = "2404.0.2503"
+        memb.vm.network "private_network", ip: "10.0.0.11"
+        memb.vm.hostname = "ue"
+        memb.vm.provider "virtualbox" do |vb2|
+            # VirtualBox Display Name
+            vb2.name = "UE"
+            # VirtualBox Group
+            vb2.customize ["modifyvm", :id, "--groups", "/BPoc"]
+            # 1GB vRAM
+            vb2.memory = "4096"
+            # 1vCPU
+            vb2.cpus = "2"
+        end
+        memb.vm.provision "shell", path: "script-ue.sh"
+    end
+end
+\end{lstlisting}
+
+\section{\IfLanguageName{dutch}{Vagrant script voor Conductor VM of 5G Core Server}{Vagrant script for Conductor VM or 5G Core Server}}
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrant script voor Conductor VM of 5G Core Server]
+# Script to install Open5GS on Ubuntu 22.04
+#Device: Conductur / Centrale
+#-----------------------------------------------------------
+#Install MongoDB for Open5GS
+sudo apt-get install gnupg curl
+curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo systemctl start mongod
+sudo systemctl enable mongod
+sudo systemctl status mongod
+#-----------------------------------------------------------
+#Install Open5GS
+sudo add-apt-repository ppa:open5gs/latest
+sudo apt update
+sudo apt install -y open5gs
+#-----------------------------------------------------------
+# Download and import the Nodesource GPG key
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+#Run Update and Install
+sudo apt update
+sudo apt install nodejs -y
+#-----------------------------------------------------------
+#Install Open5GS WebUI
+curl -fsSL https://open5gs.org/open5gs/assets/webui/install | sudo -E bash -
+sudo systemctl start open5gs-webui
+sudo systemctl enable open5gs-webui
+sudo sed -i "s/'localhost'/'10.0.2.15'/" /usr/lib/node_modules/open5gs/server/index.js # Change localhost
+sudo systemctl daemon-reload
+sudo systemctl restart open5gs-webui.service
+sudo systemctl restart open5gs-webui
+#-----------------------------------------------------------
+#Installation of UERANSIM
+git clone https://github.com/aligungr/UERANSIM
+sudo apt install -y cmake
+sudo apt install -y gcc
+sudo apt install -y g++
+sudo apt install -y libsctp-dev lksctp-tools
+sudo apt install -y iproute2
+sudo snap install cmake --classic
+cd UERANSIM
+make
+#-----------------------------------------------------------
+#Change IP addresses in Open5GS and UERANSIM configuration files
+sudo sed -i '23s/127.0.0.5/10.0.0.10/' /etc/open5gs/amf.yaml # Change AMF IP address
+sudo sed -i '20s/127.0.0.7/10.0.0.10/' /etc/open5gs/upf.yaml # Change UPF IP address
+sudo systemctl daemon-reload # Reload systemd to recognize changes
+sudo systemctl restart open5gs-amfd # Restart AMF service to apply changes
+sudo systemctl restart open5gs-upfd # Restart UPF service to apply changes
+#-----------------------------------------------------------
+#NAT Port Forwarding
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo systemctl stop ufw
+sudo iptables -I FORWARD 1 -j ACCEPT
+#-----------------------------------------------------------
+#End of script
+\end{lstlisting}
+
+\section{\IfLanguageName{dutch}{Vagrant script voor Member VM of 5G RAN Server}{Vagrant script for Member VM or 5G RAN Server}}
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Vagrant script voor Member VM of 5G RAN Server]
+    # Script to install UERANSIM on Ubuntu 22.04
+# Device: Member / UE
+#-----------------------------------------------------------
+#Installation of UERANSIM
+git clone https://github.com/aligungr/UERANSIM
+sudo apt install -y cmake
+sudo apt install -y gcc
+sudo apt install -y g++
+sudo apt install -y libsctp-dev lksctp-tools
+sudo apt install -y iproute2
+sudo snap install cmake --classic
+cd UERANSIM
+make
+#-----------------------------------------------------------
+# #Change IP addresses in Open5GS and UERANSIM configuration files
+# sudo sed -i '23s/127.0.0.5/10.0.2.15/' /etc/open5gs/amf.yaml # Change AMF IP address
+# sudo systemctl restart open5gs-amfd # Restart AMF service to apply changes
+sudo sed -i 's/127.0.0.1/10.0.0.11/' ~/UERANSIM/config/open5gs-ue.yaml # Change UE IP address
+sudo sed -i 's/127.0.0.1/10.0.0.11/' ~/UERANSIM/config/open5gs-gnb.yaml # Change gNB IP address
+sudo sed -i 's/127.0.0.5/10.0.0.10/' ~/UERANSIM/config/open5gs-gnb.yaml # Change gNB AMF IP address
+#-----------------------------------------------------------
+#End of script
+\end{lstlisting}
