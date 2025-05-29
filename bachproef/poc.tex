@@ -80,6 +80,7 @@ De automatische configuratie wordt gedeployed door het oproepen van een script. 
 Het einde van de automatische configuratie kan worden gedetecteerd aan de hand van de log file ide woerdt gegenereerd tijdens de installatie in de githubrepo. Deze log fie, vagrant.log, is beschikbaar door de shared folder die wordt aangemaakt in het begin van de \gls{vm} installatie. 
 
 Eenmaal de configuratie klaar is moet enkel de handmatige confiuratie gebeuren.
+Om te verbinden met de \gls{vm} kan er gebruik worden gemaakt van het 'vagrant ssh' commando.
 
 De manuale configuratie bestaat uit 4 delen:
 
@@ -145,7 +146,7 @@ amf:
             - uri: http://127.0.0.200:7777
     ngap:
         server:
-            - address: 10.0.2.15  #CHANGE VALUE
+            - address: 10.0.2.15  #CHANGED VALUE
 ...
 \end{lstlisting}
 
@@ -162,18 +163,18 @@ nci: '0x000000010'  # NR Cell Identity (36-bit)
 idLength: 32        # NR gNB ID length in bits [22...32]
 tac: 1              # Tracking Area Code
 
-linkIp: 10.0.2.15 #CHANGE VALUE   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
-ngapIp: 10.0.2.15 #CHANGE VALUE  # gNB's local IP address for N2 Interface (Usually same with local IP)
-gtpIp: 10.0.2.15 #CHANGE VALUE    # gNB's local IP address for N3 Interface (Usually same with local IP)
+linkIp: 10.0.2.15 #CHANGED VALUE   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
+ngapIp: 10.0.2.15 #CHANGED VALUE  # gNB's local IP address for N2 Interface (Usually same with local IP)
+gtpIp: 10.0.2.15 #CHANGED VALUE    # gNB's local IP address for N3 Interface (Usually same with local IP)
 
 # List of AMF address information
 amfConfigs:
-  - address: 10.0.2.15 #CHANGE VALUE
-    port: 38412
+    - address: 10.0.2.15 #CHANGED VALUE
+        port: 38412
 
 # List of supported S-NSSAIs by this gNB
 slices:
-  - sst: 1
+    - sst: 1
 
 # Indicates whether or not SCTP stream number errors should be ignored.
 ignoreStreamIds: true
@@ -216,7 +217,7 @@ tunNetmask: '255.255.255.0'
 
 # List of gNB IP addresses for Radio Link Simulation
 gnbSearchList:
-    - 10.0.2.15 #CHANGE VALUE
+    - 10.0.2.15 #CHANGED VALUE
 
 ...
 \end{lstlisting}
@@ -269,6 +270,32 @@ Na de configuratie sla de subscriber op. Nu is het netwerk volledige geconfigure
 \label{sec:run}%
 
 %TODO: Run uitleggen en aantonen dat het werkt ???
+Om de simulatie te starten is het noodzakelijk om een 2de ssh sessie te openen.
+In de eerste sessie start je de \gls{gnb} module. Dit wordt gestart aan de hand van de volgende commando's
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=gNB start]
+cd ~/UERANSIM/build
+./nr-gnb -c ../config/open5gs-gnb.yaml
+\end{lstlisting}
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=UE start]
+cd ~/UERANSIM/build
+./nr-ue -c ../config/open5gs-ue.yaml
+\end{lstlisting}
+
+Als de connectie is geslaagd kan dit op meerdere manieren worden nagekeken. Om te beginnen moet er in de temrinals volgende code verschijnen:
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat UE]
+cd ~/UERANSIM/build
+./nr-gnb -c ../config/open5gs-gnb.yaml
+\end{lstlisting}
+
+\begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Verwacht run resultaat gNB]
+cd ~/UERANSIM/build
+./nr-gnb -c ../config/open5gs-gnb.yaml
+\end{lstlisting}
+
+Hieronder twee screenshot met de volledige overview van de terminals.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-Run-1.png}
