@@ -97,11 +97,11 @@ De manuale configuratie bestaat uit 5 delen:
     \item IP check
     \item \gls{open5gs} \gls{amf} configuratie
     \item \gls{open5gs} \gls{upf} configuratie
-    \item UE configuratie
-    \item gNB configuratie
+    \item \gls{ue} configuratie
+    \item \gls{gnb} configuratie
 \end{itemize}
 
-Eerst wordt er gekeken naar de huidige IP van de \gls{vm}'s, dit via het \lstinline!ip a! commando. Hier kan men het IP adres van de netwerkkaar eth1. Deze IP adres zullen worden gebruikt voor verdere configuratie. In het geval van de\gls{poc}, is dit 10.0.0.10 en 10.0.0.11
+Eerst wordt er gekeken naar de huidige IP van de \gls{vm}'s, dit via het \lstinline!ip a! commando. Hier kan men het IP adres van de netwerkkaar eth1. Deze IP adres zullen worden gebruikt voor verdere configuratie. In het geval van de \gls{poc}, is dit 10.0.0.10 en 10.0.0.11
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=IP configuratie Centrale]
 vagrant@Centrale:~$ ip a
@@ -318,8 +318,8 @@ Voor de configuratie van de subscriber moet er gebruik gemaakt worden van de \gl
 Eenmaal aangemeld met de correcte gegevens, terug te vinden in de config-files:
 
 \begin{itemize}
-    \item Username: admin
-    \item Password: 1423
+    \item Username: \textit{admin}
+    \item Password: \textit{1423}
 \end{itemize}
 
 \begin{figure}[H]
