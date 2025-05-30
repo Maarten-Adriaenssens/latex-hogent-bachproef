@@ -285,7 +285,6 @@ Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
 \end{itemize}
 
 \textbf{5G \gls{sa} Core}\\\\
-
 Volgens \textcite{Lee2025a} heeft de 5G \gls{nsa} Core volgende functies:
 
 \begin{itemize}
@@ -312,11 +311,54 @@ Verder zullen de \gls{gnb} en \gls{ue} worden gesimuleerd met \gls{ueransim}. Di
 \subsubsection{\IfLanguageName{dutch}{Slicing}{Slicing}}
 \label{sec:Slicing}
 
-%TODO:
+%Foukas2017
+%Lorincz2024
+%
 
-Shan2023
+Volgens \textcite{Foukas2017} zijn er 3 use cases voor slicing:
 
-Foukas2017
+\begin{itemize}
+  \item Versterkte mobiele bandbreedte (\gls{embb})
+  \item Massieve machine communicatie
+  \item Kritische communicatie
+\end{itemize}
+
+Verder stelt \textcite{Lorincz2024} dat er 5 technologieën die netwerk slicing toelaten:
+
+\begin{enumerate}
+  \item \gls{sdn} gebaseerd netwerk slicing
+  \item \gls{vnf} gebaseerd netwerk slicing
+  \item \gls{ran} gebaseerd netwerk slicing
+  \item Netwerk slicing gebaseerd op de aanpassing vna het netwerkverkeer aan de patronen van energieverbruik
+  \item \gls{e2e} netwerk slicing met strikte beveiligings vereisten
+\end{enumerate}
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{../graphics/slice.png}
+  \caption{Concept van 5G netwerk slicing \autocite[Door][]{Lorincz2024} Copyright 2024 van \textcite{Lorincz2024}}
+  \label{fig:slice}
+\end{figure}
+
+\textcite{Lorincz2024} gaat verder met verklaren dat elke \gls{ns} in een 5G netwerk ook een uniek kan worden geidentificeerd worden door middel van \gls{s-nssai}. Deze identifier wordt gebruikt in communicatie tussen \gls{ue} en het 5G netwerk. De \gls{s-nssai} bestaat uit een 8-bit \gls{sst-id} en een 24-bit \gls{sd}, deze laatste is een optionele parameter. De huidige gestandaardiseerde \gls{sst-id}'s zijn de volgende:
+
+\begin{itemize}
+  \item \gls{embb}
+  \item \gls{urllc}
+  \item \gls{miot}
+  \item \gls{v2x}
+  \item \gls{hmtc}
+  \item \gls{hdllc}
+\end{itemize}
+
+Gezien de context van een ziekenhuis omgeving en het doel een vervanging is van het \gls{dect}-systeem zal enkel worden gekeken naar de \gls{sst-id} types die betrekking hebben tot direct communicatie en noodgevallen. Dit zijn de eerste twee: \gls{embb} en \gls{urllc}.
+
+Implementatie van \gls{embb} slices is toepasbaar op het huidgie mobiele netwerk en kan uitgebreid wordemn naar mogelijke andere doeleinden van dat netwerk voor een volledig intmnet elkaar verbonden maatschappij. \autocite{Lorincz2024}
+
+De \gls{urllc} services zijn gekenmerkt door de nood om directe interactie te hebben. 
+
+Het is wel belangrijk om rekening te houden met het feit dat deze twee \gls{sst-id}'s een hoge energieconsumptie hebben in vergelijking met de andere \gls{sst-id}'s. Dit komt door de grote en frequente intensiteit van het dataverkeer dat kararkteristiek is aan \gls{embb} en \gls{urllc} slices. \autocite{Lorincz2024}
+
+Verder is het ook niet altijd mogelijk om aan slicing te kunnen doen. Daarom worden er ook alternatieven binnen het 5G netwerk voor slicing gebruikt. Er wordt dan gebruik gemaakt van \gls{ddn}. Dit is een vaak gebruikt alternatief voor slicing van ee n5G netwerk aangezien er een apart data netwerk wordt opgezet. Dit is echter qua veiligheid niet hetzlefde als volwaardige slicing waar een identifier (\gls{s-nssai}). Het gebruiken van \gls{ddn} is een opvolger van het \gls{APN}, dit doet exact hetzelfde maar specifiek voor 4G netwerken \autocite{Eede2023}.
 
 \subsubsection{\IfLanguageName{dutch}{Kosten}{Costs}}
 \label{sec:Cost}
@@ -341,11 +383,23 @@ Zo verduidelijkt \textcite{Abbas2024} dat er in de implementatie fase al redelij
 
 Dit wordt ook aangetoond door \textcite{Hilary2024} dat men zich niet alleen mag focussen op de \gls{capex} van de 5G installatie, maar ook de \gls{opex}. Dit wordt nogmaals aangetoond door middel van de staafdiagrammen van \textcite{Hilary2024}
 
+De simulatie die als \gls{poc} wordt gebruikt valt onder de categorie \gls{snpn}. De andere categorieën zijn Legacy 5G netwerken, dit is wat in deze bachelorproef het 5G \gls{nsa} netwerk wordt genoemd. Verder zijn er 2 categorieën die beiden vertrekken van een RAN die gedeeld wordt. Het grootste verschil tussen de beiden is het gebruik van een eigen control plane of niet.
+
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/capex.png}
   \caption{\gls{capex} van een 5G netwerk \autocite[Door][]{Hilary2024} Copyright 2024 van \textcite{Hilary2024}}
   \label{fig:capex}
 \end{figure}
+
+Dit staafdiagram toont aan dat de \gls{capex} en initiële installatiekost verdeeld wordt in drie subkosten:
+
+\begin{itemize}
+  \item Infrastructuur of hardware
+  \item Gereedschap
+  \item Installatie op zich
+\end{itemize}
+
+Hoewel deze kosten varieren tussen het type netwerk dat wordt gedeployd, toch is er een duidelijke trend. Deze is dat de hardware de grootste kost met zich meebrengt.
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/opex.png}
@@ -353,11 +407,23 @@ Dit wordt ook aangetoond door \textcite{Hilary2024} dat men zich niet alleen mag
   \label{fig:opex}
 \end{figure}
 
+Vervolgens wordt aangetoond dat de \gls{opex} ook kan worden opgesplitst in drie subkosten:
+
+\begin{itemize}
+  \item Onderhoud
+  \item Energieconsumptie
+  \item Fout management en reparaties
+\end{itemize}
+
+Net zoals bij de \gls{capex} is er ook hier weer een trend zichtbaar. Het onderhoud is hier de grootste kost.
+
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/capex-opex.png}
   \caption{Vergelijking van \gls{capex} met \gls{opex} op 1 jaar en op 10 jaar tijd \autocite[Door][]{Hilary2024} Copyright 2024 van \textcite{Hilary2024}}
   \label{fig:capex-vs-opex}
 \end{figure}
+
+Als men dan nadien de \gls{capex} met de \gls{opex} (op 1 jaar en op 10 jaar) gaat vergelijken ziet men dat de langetermijn \gls{opex} de uitschieter is. 
 
 \subsection{\IfLanguageName{dutch}{ULE}{ULE}}%
 \label{sec:ule}%
@@ -375,13 +441,11 @@ De grootste voordelen van deze technologie volgens \textcite{GariniDil2014} zijn
   \item Video en audio
 \end{itemize}
 
-%TODO: ULE uitleggen
-
 Verder onderzoek door \textcite{Das2012} toont aan dat \gls{ule} ook een goede oplossing is voor de gezondheidszorg. Dit komt door de lage energieconsumptie, de lange levensduur van de batterij en de lage kosten. Dit maakt het een goede kandidaat voor een communicatiesysteem in de gezondheidszorg. Uit de deze studie (\textcite{Das2012}) kan men ook een oplijsting halen waarin verschillende technologieën worden vergeleken met het \gls{dect}-systeem. Dit is te zien in de tabel hieronder.
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{../graphics/overzicht.jpg}
-  \caption{Overzicht \autocite[Door][]{Das2012} Copyright 2012 van \textcite{Das2012}}
+  \caption{Overzicht gelijkaardige systemen zoals \gls{ule} \autocite[Door][]{Das2012} Copyright 2012 van \textcite{Das2012}}
   \label{fig:overzicht}
 \end{figure}
 
@@ -409,8 +473,6 @@ Naast deze tabel, onderzocht \textcite{Das2012} kwaliteit van de kanalen die wor
 
 Echter, \textcite{Soenmez2018} bevestigt wel dat er een groot aanvalsoppervlak bestaat. Zo heeft de \gls{voipsa} een lijst gepubliceerd met 6 beveiligingspunten waar countermeasures moeten geïnstalleerd worden om een veilige omgeving te garanderen.
 
-%TODO:
-%TODO verklaar
 \section{\IfLanguageName{dutch}{Data}{Data}}%
 \label{sec:data}%
 
@@ -443,8 +505,6 @@ Als al deze principes worden toegepast, kan men stellen dat er voldaan is aan de
 \end{itemize}
 \subsection{\IfLanguageName{dutch}{Wetgevingen}{Laws}}%
 \label{sec:wet}%
-
-%TODO: Uitgebreider !!!
 
 Sinds 27 april 2016 is de verordening 2016/679 van toepassing. Deze start de \gls{gdpr} (General Data Protection Regulation) in de Europese Unie. De verordening 2016/679 vermeldt dat "regels worden vastgelegd betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en het vrije verkeer van persoonsgegevens. Het beschermt de grondrechten en de fundamentele vrijheden van natuurlijke personen, met name hun recht op bescherming van persoonsgegeven."\\ (Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016) %\autocite{gdpr2016} 
 \\\\

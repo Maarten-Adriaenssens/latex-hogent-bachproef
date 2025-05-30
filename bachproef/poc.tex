@@ -5,7 +5,7 @@
 \label{sec:sim}%
 De \gls{poc} is een simulatie van een 5G-netwerk. Dit wordt opgezet door gebruik te maken van \gls{open5gs} en \gls{ueransim}. De \gls{vm} met als \gls{os} Ubuntu, versie 22.04.5 LTS ook wel gekend als Jammy. 
 
-De opbouw van de simulatie zal in 2 fases gebeuren. \\De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een 5G core server en een 5G RAN server. In de simulatie zal de 5G Core server \gls{open5gs} en de 5G RAN server van UERANSIM draaien als simulatie software. Op de 5 RAN Server zijn op zich nog 2 deel elementen aanwezig die verbinden met het netwerk \gls{gnb} en een \gls{ue}. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}. Hieronder is een schematische weergaven van de opstelling in de simulatie. 
+De opbouw van de simulatie zal in 2 fases gebeuren. \\De eerste is een volledig manuele build. Hier wordt een 5G-netwerk gesimuleerd op een laptop. Dit netwerk bestaat uit een 5G core server en een 5G RAN server. In de simulatie zal de 5G Core server \gls{open5gs} en de 5G \gls{ran} server van \gls{ueransim} draaien als simulatie software. Op de 5 RAN Server zijn op zich nog 2 deel elementen aanwezig die verbinden met het netwerk \gls{gnb} en een \gls{ue}. De 2de fase is het omzetten van deze manuele build naar een automatische deployment van de \gls{poc}. Hieronder is een schematische weergaven van de opstelling in de simulatie. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../graphics/POC-setup.png}
@@ -54,11 +54,11 @@ De installatie bestaat uit 3 delen:
 
 \begin{itemize}
     \item Vereiste software
-    \item Open5GS
-    \item UERANSIM
+    \item \gls{open5gs}
+    \item \gls{ueransim}
 \end{itemize}
 
-De basis installatie van Open5GS gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a} en wordt enkel uitgevoerd op de 5G Core Server (of Conductor \gls{vm}):
+De basis installatie van \gls{open5gs} gebeurt volgens de Quickstart van \gls{open5gs}, \textcite{Lee2025a} en wordt enkel uitgevoerd op de 5G Core Server (of Conductor \gls{vm}):
 
 \begin{enumerate}
     \item Installatie van afhankelijkheden/vereisten
@@ -91,12 +91,12 @@ Het einde van de automatische configuratie kan worden gedetecteerd aan de hand v
 Eenmaal de configuratie klaar is moet enkel de handmatige configuratie gebeuren.
 Om te verbinden met de \gls{vm} kan er gebruik worden gemaakt van het 'vagrant ssh' commando.
 
-De manuale configuratie bestaat uit 4 delen:
+De manuale configuratie bestaat uit 5 delen:
 
 \begin{itemize}
     \item IP check
-    \item Open5GS \gls{amf} configuratie
-    \item Open5GS \gls{upf} configuratie
+    \item \gls{open5gs} \gls{amf} configuratie
+    \item \gls{open5gs} \gls{upf} configuratie
     \item UE configuratie
     \item gNB configuratie
 \end{itemize}
@@ -159,10 +159,10 @@ vagrant@ue:~$ ip a
        valid_lft forever preferred_lft forever
 \end{lstlisting}
 
-\subsection{\IfLanguageName{dutch}{Open5GS AMF en UPF configuratie}{Open5GS AMF and UPF configuration}}%
+\subsection{\IfLanguageName{dutch}{\gls{open5gs} AMF en UPF configuratie}{\gls{open5gs} AMF and UPF configuration}}%
 \label{sec:open5gs_amf-upf}%
 
-Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de \gls{amf}. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.0.10. Dit is het IP adres van de ngap server.
+Eenmaal het IP adres gekend is worden de hierboven opgelijste configuraties aangepast, beginnend met de \gls{amf}. Hierbij wordt op lijn 23 het ip adres 127.0.0.5 naar het gevonden ip adres 10.0.0.10. Dit is het IP adres van de \gls{ngap} server.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Open5GS amf configuratie]
 logger:
@@ -191,7 +191,7 @@ amf:
 ...
 \end{lstlisting}
 
-Vervolgens wordt de configuratie van \gls{upf} aangepast op lijn 20. Hier wordt het adres van de gtpu server aangepast naar die van de 5G Core server.
+Vervolgens wordt de configuratie van \gls{upf} aangepast op lijn 20. Hier wordt het adres van de \gls{gtpu} server aangepast naar die van de 5G Core server.
 
 \begin{lstlisting}[basicstyle=\small, frame=single, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, escapeinside ={\%,}, escapechar={!}, numbers=left, language=sh, caption=Open5GS upf configuratie]
 logger:
@@ -500,12 +500,12 @@ sudo tcpdump -i eth1 -n -w traf.pcap
 
 In deze capture zijn er aan aantal zaken die duiden op een geslaagde run van het netwerk. Al deze steunen op hun type protocol dat is gecaptured.\\\\
 
-De eerste is de packets van het protocol SCTP. Deze packets zijn voornamelijk heartbeats met corresponderende Acknowledgements. Dit is een controle op de 5G connectie tussen de \gls{ue} en de \gls{gnb}. Van zorda deze verschijnt en blijft terugkeren, kan men concluderen dat er een 5G connectie bestaat.\\
+De eerste is de packets van het protocol \gls{sctp}. Deze packets zijn voornamelijk heartbeats met corresponderende Acknowledgements. Dit is een controle op de 5G connectie tussen de \gls{ue} en de \gls{gnb}. Van zorda deze verschijnt en blijft terugkeren, kan men concluderen dat er een 5G connectie bestaat.\\
 
 
 Het volgende protocol waarvan packtes zijn gecaptured, en dus een geslaagde netwerkopstelling aantoont, is de \gls{gtp} packets.
 Dit is een tunnel protocol, dat wordt gebruikt vppr roaming, \gls{ran}, \gls{ciot} deployments en in packets van de core voor 3G, 4G en 5G netwerken. \autocite{palo2022} Dit is dus eeen soort van drager van packets die langs de core moeten passeren.\\\\
-Dit is ook logisch aangezien de packets die hierin zitten TCP, TLS en ICMP packets zijn. Wat correspondeert met de protocollen van ping en curl. de andere 2 testen die werden uitgevoerd terwijl de netwerk opname werd gemaakt.
+Dit is ook logisch aangezien de packets die hierin zitten \gls{tcp}, \gls{tls} en \gls{icmp} packets zijn. Wat correspondeert met de protocollen van ping en curl. de andere 2 testen die werden uitgevoerd terwijl de netwerk opname werd gemaakt.
 \subsection{\IfLanguageName{dutch}{Ping}{Ping}}%
 \label{sec:Test-ping}%
 
