@@ -313,25 +313,25 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 
-%% Use the length of the 'HO' part of the logo to set the padding of the logo
-\newsavebox{\logopart}
-\savebox{\logopart}{\includegraphics[height=7cm]{logopart}}
+% %% Use the length of the 'HO' part of the logo to set the padding of the logo
+% \newsavebox{\logopart}
+% \savebox{\logopart}{\includegraphics[height=7cm]{logopart}}
 
-% First page footer
-\fancypagestyle{plain}{%
-  %\newgeometry{bottom=\wd\logopart}
-  \fancyhf{}%
-  \fancyfoot[L]{}%
-  \fancyfoot[C]{}
-  \fancyfoot[R]{%
-    \begin{tikzpicture}[remember picture, overlay]
-      \node [anchor=south east, shift={(-\the\wd\logopart, \the\wd\logopart)}, inner sep=0, outer sep=0] (logo) at (current page.south east)%
-      {%
-        \includegraphics[height=\the\ht\logopart]{hogent_logo}%
-      };%
-    \end{tikzpicture}
-  }%
-}
+% % First page footer
+% \fancypagestyle{plain}{%
+%   %\newgeometry{bottom=\wd\logopart}
+%   \fancyhf{}%
+%   \fancyfoot[L]{}%
+%   \fancyfoot[C]{}
+%   \fancyfoot[R]{%
+%     \begin{tikzpicture}[remember picture, overlay]
+%       \node [anchor=south east, shift={(-\the\wd\logopart, \the\wd\logopart)}, inner sep=0, outer sep=0] (logo) at (current page.south east)%
+%       {%
+%         \includegraphics[height=\the\ht\logopart]{hogent_logo}%
+%       };%
+%     \end{tikzpicture}
+%   }%
+% }
 
 %%============================================================================
 %% Lettertypes

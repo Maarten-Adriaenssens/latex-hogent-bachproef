@@ -6,9 +6,11 @@
 
 \documentclass[a0,portrait]{hogent-poster}
 
+\usepackage{enumitem}
+
 % Info over de opleiding
 \course{Bachelorproef}
-\studyprogramme{Toegepaste Informatica}
+\studyprogramme{TOEGEPASTE INFORMATICA}
 \academicyear{2024-2025}
 \institution{Hogeschool Gent, Valentin Vaerwyckweg 1, 9000 Gent}
 
@@ -23,7 +25,7 @@
 % abstract. Zet in commentaar als je dit niet wilt.
 \specialisation{Systeem- en Netwerkbeheer}
 \keywords{Gezondheidszorg, 5G, DECT-systeem, privaat netwerk}
-\projectrepo{https://github.com/Maarten-Adriaenssens/latex-hogent-bachproef}
+% \projectrepo{https://github.com/Maarten-Adriaenssens/latex-hogent-bachproef}
 
 \begin{document}
 
@@ -36,9 +38,7 @@
 % You don't vote for kings. Who's that then? We found them. Ni! Ni! Ni! Ni!
 % The nose? On second thoughts, let's not go there. It is a silly place. Bloody Peasant! And the hat. She's a witch! Where'd you get the coconuts?
 
-Deze bachelorpref onderzoekt de mogelijke communicatietechnologieen die kunnen worden ingezet om het huidige DECT-systeem te vervangen. Doorheen de bachelorproef wordt er zoveel mogelijk rekening gehouden met de huidige noden van de gezondheidszorg. Het doel is om een kwaliteitsvol alternatief te bieden voor de vervanging van het DECT-systeem. Zo wordt er een oplijsting gemaakt van de vereisten en deze afgetoetst met nieuwe technologieën. De technologieën die worden bekeken zijn onder andere: DECT, ULE, VoIP en 5G.
-Verder bevat het onderzoek in deze bachelorproef ook een Proof of Concept (PoC) van een 5G netwerk-simulatie, lokaal op de laptop van de student. Deze PoC wordt ook geautomatiseerd en er wordt gekeken naar de mogelijke stappen om deze simulatie om te zetten naar een praktische realisatie.
-Uit het onderzoek kan men besluiten dat 5G de beste keuze is op vlak van technologische vervanger van het DECT-systeem. Deze bachelorproef stelt 2 alternatieve opties voor, indien men vandaag een vervanging moet doen met een beperkt budget. De eerste is de nieuwste versie van het DECT-systeem, ook wel het ULE-systeem genoemd. De tweede is een overschakeling naar een combinatie van Wi-Fi en VoIP. Maar in het einde blijft het een afweging tussen de kost en de productiviteitsboost door onder andere de alarmmoeheid vermindering.
+Deze bachelorpref onderzoekt de mogelijke communicatietechnologieën die kunnen worden ingezet om het huidige DECT-systeem te vervangen. Het doel is om een kwaliteitsvol alternatief te bieden voor de vervanging van het DECT-systeem. Zo wordt er een oplijsting gemaakt van de vereisten en deze afgetoetst met nieuwe technologieën. De technologieën die worden bekeken zijn onder andere: DECT, ULE, VoIP en 5G. Verder bevat het onderzoek in deze bachelorproef ook een Proof of Concept (PoC) van een 5G netwerk-simulatie. Deze PoC wordt ook geautomatiseerd en er wordt gekeken naar de mogelijke stappen om deze simulatie om te zetten naar een praktische realisatie. Uit het onderzoek kan men besluiten dat 5G de beste keuze is op vlak van technologische vervanger van het DECT-systeem. Deze bachelorproef stelt 2 alternatieve opties voor, indien men vandaag een vervanging moet doen met een beperkt budget. De eerste is de nieuwste versie van het DECT-systeem, ook wel het ULE-systeem genoemd. De tweede is een overschakeling naar een combinatie van Wi-Fi en VoIP. Maar in het einde blijft het een afweging tussen de kost en de productiviteitsboost door onder andere de alarmmoeheid vermindering.
 
 
 \end{abstract}
@@ -47,10 +47,9 @@ Uit het onderzoek kan men besluiten dat 5G de beste keuze is op vlak van technol
 
 \section{Situering}
 
-Als centrale onderzoeksvraag is er gekozen voor: "Hoe kan de informatieuitwisseling tussen artsen en verplegend personeel in ziekenhuizen verbeterd worden door het inzetten van nieuwe technologieën ?" 
+Als centrale onderzoeksvraag is er gekozen voor: "Hoe kan de informatie-uitwisseling tussen artsen en verplegend personeel in ziekenhuizen verbeterd worden door het inzetten van nieuwe technologieën ?" \\
 Deze wordt beantwoord doorheen de bachelorproef aan de hand van volgende bijvragen:
-
-\begin{itemize}
+\begin{itemize}[noitemsep, topsep=0pt, itemsep=1mm, parsep=0pt]
   \item Wat zijn de kenmerken van het DECT-systeem?
   \item Wat is het huidige systeem (met randapparatuur) en wat zijn de nadelen hiervan?
   \item Hoe kan een zorgsituatie worden gesimuleerd?
@@ -60,57 +59,45 @@ Deze wordt beantwoord doorheen de bachelorproef aan de hand van volgende bijvrag
   \item Welke mogelijke data integratie mogelijkheden hebben de alternatieven?
   \item Vanaf wanneer is het haalbaar om te implementeren op economisch vlak?
 \end{itemize}
-
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
-
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
+Het doel van deze bachelorproef is om een antwoord te formuleren op de onderzoeksvraag en een jump-off point te zijn voor verder onderzoek.
 
 \section{Proof of Concept}
-
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
-
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
+Voor het onderzoek, is er een Proof of Concept opgezet. Deze bestaat uit 2 Virtual Machines met hun corresponderende functies zoals hieronder op de figuur geïllustreerd.
 
 
 \begin{center}
   \captionsetup{type=figure}
   \includegraphics[width=1.0\linewidth]{./graphics/POC-setup.png}
-  \captionof{figure}{Proof of Concept Setup}
+  \captionof{figure}{Proof of Concept Setup (Illustratie)}
 \end{center}
 
-
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
-
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
+Dit netwerk wordt op 2 manieren opgesteld. De eerste is een volledig manuele installatie en configuratie. De tweede is een zo goed al volledig geautomatiseerde opstelling. 
+Eenmaal het netwerk tot stand is gekomen wordt dit onderworpen aan verschillende testen. Tijdens deze testen wordt er ook een netwerkopname gemaakt. Dit is hieronder terug te vinden in de screenshot.
 
 \begin{center}
   \captionsetup{type=figure}
   \includegraphics[width=1.0\linewidth]{./graphics/POC-wireshark.png}
-  \captionof{figure}{Network capture PoC}
+  \captionof{figure}{Network capture PoC (Screenshot)}
 \end{center}
 
 
 \section{Resultaten}
 
-De {\LaTeX} figure-omgeving bepaalt zelf waar een afbeelding komt en dat is meestal niet op de plek in de tekst waar de figure-omgeving gedefinieerd wordt. Als je wilt forceren dat afbeeldingen toch in de flow van de tekst blijven, dan kan je dat zoals hieronder:
-
+In de resultaten wordt er rekening gehouden met alle eigenschappen en beperkingen van de vermeldde technologieën. Hieronder is ook een staafdiagram mee opgenomen om de langdurige kost van een 5G netwerk te kaderen. 
 \begin{center}
   \captionsetup{type=figure}
   \includegraphics[width=1.0\linewidth]{./graphics/capex-opex.png}
-  \captionof{figure}{Capex-Opex vergelijking 5G}
+  \captionof{figure}{Vergelijking van CAPEX met OPEX op 1 jaar en op 10 jaar tijd voor 5G netwerken (Door Hilary, 2024) Copyright
+2024 van Hilary (2024)}
 \end{center}
-
-Let er wel op dat dit tot problemen met bladschikking kan leiden.
 
 \section{Conclusies}
 
-Don't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
+De conclusie die wordt getrokken uit het onderzoek is dat een privaat 5G netwerkt theoretisch gezien de beste oplossing is en het nauwste aansluit bij de vereisten. Echter in de realiteit zijn er verschillende extra facetten die zo een keuzes beïnvloeden. Zo is het financieel kader. Een 5G netwerk is een grote investering en kan soms niet worden gedragen. Daarvoor worden er ook alternatieven aangeboden zoals ULE en VoIP.
 
 \section{Toekomstig onderzoek}
 
-Deze bachelorproef dient als springplank voor verder onderzoek en ontwikkeling met als doel het DECT-systeem te vervangen met een kwalitatieve en innovatieve technologie . De eigenschappen van deze technologie hebben als hoofdoel het personeel te ondersteunen en zo de stressfactoren en alamrmoeheid te verminderen of zelfs volledig weg te nemen.
-
+Deze bachelorproef dient als springplank voor verder onderzoek en ontwikkeling met als doel het DECT-systeem te vervangen met een kwalitatieve en innovatieve technologie . De eigenschappen van deze technologie hebben als hoofddoel het personeel te ondersteunen en zo de stressfactoren en alarmmoeheid te verminderen of zelfs volledig weg te nemen.
 Om dit te testen kan er in de toekomst zeker nog worden samengewerkt met CityMesh en HOGENT. 
-
 \end{multicols}
 \end{document}
